@@ -19,6 +19,9 @@ struct ContentView: View {
     // Will be populated with battery state information
     @State private var batteryState = UIDevice.BatteryState.unknown
     
+    //list of number options
+    let listOfPickerOptions = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95]
+    
     //MARK: Computed properties
     var roundedCurrentBatteryLevel: Int {
         return Int((currentBatteryLevel * 100).rounded())
