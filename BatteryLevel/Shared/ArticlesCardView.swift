@@ -1,0 +1,52 @@
+//
+//  ArticlesCardView.swift
+//  BatteryLevel
+//
+//  Created by Judy Yu on 2022-05-08.
+//
+
+import SwiftUI
+
+struct ArticlesCardView: View {
+    
+    //MARK: Stored properties
+    let imageName: String
+    let title: String
+    let description: String
+    
+    var body: some View {
+        VStack(alignment: .leading){
+            
+            Image(imageName)
+                .resizable()
+                .scaledToFit()
+            
+            Group {
+                Text(title)
+                    .bold()
+                    .font(.title3)
+                Text(description)
+                    .foregroundColor(Color.gray)
+                    .font(.caption)
+            }
+            .padding(.leading, 20)
+            
+        }
+        .padding(.bottom, 15)
+        .background(Color.white)
+        .cornerRadius(15)
+        //Source: https://www.appcoda.com/swiftui-card-view/
+        .overlay(
+            RoundedRectangle(cornerRadius: 15, style: .continuous)
+                .stroke(Color(.sRGB, red: 150/255, green: 150/255, blue: 150/255, opacity: 0.1), lineWidth: 1)
+        )
+    }
+}
+
+struct ArticlesCardView_Previews: PreviewProvider {
+    static var previews: some View {
+        ArticlesCardView(imageName: "Performance",
+                         title: "Battery and Performance",
+                         description: "How does your battery work?")
+    }
+}

@@ -15,6 +15,8 @@ struct ReportView: View {
 
 struct ReportView_Previews: PreviewProvider {
     static var previews: some View {
-        ReportView()
+        NavigationView {
+            ReportView()
+        }
     }
 }

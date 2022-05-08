@@ -13,6 +13,7 @@
 		5A59C2192828803200D48815 /* PerformanceArticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A59C2182828803200D48815 /* PerformanceArticleView.swift */; };
 		5A59C21B2828804300D48815 /* TipsArticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A59C21A2828804300D48815 /* TipsArticleView.swift */; };
 		5A59C21D2828865400D48815 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A59C21C2828865400D48815 /* Article.swift */; };
+		5A59C2202828877700D48815 /* ArticlesCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A59C21F2828877700D48815 /* ArticlesCardView.swift */; };
 		81C072C82827E42F004235B4 /* BatteryLevelApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C072C72827E42F004235B4 /* BatteryLevelApp.swift */; };
 		81C072CA2827E42F004235B4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C072C92827E42F004235B4 /* ContentView.swift */; };
 		81C072CC2827E431004235B4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81C072CB2827E431004235B4 /* Assets.xcassets */; };
@@ -28,6 +29,7 @@
 		5A59C2182828803200D48815 /* PerformanceArticleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformanceArticleView.swift; sourceTree = "<group>"; };
 		5A59C21A2828804300D48815 /* TipsArticleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsArticleView.swift; sourceTree = "<group>"; };
 		5A59C21C2828865400D48815 /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
+		5A59C21F2828877700D48815 /* ArticlesCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesCardView.swift; sourceTree = "<group>"; };
 		81C072C42827E42F004235B4 /* BatteryLevel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BatteryLevel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		81C072C72827E42F004235B4 /* BatteryLevelApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryLevelApp.swift; sourceTree = "<group>"; };
 		81C072C92827E42F004235B4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -56,6 +58,14 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		5A59C21E282886FF00D48815 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				5A59C21F2828877700D48815 /* ArticlesCardView.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
 		81C072BB2827E42F004235B4 = {
 			isa = PBXGroup;
 			children = (
@@ -78,6 +88,7 @@
 				81C072C72827E42F004235B4 /* BatteryLevelApp.swift */,
 				81C072D92827E9C8004235B4 /* Extensions */,
 				5A59C21328286A4D00D48815 /* Models */,
+				5A59C21E282886FF00D48815 /* Shared */,
 				81C072D82827E991004235B4 /* Views */,
 				81C072D72827E988004235B4 /* ViewModifiers */,
 				81C072CB2827E431004235B4 /* Assets.xcassets */,
@@ -199,6 +210,7 @@
 				5A59C2122828325200D48815 /* DeviceBatteryChargeLevelViewModifier.swift in Sources */,
 				5A59C21D2828865400D48815 /* Article.swift in Sources */,
 				5A59C21B2828804300D48815 /* TipsArticleView.swift in Sources */,
+				5A59C2202828877700D48815 /* ArticlesCardView.swift in Sources */,
 				81C072DB2827EA8E004235B4 /* DeviceBatteryStateViewModifier.swift in Sources */,
 				5A59C2172828800600D48815 /* ReportView.swift in Sources */,
 				81C072D62827E984004235B4 /* DeviceRotationViewModifier.swift in Sources */,

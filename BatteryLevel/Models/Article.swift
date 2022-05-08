@@ -6,3 +6,12 @@
 //
 
 import Foundation
+
+struct Article: Identifiable {
+    
+    let id = UUID()
+    let imageName: String
+    let title: String
+    let description: String
+    
+}
