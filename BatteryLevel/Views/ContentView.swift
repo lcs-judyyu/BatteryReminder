@@ -10,13 +10,16 @@ import SwiftUI
 struct ContentView: View {
     
     // MARK: Stored properties
-    @State var currentBatteryLevel: Float = 0.0
+    @State private var currentBatteryLevel: Float = 0.0
     
     // Will be populated with the current device orientation
     @State private var orientation = UIDeviceOrientation.unknown
     
     // Will be populated with battery state information
     @State private var batteryState = UIDevice.BatteryState.unknown
+    
+    // Will be populated with battery charge level information
+    @State private var batteryChargeLevel = UIDevice.current.batteryLevel
     
     var body: some View {
         VStack {

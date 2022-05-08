@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5A59C2122828325200D48815 /* DeviceBatteryChargeLevelViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A59C2112828325200D48815 /* DeviceBatteryChargeLevelViewModifier.swift */; };
 		81C072C82827E42F004235B4 /* BatteryLevelApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C072C72827E42F004235B4 /* BatteryLevelApp.swift */; };
 		81C072CA2827E42F004235B4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C072C92827E42F004235B4 /* ContentView.swift */; };
 		81C072CC2827E431004235B4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81C072CB2827E431004235B4 /* Assets.xcassets */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5A59C2112828325200D48815 /* DeviceBatteryChargeLevelViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceBatteryChargeLevelViewModifier.swift; sourceTree = "<group>"; };
 		81C072C42827E42F004235B4 /* BatteryLevel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BatteryLevel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		81C072C72827E42F004235B4 /* BatteryLevelApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryLevelApp.swift; sourceTree = "<group>"; };
 		81C072C92827E42F004235B4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 			children = (
 				81C072D52827E984004235B4 /* DeviceRotationViewModifier.swift */,
 				81C072DA2827EA8E004235B4 /* DeviceBatteryStateViewModifier.swift */,
+				5A59C2112828325200D48815 /* DeviceBatteryChargeLevelViewModifier.swift */,
 			);
 			path = ViewModifiers;
 			sourceTree = "<group>";
@@ -168,6 +171,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				81C072CA2827E42F004235B4 /* ContentView.swift in Sources */,
+				5A59C2122828325200D48815 /* DeviceBatteryChargeLevelViewModifier.swift in Sources */,
 				81C072DB2827EA8E004235B4 /* DeviceBatteryStateViewModifier.swift in Sources */,
 				81C072D62827E984004235B4 /* DeviceRotationViewModifier.swift in Sources */,
 				81C072C82827E42F004235B4 /* BatteryLevelApp.swift in Sources */,
@@ -299,7 +303,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BatteryLevel/Preview Content\"";
-				DEVELOPMENT_TEAM = U2ZN2W2UQJ;
+				DEVELOPMENT_TEAM = F5N3N4V2WZ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -328,7 +332,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BatteryLevel/Preview Content\"";
-				DEVELOPMENT_TEAM = U2ZN2W2UQJ;
+				DEVELOPMENT_TEAM = F5N3N4V2WZ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
