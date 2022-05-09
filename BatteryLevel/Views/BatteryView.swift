@@ -60,7 +60,6 @@ struct BatteryView: View {
                 
                 // Adapted from:
                 // https://www.hackingwithswift.com/example-code/uikit/how-to-read-the-battery-level-of-an-iphone-or-ipad
-                
                 // Required to enable battery information monitoring
                 UIDevice.current.isBatteryMonitoringEnabled = true
                 

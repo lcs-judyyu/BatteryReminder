@@ -16,6 +16,7 @@
 		5A59C2202828877700D48815 /* ArticlesCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A59C21F2828877700D48815 /* ArticlesCardView.swift */; };
 		5AF243822829CF9100FE779B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF243812829CF9100FE779B /* AppDelegate.swift */; };
 		5AF243842829D00A00FE779B /* SharedFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF243832829D00A00FE779B /* SharedFunctions.swift */; };
+		5AF243862829DC9700FE779B /* SharedConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF243852829DC9700FE779B /* SharedConstants.swift */; };
 		81C072C82827E42F004235B4 /* BatteryLevelApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C072C72827E42F004235B4 /* BatteryLevelApp.swift */; };
 		81C072CA2827E42F004235B4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C072C92827E42F004235B4 /* ContentView.swift */; };
 		81C072CC2827E431004235B4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81C072CB2827E431004235B4 /* Assets.xcassets */; };
@@ -34,6 +35,7 @@
 		5A59C21F2828877700D48815 /* ArticlesCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesCardView.swift; sourceTree = "<group>"; };
 		5AF243812829CF9100FE779B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5AF243832829D00A00FE779B /* SharedFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedFunctions.swift; sourceTree = "<group>"; };
+		5AF243852829DC9700FE779B /* SharedConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedConstants.swift; sourceTree = "<group>"; };
 		81C072C42827E42F004235B4 /* BatteryLevel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BatteryLevel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		81C072C72827E42F004235B4 /* BatteryLevelApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryLevelApp.swift; sourceTree = "<group>"; };
 		81C072C92827E42F004235B4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 			children = (
 				5A59C21F2828877700D48815 /* ArticlesCardView.swift */,
 				5AF243832829D00A00FE779B /* SharedFunctions.swift */,
+				5AF243852829DC9700FE779B /* SharedConstants.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -218,6 +221,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5AF243862829DC9700FE779B /* SharedConstants.swift in Sources */,
 				5AF243822829CF9100FE779B /* AppDelegate.swift in Sources */,
 				5A59C2192828803200D48815 /* PerformanceArticleView.swift in Sources */,
 				5A59C21528287FF300D48815 /* BatteryView.swift in Sources */,
