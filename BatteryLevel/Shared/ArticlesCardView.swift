@@ -24,7 +24,9 @@ struct ArticlesCardView: View {
             Group {
                 Text(title)
                     .bold()
+                    .foregroundColor(Color.black)
                     .font(.title3)
+                
                 Text(description)
                     .foregroundColor(Color.gray)
                     .font(.caption)
