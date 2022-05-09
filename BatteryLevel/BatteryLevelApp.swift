@@ -11,19 +11,22 @@ import SwiftUI
 struct BatteryLevelApp: App {
     var body: some Scene {
         WindowGroup {
+            
             TabView {
                 BatteryView()
                     .tabItem {
                         Image(systemName: "battery.100.bolt")
                         Text("Battery")
                     }
+                
                 ReportView()
                     .tabItem {
                         Image(systemName: "chart.bar.xaxis")
                         Text("Report")
                     }
             }
-            .tint(Color("bueGreen"))
+            .accentColor(Color("blueGreen"))
+            
         }
     }
 }
