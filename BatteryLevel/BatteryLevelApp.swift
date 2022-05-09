@@ -13,6 +13,7 @@ struct BatteryLevelApp: App {
         WindowGroup {
             
             TabView {
+                
                 BatteryView()
                     .tabItem {
                         Image(systemName: "battery.100.bolt")
@@ -24,6 +25,7 @@ struct BatteryLevelApp: App {
                         Image(systemName: "chart.bar.xaxis")
                         Text("Report")
                     }
+                
             }
             .accentColor(Color("blueGreen"))
             

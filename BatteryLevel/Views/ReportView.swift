@@ -27,6 +27,15 @@ struct ReportView: View {
                 
                 VStack (alignment: .leading, spacing: 20){
                     
+                    Group {
+                        Text("Last time charged to 100%:")
+                            .bold()
+                            .italic()
+                        
+                        Text("last element from the history")
+                    }
+                    .font(.title2)
+                    
                     Text("about batteries".capitalized(with: .current))
                         .bold()
                         .italic()
@@ -61,12 +70,12 @@ struct ReportView: View {
                     .sheet(isPresented: $showTipsArticle) {
                         TipsArticleView(showThisView: $showTipsArticle)
                     }
-
+                    
                 }
                 .padding()
                 
             }
-
+            
         }
         .navigationTitle("Reports")
     }

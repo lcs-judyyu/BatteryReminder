@@ -17,11 +17,16 @@ struct BatteryView: View {
     @State private var batteryState = UIDevice.BatteryState.unknown
     
     //list of number options
-    let listOfPickerOptions = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95]
+    let listOfPickerOptions: [Int] = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95]
+    
+    // Keep track of user selected battery level to receive notification
+    @State private var selectedBatteryLevel: Int = 30
     
     //MARK: Computed properties
     var roundedCurrentBatteryLevel: Int {
+        
         return Int((currentBatteryLevel * 100).rounded())
+        
     }
     
     var body: some View {
@@ -31,14 +36,23 @@ struct BatteryView: View {
             Color("backgroundGray")
                 .edgesIgnoringSafeArea(.all)
             
-            VStack {
+            VStack (alignment: .leading, spacing: 20) {
                 
                 Text("Remind me when battery level is at:")
-                    .bold()
-                    .italic()
-                    .font(.title2)
+                    .font(.title3)
                 
-                
+                HStack {
+                    Picker("Please choose a number", selection: $selectedBatteryLevel) {
+                        
+                        ForEach(listOfPickerOptions, id: \.self) {
+                            Text("\($0)")
+                        }
+                        
+                    }
+                    .pickerStyle(WheelPickerStyle())
+                    
+                    Text("%")
+                }
                 
             }
             .padding()
