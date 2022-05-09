@@ -36,6 +36,7 @@ struct ReportView: View {
                     }
                     .font(.title2)
                     
+                    
                     Text("about batteries".capitalized(with: .current))
                         .bold()
                         .italic()
