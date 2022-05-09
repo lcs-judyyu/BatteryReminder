@@ -16,45 +16,59 @@ struct ReportView: View {
     @State private var showTipsArticle = false
     
     var body: some View {
+        
         ScrollView {
             
-            VStack (alignment: .center, spacing: 20){
+            ZStack {
                 
-                Button {
-                    
-                    showPerformanceArticle = true
-                    
-                } label: {
-                    
-                    ArticlesCardView(imageName: "Performance",
-                                     title: "Battery and Performance",
-                                     description: "How does your battery work?")
-                    
-                }
-                .sheet(isPresented: $showPerformanceArticle) {
-                    PerformanceArticleView(showThisView: $showPerformanceArticle)
-                }
+                //Background color
+                Color("backgroundGray")
+                    .edgesIgnoringSafeArea(.all)
                 
-                Button {
+                VStack (alignment: .leading, spacing: 20){
                     
-                    showTipsArticle = true
+                    Text("about batteries".capitalized(with: .current))
+                        .bold()
+                        .italic()
+                        .font(.title2)
                     
-                } label: {
+                    Button {
+                        
+                        showPerformanceArticle = true
+                        
+                    } label: {
+                        
+                        ArticlesCardView(imageName: "Performance",
+                                         title: "Battery and Performance",
+                                         description: "How does your battery work?")
+                        
+                    }
+                    .sheet(isPresented: $showPerformanceArticle) {
+                        PerformanceArticleView(showThisView: $showPerformanceArticle)
+                    }
                     
-                    ArticlesCardView(imageName: "Tips",
-                                     title: "General Performance Tips",
-                                     description: "How to improve your battery performance?")
-                    
-                }
-                .sheet(isPresented: $showTipsArticle) {
-                    TipsArticleView(showThisView: $showTipsArticle)
-                }
-                
+                    Button {
+                        
+                        showTipsArticle = true
+                        
+                    } label: {
+                        
+                        ArticlesCardView(imageName: "Tips",
+                                         title: "General Performance Tips",
+                                         description: "How to improve your battery performance?")
+                        
+                    }
+                    .sheet(isPresented: $showTipsArticle) {
+                        TipsArticleView(showThisView: $showTipsArticle)
+                    }
 
+                }
+                .padding()
+                
             }
-            .padding()
 
         }
+        .navigationTitle("Reports")
     }
 }
 
