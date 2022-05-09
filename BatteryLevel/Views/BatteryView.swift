@@ -55,7 +55,7 @@ struct BatteryView: View {
                 }
                 
             }
-            .padding()
+            .padding(15)
             .task {
                 
                 // Adapted from:
