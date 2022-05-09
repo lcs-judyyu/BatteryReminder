@@ -21,12 +21,10 @@ struct PerformanceArticleView: View {
             ScrollView {
                 
                 VStack {
-                    VStack(alignment: .center) {
-                        Text("Battery and Performance".capitalized(with: .current))
-                            .bold()
-                            .italic()
-                            .font(.title2)
-                    }
+                    
+                    Image("Performance")
+                        .resizable()
+                        .scaledToFit()
                     
                     VStack(alignment: .leading, spacing: 10) {
                         
@@ -72,7 +70,7 @@ struct PerformanceArticleView: View {
                 }
                 
             }
-            .navigationTitle("Battery Article")
+            .navigationTitle("Battery Performance")
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
                     Button("Done") {

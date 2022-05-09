@@ -22,14 +22,12 @@ struct TipsArticleView: View {
             ScrollView {
                 
                 VStack {
-                    VStack(alignment: .center) {
-                        Text("General Performance Tips".capitalized(with: .current))
-                            .bold()
-                            .italic()
-                            .font(.title2)
-                    }
                     
-                    VStack(alignment: .leading, spacing: 10) {
+                    Image("Tips")
+                        .resizable()
+                        .scaledToFit()
+                    
+                    VStack(alignment: .leading, spacing: 20) {
                         
                         Group {
                             
@@ -38,15 +36,14 @@ struct TipsArticleView: View {
                                 .font(.title2)
                             
                             Text("""
-            Your device is designed to perform well in a wide range of ambient temperatures, with 62° to 72° F (16° to 22° C) as the ideal comfort zone. It’s especially important to avoid exposing your device to ambient temperatures higher than 95° F (35° C), which can permanently damage battery capacity. That is, your battery won’t power your device as long on a given charge.
+            It’s especially important to avoid exposing your device to ambient temperatures higher than 95° F (35° C), which can permanently damage battery capacity. That is, your battery won’t power your device as long on a given charge.
             
-            Charging the device in high ambient temperatures can damage it further. Software may limit charging above 80% when the recommended battery temperatures are exceeded. When using your device in a very cold environment, you may notice a decrease in battery life, but this condition is temporary. Once the battery’s temperature returns to its normal operating range, its performance will return to normal as well.
+            When using your device in a very cold environment, you may notice a decrease in battery life, but this condition is temporary. Once the battery’s temperature returns to its normal operating range, its performance will return to normal as well.
             """)
                             
                             Image("ExtremeTemperatures")
                                 .resizable()
                                 .scaledToFit()
-                                .padding(.bottom, 20)
                         }
                         
                         Group {
@@ -66,7 +63,9 @@ struct TipsArticleView: View {
                                 .bold()
                                 .font(.title2)
                             Text("""
-            If you want to store your device long term, two key factors will affect the overall health of your battery: the environmental temperature and the percentage of charge on the battery. Therefore, here are some tips:
+            If you want to store your device long term, two key factors will affect the overall health of your battery: the environmental temperature and the percentage of charge on the battery.
+            
+            Therefore, here are some tips:
             """)
                             .padding(.bottom, 10)
                             
@@ -76,35 +75,43 @@ struct TipsArticleView: View {
                 """)
                             }, icon: {
                                 Image(systemName: "battery.50")
+                                    .frame(width: 40, height: 40)
+                                    .foregroundColor(Color("darkOrange"))
                             })
                             
                             Label(title: {
                                 Text("Power down the device to avoid additional battery use.")
                             }, icon: {
                                 Image(systemName: "power.circle")
+                                    .frame(width: 40, height: 40)
+                                    .foregroundColor(Color("darkOrange"))
                             })
                             
                             Label(title: {
                                 Text("Place your device in a cool, moisture-free environment that’s less than 90° F (32° C).")
                             }, icon: {
                                 Image(systemName: "thermometer")
+                                    .frame(width: 40, height: 40)
+                                    .foregroundColor(Color("darkOrange"))
                             })
                             
                             Label(title: {
                                 Text("If you plan to store your device for longer than six months, charge it to 50% every six months.")
                             }, icon: {
                                 Image(systemName: "6.alt.circle")
+                                    .frame(width: 40, height: 40)
+                                    .foregroundColor(Color("darkOrange"))
                             })
                             
                         }
                     }
-                    .padding(.horizontal, 20)
+                    .padding(.horizontal, 15)
                     
                 }
                 
                 
             }
-            .navigationTitle("Battery Article")
+            .navigationTitle("Performance Tips")
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
                     Button("Done") {
