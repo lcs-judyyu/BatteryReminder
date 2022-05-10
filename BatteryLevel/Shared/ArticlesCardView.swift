@@ -25,13 +25,14 @@ struct ArticlesCardView: View {
                 Text(title)
                     .bold()
                     .foregroundColor(Color.black)
-                    .font(.title3)
+                    .font(.title2)
                 
                 Text(description)
                     .foregroundColor(Color.gray)
-                    .font(.caption)
+                    .font(.subheadline)
+                    .multilineTextAlignment(.leading)
             }
-            .padding(.leading, 20)
+            .padding(.leading, 15)
             
         }
         .padding(.bottom, 15)

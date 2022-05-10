@@ -38,24 +38,29 @@ struct BatteryView: View {
             
             VStack (alignment: .leading, spacing: 20) {
                 
-                Text("Remind me when battery level is at:")
-                    .font(.title3)
-                
-                HStack {
-                    Picker("Please choose a number", selection: $selectedBatteryLevel) {
-                        
-                        ForEach(listOfPickerOptions, id: \.self) {
-                            Text("\($0)")
-                        }
-                        
-                    }
-                    .pickerStyle(WheelPickerStyle())
+                VStack {
                     
-                    Text("%")
+                    Text("Remind me when battery level is at:")
+                        .font(.title3)
+                    
+                    HStack {
+                        Picker("Please choose a number", selection: $selectedBatteryLevel) {
+                            
+                            ForEach(listOfPickerOptions, id: \.self) {
+                                Text("\($0)")
+                            }
+                            
+                        }
+                        .pickerStyle(WheelPickerStyle())
+                        
+                        Text("%")
+                    }
+                    
                 }
+                .RoundedRectangelOverlay()
                 
             }
-            .padding(15)
+            .padding(20)
             .task {
                 
                 // Adapted from:

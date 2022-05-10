@@ -27,19 +27,20 @@ struct ReportView: View {
                 
                 VStack (alignment: .leading, spacing: 20){
                     
-                    Group {
+                    VStack (alignment: .leading) {
+                        
                         Text("Last time charged to 100%:")
                             .bold()
                             .italic()
                         
                         Text("last element from the history")
+                        
                     }
                     .font(.title2)
-                    
+                    .RoundedRectangelOverlay()
                     
                     Text("about batteries".capitalized(with: .current))
                         .bold()
-                        .italic()
                         .font(.title2)
                     
                     // Pop-up sheet is adapted from the Composable Views and Animations project by Russell Gordon
@@ -51,7 +52,7 @@ struct ReportView: View {
                         
                         ArticlesCardView(imageName: "Performance",
                                          title: "Battery and Performance",
-                                         description: "How does your battery work?")
+                                         description: "All about your battery")
                         
                     }
                     .sheet(isPresented: $showPerformanceArticle) {
@@ -66,7 +67,7 @@ struct ReportView: View {
                         
                         ArticlesCardView(imageName: "Tips",
                                          title: "General Performance Tips",
-                                         description: "How to improve your battery performance?")
+                                         description: "Improving your battery performance")
                         
                     }
                     .sheet(isPresented: $showTipsArticle) {
@@ -74,7 +75,7 @@ struct ReportView: View {
                     }
                     
                 }
-                .padding(15)
+                .padding(20)
                 
             }
             
