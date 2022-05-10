@@ -31,7 +31,7 @@ struct AddBatteryLevelReminderView: View {
                 Color("backgroundGray")
                     .edgesIgnoringSafeArea(.all)
                 
-                VStack (spacing: 40) {
+                VStack (spacing: 30) {
                     
                     VStack {
                         
@@ -69,7 +69,13 @@ struct AddBatteryLevelReminderView: View {
                         Button("Add") {
                             hideView()
                             
-                            //add to the list of reminders
+                        //add to the list of reminders
+                        }
+                    }
+                    
+                    ToolbarItem(placement: .cancellationAction) {
+                        Button("Cancel") {
+                            hideView()
                         }
                     }
                 }
