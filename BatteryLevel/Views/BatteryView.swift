@@ -55,10 +55,11 @@ struct BatteryView: View {
                             } label: {
                                 
                                 Label("Notify by battery level", systemImage: "plus.circle")
+                                    .foregroundColor(Color("teal"))
                                 
                             }
                             .sheet(isPresented: $showAddBatteryLevelReminder) {
-                                AddBatteryLevelReminderView(showThisView: $showAddBatteryLevelReminder)
+                                AddBatteryLevelReminderView(showThisView: $showAddBatteryLevelReminder, repeated: true)
                             }
                             
                             Divider()
@@ -70,6 +71,7 @@ struct BatteryView: View {
                             } label: {
                                 
                                 Label("Notify by time", systemImage: "plus.circle")
+                                    .foregroundColor(Color("teal"))
                                 
                             }
                             .sheet(isPresented: $showAddTimeReminder) {
@@ -77,7 +79,6 @@ struct BatteryView: View {
                             }
                             
                         }
-                        .foregroundColor(Color("teal"))
                         .RoundedRectangelOverlay()
                         
                     }

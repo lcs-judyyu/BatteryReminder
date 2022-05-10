@@ -17,6 +17,20 @@ struct AddTimeReminderView: View {
         
         NavigationView {
             
+            ZStack {
+                
+                //Background color
+                Color("backgroundGray")
+                    .edgesIgnoringSafeArea(.all)
+                
+                VStack {
+                    
+                    Text("")
+                    
+                }
+                
+            }
+            
         }
         
     }

@@ -19,30 +19,62 @@ struct AddBatteryLevelReminderView: View {
     // Keep track of user selected battery level to receive notification
     @State var selectedBatteryLevel: Int = 30
     
+    @State var repeated: Bool
+    
     var body: some View {
         
         NavigationView {
             
-            VStack {
+            ZStack {
                 
-                Text("Remind me when battery level is at:")
-                    .font(.title3)
+                //Background color
+                Color("backgroundGray")
+                    .edgesIgnoringSafeArea(.all)
                 
-                HStack {
-                    Picker("Please choose a number", selection: $selectedBatteryLevel) {
-                        
-                        ForEach(listOfPickerOptions, id: \.self) {
-                            Text("\($0)")
-                        }
-                        
-                    }
-                    .pickerStyle(WheelPickerStyle())
+                VStack (spacing: 40) {
                     
-                    Text("%")
+                    VStack {
+                        
+                        Text("Remind me when battery level is at:")
+                            .font(.title3)
+                        
+                        HStack {
+                            Picker("Please choose a number", selection: $selectedBatteryLevel) {
+                                
+                                ForEach(listOfPickerOptions, id: \.self) {
+                                    Text("\($0)")
+                                }
+                                
+                            }
+                            .pickerStyle(WheelPickerStyle())
+                            
+                            Text("%")
+                        }
+                    }
+                    .RoundedRectangelOverlay()
+                    
+                    Toggle("Repeated", isOn: $repeated)
+                        .font(.title3)
+                        .toggleStyle(SwitchToggleStyle(tint: Color("teal")))
+                        .RoundedRectangelOverlay()
+                    
+                    Spacer()
+                    
+                    Text("Current Battery Level: 80%")
+                    
+                }
+                .padding()
+                .toolbar {
+                    ToolbarItem(placement: .primaryAction) {
+                        Button("Add") {
+                            hideView()
+                            
+                            //add to the list of reminders
+                        }
+                    }
                 }
                 
             }
-            .RoundedRectangelOverlay()
             
         }
         
@@ -58,6 +90,7 @@ struct AddBatteryLevelReminderView: View {
 struct AddBatteryLevelReminderView_Previews: PreviewProvider {
     static var previews: some View {
         AddBatteryLevelReminderView(showThisView: .constant(true),
-                                    selectedBatteryLevel: 30)
+                                    selectedBatteryLevel: 30,
+                                    repeated: true)
     }
 }
