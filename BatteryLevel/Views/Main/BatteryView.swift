@@ -39,6 +39,10 @@ struct BatteryView: View {
                 
                 VStack (alignment: .leading, spacing: 20) {
                     
+                    //a completion meter for current battery state
+                    
+                    
+                    //Add reminders
                     Group {
                         
                         Text("Add Reminders")
@@ -48,6 +52,7 @@ struct BatteryView: View {
                         VStack (alignment: .leading, spacing: 10) {
                             
                             // Pop-up sheet is adapted from the Composable Views and Animations project by Russell Gordon
+                            //https://github.com/lcs-rgordon/ComposableViewsAndAnimations
                             Button {
                                 
                                 showAddBatteryLevelReminder = true
@@ -83,6 +88,7 @@ struct BatteryView: View {
                         
                     }
                     
+                    //your reminders
                     Group {
                         
                         Text("Your Reminders")

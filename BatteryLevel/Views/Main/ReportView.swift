@@ -51,6 +51,7 @@ struct ReportView: View {
                         .font(.title2)
                     
                     // Pop-up sheet is adapted from the Composable Views and Animations project by Russell Gordon
+                    //https://github.com/lcs-rgordon/ComposableViewsAndAnimations
                     Button {
                         
                         showPerformanceArticle = true

@@ -6,6 +6,7 @@
 //
 
 //Source: Local Notifications Example project by Russell Gordon
+//https://github.com/lcs-rgordon/LocalNotificationsExample
 import Foundation
 
 // Identifier used for publishing notifications

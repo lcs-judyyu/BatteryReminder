@@ -6,6 +6,7 @@
 //
 
 //Adapted from the Local Notifications Example project by Russell Gordon
+//https://github.com/lcs-rgordon/LocalNotificationsExample
 import Foundation
 import os
 import UserNotifications

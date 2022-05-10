@@ -6,6 +6,7 @@
 //
 
 //Adapted from the Composable Views and Animations project by Russell Gordon
+//https://github.com/lcs-rgordon/ComposableViewsAndAnimations
 import SwiftUI
 
 struct SimpleListItemView: View {
