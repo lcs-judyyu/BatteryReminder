@@ -34,9 +34,15 @@ struct ReportView: View {
                             .italic()
                             .font(.title2)
                         
-                        Text("last time from the history list")
-                            .font(.title3)
-                            .RoundedRectangelOverlay()
+                        HStack {
+                            
+                            Text("last time from the history list")
+                                .font(.title3)
+                            
+                            Spacer()
+                            
+                        }
+                        .RoundedRectangelOverlay()
                         
                     }
                     
