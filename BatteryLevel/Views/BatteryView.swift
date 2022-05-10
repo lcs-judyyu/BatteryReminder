@@ -59,6 +59,14 @@ struct BatteryView: View {
                 }
                 .RoundedRectangelOverlay()
                 
+                Group {
+                    
+                    Text("Your Reminder")
+                        .bold()
+                        .font(.title2)
+                    
+                }
+                
             }
             .padding(20)
             .task {

@@ -27,17 +27,18 @@ struct ReportView: View {
                 
                 VStack (alignment: .leading, spacing: 20){
                     
-                    VStack (alignment: .leading) {
+                    Group {
                         
                         Text("Last time charged to 100%:")
                             .bold()
                             .italic()
+                            .font(.title2)
                         
-                        Text("last element from the history")
+                        Text("last time from the history list")
+                            .font(.title3)
+                            .RoundedRectangelOverlay()
                         
                     }
-                    .font(.title2)
-                    .RoundedRectangelOverlay()
                     
                     Text("about batteries".capitalized(with: .current))
                         .bold()
