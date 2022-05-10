@@ -12,6 +12,7 @@ struct SimpleListItemView: View {
     
     //Stored properties
     var title: String
+    var description: String
     
     @State var pushNotification: Bool
     
@@ -19,11 +20,11 @@ struct SimpleListItemView: View {
         
         VStack(alignment: .leading) {
             
-            Text(title)
-                .font(.title2)
+            Toggle(title, isOn: $pushNotification)
+                .toggleStyle(SwitchToggleStyle(tint: Color("darkOrange")))
             
-            Toggle("Show welcome message", isOn: $pushNotification)
-                            .toggleStyle(SwitchToggleStyle(tint: Color("darkOrange")))
+            Text(description)
+                .font(.caption)
             
         }
     }
@@ -33,6 +34,7 @@ struct SimpleListItemView: View {
 struct SimpleListItemView_Previews: PreviewProvider {
     static var previews: some View {
         SimpleListItemView(title: "Some title",
+                           description: "repeated",
                            pushNotification: true)
     }
 }

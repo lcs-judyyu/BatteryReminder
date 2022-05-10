@@ -19,17 +19,21 @@ struct BatteryLevelApp: App {
             
             TabView {
                 
-                BatteryView()
-                    .tabItem {
-                        Image(systemName: "battery.100.bolt")
-                        Text("Battery")
-                    }
+                NavigationView {
+                    BatteryView()
+                }
+                .tabItem {
+                    Image(systemName: "battery.100.bolt")
+                    Text("Battery")
+                }
                 
-                ReportView()
-                    .tabItem {
-                        Image(systemName: "chart.bar.xaxis")
-                        Text("Report")
-                    }
+                NavigationView {
+                    ReportView()
+                }
+                .tabItem {
+                    Image(systemName: "chart.bar.xaxis")
+                    Text("Report")
+                }
                 
             }
             .accentColor(Color("blueGreen"))

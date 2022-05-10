@@ -30,54 +30,98 @@ struct BatteryView: View {
     }
     
     var body: some View {
-        ZStack {
+        
+        ScrollView {
             
-            //Background color
-            Color("backgroundGray")
-                .edgesIgnoringSafeArea(.all)
-            
-            VStack (alignment: .leading, spacing: 20) {
+            ZStack {
                 
-                VStack {
+                //Background color
+                Color("backgroundGray")
+                    .edgesIgnoringSafeArea(.all)
+                
+                VStack (alignment: .leading, spacing: 20) {
                     
-                    Text("Remind me when battery level is at:")
-                        .font(.title3)
-                    
-                    HStack {
-                        Picker("Please choose a number", selection: $selectedBatteryLevel) {
+                    VStack {
+                        
+                        Text("Remind me when battery level is at:")
+                            .font(.title3)
+                        
+                        HStack {
+                            Picker("Please choose a number", selection: $selectedBatteryLevel) {
+                                
+                                ForEach(listOfPickerOptions, id: \.self) {
+                                    Text("\($0)")
+                                }
+                                
+                            }
+                            .pickerStyle(WheelPickerStyle())
                             
-                            ForEach(listOfPickerOptions, id: \.self) {
-                                Text("\($0)")
+                            Text("%")
+                        }
+                        
+                    }
+                    .RoundedRectangelOverlay()
+                    
+                    Group {
+                        
+                        Text("Add Reminders")
+                            .bold()
+                            .font(.title2)
+                        
+                        VStack (alignment: .leading, spacing: 10) {
+                            
+                            HStack {
+                                Image(systemName: "plus.circle")
+                                
+                                Text("Notify by battery level")
+                            }
+                            
+                            Divider()
+                            
+                            HStack {
+                                Image(systemName: "plus.circle")
+     
+                                Text("Notify by time")
                             }
                             
                         }
-                        .pickerStyle(WheelPickerStyle())
+                        .foregroundColor(Color("teal"))
+                        .RoundedRectangelOverlay()
                         
-                        Text("%")
+                    }
+                    
+                    Group {
+                        
+                        Text("Your Reminders")
+                            .bold()
+                            .font(.title2)
+                        
+                        VStack {
+                            
+                            SimpleListItemView(title: "30%", description: "repeated", pushNotification: true)
+                            
+                            Divider()
+                            
+                            SimpleListItemView(title: "22:30", description: "Weekdays", pushNotification: false)
+                            
+                        }
+                        .RoundedRectangelOverlay()
+                        
                     }
                     
                 }
-                .RoundedRectangelOverlay()
-                
-                Group {
+                .padding(20)
+                .task {
                     
-                    Text("Your Reminder")
-                        .bold()
-                        .font(.title2)
+                    // Adapted from:
+                    // https://www.hackingwithswift.com/example-code/uikit/how-to-read-the-battery-level-of-an-iphone-or-ipad
+                    // Required to enable battery information monitoring
+                    UIDevice.current.isBatteryMonitoringEnabled = true
                     
+                    // Show the device's current battery level once (when app opens)
+                    currentBatteryLevel = UIDevice.current.batteryLevel
                 }
                 
-            }
-            .padding(20)
-            .task {
-                
-                // Adapted from:
-                // https://www.hackingwithswift.com/example-code/uikit/how-to-read-the-battery-level-of-an-iphone-or-ipad
-                // Required to enable battery information monitoring
-                UIDevice.current.isBatteryMonitoringEnabled = true
-                
-                // Show the device's current battery level once (when app opens)
-                currentBatteryLevel = UIDevice.current.batteryLevel
             }
             
         }
