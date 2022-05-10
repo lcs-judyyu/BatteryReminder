@@ -30,8 +30,8 @@ struct CompletionMeterView: View {
             Circle()
                 // Traces, or makes a trim, for the outline of a shape
                 .trim(from: 0, to: completionAmount)
-                .stroke(Color("teal"), lineWidth: 30)
-                .frame(width: 200, height: 200)
+                .stroke(Color("teal"), lineWidth: 26)
+                .frame(width: 250, height: 250)
                 .rotationEffect(.degrees(-90))
                 // When the timer fires, the code in this block will run.
                 .onReceive(timer) { _ in
@@ -46,14 +46,15 @@ struct CompletionMeterView: View {
                     }
                     
                     // Animate the trim being closed
-                    withAnimation(.easeInOut) {
+                    withAnimation(.easeInOut(duration: 1.5)) {
                         completionAmount += fillToValue / 100.0 / 100.0
                     }
                     
                 }
             
             Text("\(String(format: "%3.0f", (completionAmount) * 100.0))%")
-                .font(Font.custom("Courier-Bold", size: 24.0))
+                .font(Font.custom("Courier-Bold", size: 50.0))
+                .offset(x: -12, y: 3)
                 .animation(.default)
 
         }

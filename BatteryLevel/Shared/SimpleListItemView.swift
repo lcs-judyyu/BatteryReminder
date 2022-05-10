@@ -22,7 +22,7 @@ struct SimpleListItemView: View {
         VStack(alignment: .leading, spacing: 5) {
             
             Toggle(title, isOn: $pushNotification)
-                .font(.title2)
+                .font(.title)
                 .toggleStyle(SwitchToggleStyle(tint: Color("darkOrange")))
             
             Text(description)
