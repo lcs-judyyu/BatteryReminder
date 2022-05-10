@@ -39,28 +39,29 @@ struct BatteryView: View {
                 
                 VStack (spacing: 20) {
                     
-                    //current battery level
                     VStack (alignment: .leading, spacing: 20) {
                         
-                        Text("Current Battery Level")
-                            .bold()
-                            .font(.title2)
-                        
-                    }
-                    
-                    //a completion meter for current battery state
-                    VStack (alignment: .center) {
-                        
-                        CompletionMeterView(fillToValue: CGFloat(roundedCurrentBatteryLevel))
-                            .padding(.vertical, 10)
-                            .onBatteryLevelChanged { newLevel in
-                                currentBatteryLevel = newLevel
-                                print("Current battery level is \(currentBatteryLevel), rounded to \(roundedCurrentBatteryLevel)")
+                        //current battery level
+                        Group {
+                            Text("Current Battery Level")
+                                .bold()
+                                .font(.title2)
+                            
+                            HStack {
+                                Spacer()
+                                
+                                //a completion meter for current battery state
+                                CompletionMeterView(fillToValue: CGFloat(roundedCurrentBatteryLevel))
+                                    .padding(.vertical, 10)
+                                    .onBatteryLevelChanged { newLevel in
+                                        currentBatteryLevel = newLevel
+                                        print("Current battery level is \(currentBatteryLevel), rounded to \(roundedCurrentBatteryLevel)")
+                                    }
+                                
+                                Spacer()
                             }
-                        
-                    }
-                    
-                    VStack (alignment: .leading, spacing: 20) {
+                            .RoundedRectangelOverlay()
+                        }
                         
                         //Add reminders
                         Group {
