@@ -55,7 +55,7 @@ struct AddBatteryLevelReminderView: View {
                     
                     Toggle("Repeated", isOn: $repeated)
                         .font(.title3)
-                        .toggleStyle(SwitchToggleStyle(tint: Color("teal")))
+                        .toggleStyle(SwitchToggleStyle(tint: Color("goldDrop")))
                         .RoundedRectangelOverlay()
                     
                     Spacer()

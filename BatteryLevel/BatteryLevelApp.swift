@@ -34,7 +34,7 @@ struct BatteryLevelApp: App {
                 }
                 
             }
-            .accentColor(Color("blueGreen"))
+            .accentColor(Color("seaGreen"))
             
         }
     }

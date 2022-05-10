@@ -23,7 +23,7 @@ struct SimpleListItemView: View {
             
             Toggle(title, isOn: $pushNotification)
                 .font(.title)
-                .toggleStyle(SwitchToggleStyle(tint: Color("darkOrange")))
+                .toggleStyle(SwitchToggleStyle(tint: Color("goldDrop")))
             
             Text(description)
                 .font(.caption2)
