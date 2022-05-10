@@ -86,9 +86,11 @@ struct ReportView: View {
                         .bold()
                         .font(.title2)
                     
-                    Group {
+                    HStack {
                         
                         Text("a list item that navigates to an embedded website")
+                        
+                        Spacer()
                         
                     }
                     .RoundedRectangelOverlay()                    

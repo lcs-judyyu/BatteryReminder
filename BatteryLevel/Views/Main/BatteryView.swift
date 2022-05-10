@@ -11,7 +11,7 @@ struct BatteryView: View {
     
     // MARK: Stored properties
     // Will be populated with battery charge level information
-    @State private var currentBatteryLevel: Float = 0.0
+    @State var currentBatteryLevel: Float = 0.0
     
     // Will be populated with battery state information
     @State private var batteryState = UIDevice.BatteryState.unknown
@@ -40,7 +40,7 @@ struct BatteryView: View {
                 VStack (alignment: .leading, spacing: 20) {
                     
                     //a completion meter for current battery state
-                    
+                    CompletionMeterView(fillToValue: CGFloat(roundedCurrentBatteryLevel))
                     
                     //Add reminders
                     Group {
