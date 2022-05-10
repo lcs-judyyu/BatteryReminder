@@ -19,9 +19,7 @@ struct BatteryLevelApp: App {
             
             TabView {
                 
-                NavigationView {
-                    BatteryView()
-                }
+                BatteryView()
                 .tabItem {
                     Image(systemName: "battery.100.bolt")
                     Text("Battery")

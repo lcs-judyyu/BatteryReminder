@@ -16,11 +16,9 @@ struct BatteryView: View {
     // Will be populated with battery state information
     @State private var batteryState = UIDevice.BatteryState.unknown
     
-    //list of number options
-    let listOfPickerOptions: [Int] = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95]
-    
-    // Keep track of user selected battery level to receive notification
-    @State private var selectedBatteryLevel: Int = 30
+    // Controls what type of reminder can be added in the pop-up sheet
+    @State private var showAddBatteryLevelReminder = false
+    @State private var showAddTimeReminder = false
     
     //MARK: Computed properties
     var roundedCurrentBatteryLevel: Int {
@@ -41,27 +39,6 @@ struct BatteryView: View {
                 
                 VStack (alignment: .leading, spacing: 20) {
                     
-                    VStack {
-                        
-                        Text("Remind me when battery level is at:")
-                            .font(.title3)
-                        
-                        HStack {
-                            Picker("Please choose a number", selection: $selectedBatteryLevel) {
-                                
-                                ForEach(listOfPickerOptions, id: \.self) {
-                                    Text("\($0)")
-                                }
-                                
-                            }
-                            .pickerStyle(WheelPickerStyle())
-                            
-                            Text("%")
-                        }
-                        
-                    }
-                    .RoundedRectangelOverlay()
-                    
                     Group {
                         
                         Text("Add Reminders")
@@ -70,18 +47,33 @@ struct BatteryView: View {
                         
                         VStack (alignment: .leading, spacing: 10) {
                             
-                            HStack {
-                                Image(systemName: "plus.circle")
+                            // Pop-up sheet is adapted from the Composable Views and Animations project by Russell Gordon
+                            Button {
                                 
-                                Text("Notify by battery level")
+                                showAddBatteryLevelReminder = true
+                                
+                            } label: {
+                                
+                                Label("Notify by battery level", systemImage: "plus.circle")
+                                
+                            }
+                            .sheet(isPresented: $showAddBatteryLevelReminder) {
+                                AddBatteryLevelReminderView(showThisView: $showAddBatteryLevelReminder)
                             }
                             
                             Divider()
                             
-                            HStack {
-                                Image(systemName: "plus.circle")
-     
-                                Text("Notify by time")
+                            Button {
+                                
+                                showAddTimeReminder = true
+                                
+                            } label: {
+                                
+                                Label("Notify by time", systemImage: "plus.circle")
+                                
+                            }
+                            .sheet(isPresented: $showAddTimeReminder) {
+                                AddTimeReminderView(showThisView: $showAddTimeReminder)
                             }
                             
                         }

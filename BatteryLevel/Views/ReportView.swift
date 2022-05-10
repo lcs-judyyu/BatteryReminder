@@ -81,6 +81,17 @@ struct ReportView: View {
                         TipsArticleView(showThisView: $showTipsArticle)
                     }
                     
+                    Text("External Links")
+                        .bold()
+                        .font(.title2)
+                    
+                    Group {
+                        
+                        Text("a list item that navigates to an embedded website")
+                        
+                    }
+                    .RoundedRectangelOverlay()                    
+                    
                 }
                 .padding(20)
                 

@@ -18,13 +18,14 @@ struct SimpleListItemView: View {
     
     var body: some View {
         
-        VStack(alignment: .leading) {
+        VStack(alignment: .leading, spacing: 5) {
             
             Toggle(title, isOn: $pushNotification)
+                .font(.title2)
                 .toggleStyle(SwitchToggleStyle(tint: Color("darkOrange")))
             
             Text(description)
-                .font(.caption)
+                .font(.caption2)
             
         }
     }

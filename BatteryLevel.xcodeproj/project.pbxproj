@@ -19,6 +19,8 @@
 		5AF243862829DC9700FE779B /* SharedConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF243852829DC9700FE779B /* SharedConstants.swift */; };
 		5AF243882829DDCA00FE779B /* RoundedRectangleOverlayViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF243872829DDCA00FE779B /* RoundedRectangleOverlayViewModifier.swift */; };
 		5AF2438C2829E68900FE779B /* SimpleListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF2438B2829E68900FE779B /* SimpleListItemView.swift */; };
+		5AF2438E282A9F7400FE779B /* AddBatteryLevelReminderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF2438D282A9F7400FE779B /* AddBatteryLevelReminderView.swift */; };
+		5AF24390282A9F8600FE779B /* AddTimeReminderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF2438F282A9F8600FE779B /* AddTimeReminderView.swift */; };
 		81C072C82827E42F004235B4 /* BatteryLevelApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C072C72827E42F004235B4 /* BatteryLevelApp.swift */; };
 		81C072CA2827E42F004235B4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C072C92827E42F004235B4 /* ContentView.swift */; };
 		81C072CC2827E431004235B4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81C072CB2827E431004235B4 /* Assets.xcassets */; };
@@ -40,6 +42,8 @@
 		5AF243852829DC9700FE779B /* SharedConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedConstants.swift; sourceTree = "<group>"; };
 		5AF243872829DDCA00FE779B /* RoundedRectangleOverlayViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedRectangleOverlayViewModifier.swift; sourceTree = "<group>"; };
 		5AF2438B2829E68900FE779B /* SimpleListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleListItemView.swift; sourceTree = "<group>"; };
+		5AF2438D282A9F7400FE779B /* AddBatteryLevelReminderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBatteryLevelReminderView.swift; sourceTree = "<group>"; };
+		5AF2438F282A9F8600FE779B /* AddTimeReminderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTimeReminderView.swift; sourceTree = "<group>"; };
 		81C072C42827E42F004235B4 /* BatteryLevel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BatteryLevel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		81C072C72827E42F004235B4 /* BatteryLevelApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryLevelApp.swift; sourceTree = "<group>"; };
 		81C072C92827E42F004235B4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -143,6 +147,8 @@
 			children = (
 				81C072C92827E42F004235B4 /* ContentView.swift */,
 				5A59C21428287FF300D48815 /* BatteryView.swift */,
+				5AF2438D282A9F7400FE779B /* AddBatteryLevelReminderView.swift */,
+				5AF2438F282A9F8600FE779B /* AddTimeReminderView.swift */,
 				5A59C2162828800600D48815 /* ReportView.swift */,
 				5A59C2182828803200D48815 /* PerformanceArticleView.swift */,
 				5A59C21A2828804300D48815 /* TipsArticleView.swift */,
@@ -228,6 +234,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5AF243862829DC9700FE779B /* SharedConstants.swift in Sources */,
+				5AF2438E282A9F7400FE779B /* AddBatteryLevelReminderView.swift in Sources */,
 				5AF243822829CF9100FE779B /* AppDelegate.swift in Sources */,
 				5A59C2192828803200D48815 /* PerformanceArticleView.swift in Sources */,
 				5AF2438C2829E68900FE779B /* SimpleListItemView.swift in Sources */,
@@ -241,6 +248,7 @@
 				5A59C2202828877700D48815 /* ArticlesCardView.swift in Sources */,
 				81C072DB2827EA8E004235B4 /* DeviceBatteryStateViewModifier.swift in Sources */,
 				5A59C2172828800600D48815 /* ReportView.swift in Sources */,
+				5AF24390282A9F8600FE779B /* AddTimeReminderView.swift in Sources */,
 				81C072D62827E984004235B4 /* DeviceRotationViewModifier.swift in Sources */,
 				81C072C82827E42F004235B4 /* BatteryLevelApp.swift in Sources */,
 			);
