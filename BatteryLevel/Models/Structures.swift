@@ -22,3 +22,11 @@ struct Time: Identifiable {
     let date: String
     
 }
+
+struct BatteryLevelReminder: Identifiable {
+    
+    let id = UUID()
+    let number: String
+    let isRepeated: Bool
+    
+}

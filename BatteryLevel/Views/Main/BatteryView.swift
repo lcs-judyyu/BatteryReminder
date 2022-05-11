@@ -10,6 +10,9 @@ import SwiftUI
 struct BatteryView: View {
     
     // MARK: Stored properties
+    //Detect when app moves between foreground, background, and inactive atates
+    @Environment(\.scenePhase) var scenePhase
+    
     // Will be populated with battery charge level information
     @State private var currentBatteryLevel: Float = 0.0
     
@@ -19,6 +22,9 @@ struct BatteryView: View {
     // Controls what type of reminder can be added in the pop-up sheet
     @State private var showAddBatteryLevelReminder = false
     @State private var showAddTimeReminder = false
+    
+    // keep track of the list of battery level reminder
+    @State var listOfBatteryLevelReminders: [BatteryLevelReminder] = []   // empty list to start
     
     //MARK: Computed properties
     var roundedCurrentBatteryLevel: Int {

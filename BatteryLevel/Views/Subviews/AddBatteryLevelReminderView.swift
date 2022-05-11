@@ -17,9 +17,13 @@ struct AddBatteryLevelReminderView: View {
     let listOfPickerOptions: [Int] = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95]
     
     // Keep track of user selected battery level to receive notification
-    @State var selectedBatteryLevel: Int = 30
+    @State var selectedBatteryLevel = 30
     
+    //is it repeated?
     @State var repeated: Bool
+    
+    // Will be populated with battery charge level information
+    @State private var currentBatteryLevel: Float = 0.0
     
     var body: some View {
         
@@ -60,7 +64,7 @@ struct AddBatteryLevelReminderView: View {
                     
                     Spacer()
                     
-                    Text("Current Battery Level: 80%")
+                    Text("Current Battery Level: \(String(format: "%3.0f", (currentBatteryLevel) * 100.0))%")
                     
                 }
                 .padding()
@@ -78,6 +82,16 @@ struct AddBatteryLevelReminderView: View {
                             hideView()
                         }
                     }
+                }
+                .task {
+                    
+                    // Adapted from:
+                    // https://www.hackingwithswift.com/example-code/uikit/how-to-read-the-battery-level-of-an-iphone-or-ipad
+                    // Required to enable battery information monitoring
+                    UIDevice.current.isBatteryMonitoringEnabled = true
+                    
+                    // Show the device's current battery level once (when app opens)
+                    currentBatteryLevel = UIDevice.current.batteryLevel
                 }
                 
             }
