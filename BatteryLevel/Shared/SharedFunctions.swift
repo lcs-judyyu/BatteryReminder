@@ -58,3 +58,14 @@ func publishNotification(title: String,
     Logger().notice("Notification has been scheduled.")
     
 }
+
+
+
+//return the location of the Documents directory for the app
+func getDocumentsDirectory() -> URL{
+    let paths = FileManager.default.urls(for: .documentDirectory,
+                                            in: .userDomainMask)
+    
+    //return the first path
+    return paths[0]
+}

@@ -15,6 +15,14 @@ struct ReportView: View {
     @State private var showPerformanceArticle = false
     @State private var showTipsArticle = false
     
+    //Store last time fully charged
+    @State private var lastTimeFullyCharged = Date()
+    
+    var timeHistory = "--"
+    
+    //current battery state
+    @State private var batteryState = UIDevice.BatteryState.unknown
+    
     var body: some View {
         
         ScrollView {
@@ -31,18 +39,29 @@ struct ReportView: View {
                         
                         Text("Last time charged to 100%:")
                             .bold()
-                            .italic()
                             .font(.title2)
                         
                         HStack {
                             
-                            Text("last time from the history list")
-                                .font(.title3)
+                            //time first
+                            Text(lastTimeFullyCharged.formatted(date: .omitted, time: .standard))
+                            
+                            //date
+                            Text(lastTimeFullyCharged.formatted(date: .abbreviated, time: .omitted))
                             
                             Spacer()
                             
                         }
+                        .font(.title3)
                         .RoundedRectangelOverlay()
+                        .onBatteryStateChanged { newState in
+                            batteryState = newState
+                            print("Battery state is \(batteryState)")
+                            
+                            if batteryState == .full {
+                                lastTimeFullyCharged = Date.now
+                            }
+                        }
                         
                     }
                     
@@ -82,7 +101,7 @@ struct ReportView: View {
                         TipsArticleView(showThisView: $showTipsArticle)
                     }
                     
-                    Text("External Links")
+                    Text("External Articles")
                         .bold()
                         .font(.title2)
                     
@@ -93,15 +112,15 @@ struct ReportView: View {
                         Spacer()
                         
                     }
-                    .RoundedRectangelOverlay()                    
+                    .RoundedRectangelOverlay()
                     
                 }
                 .padding(20)
                 
             }
             
+            
         }
-        .navigationTitle("Reports")
     }
 }
 

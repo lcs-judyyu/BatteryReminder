@@ -52,9 +52,8 @@ struct CompletionMeterView: View {
                     
                 }
             
-            Text("\(String(format: "%3.0f", (completionAmount) * 100.0))%")
+            Text("\(Int(fillToValue))%")
                 .font(Font.custom("Courier-Bold", size: 50.0))
-                .offset(x: -12, y: 3)
                 .animation(.default)
 
         }

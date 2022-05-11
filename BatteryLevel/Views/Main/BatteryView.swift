@@ -11,7 +11,7 @@ struct BatteryView: View {
     
     // MARK: Stored properties
     // Will be populated with battery charge level information
-    @State var currentBatteryLevel: Float = 0.0
+    @State private var currentBatteryLevel: Float = 0.0
     
     // Will be populated with battery state information
     @State private var batteryState = UIDevice.BatteryState.unknown
@@ -36,8 +36,6 @@ struct BatteryView: View {
                 //Background color
                 Color("backgroundGray")
                     .edgesIgnoringSafeArea(.all)
-                
-                VStack (spacing: 20) {
                     
                     VStack (alignment: .leading, spacing: 20) {
                         
@@ -46,13 +44,14 @@ struct BatteryView: View {
                             Text("Current Battery Level")
                                 .bold()
                                 .font(.title2)
+                                .padding(.leading, 20)
                             
                             HStack {
                                 Spacer()
                                 
                                 //a completion meter for current battery state
                                 CompletionMeterView(fillToValue: CGFloat(roundedCurrentBatteryLevel))
-                                    .padding(.vertical, 10)
+                                    .padding(.vertical, 15)
                                     .onBatteryLevelChanged { newLevel in
                                         currentBatteryLevel = newLevel
                                         print("Current battery level is \(currentBatteryLevel), rounded to \(roundedCurrentBatteryLevel)")
@@ -60,89 +59,97 @@ struct BatteryView: View {
                                 
                                 Spacer()
                             }
-                            .RoundedRectangelOverlay()
+                            .padding(.vertical, 15)
+                            .background(Color.white)
+                            .overlay(
+                                Rectangle()
+                                    .stroke(Color(.sRGB, red: 150/255, green: 150/255, blue: 150/255, opacity: 0.1), lineWidth: 1)
+                            )
                         }
                         
-                        //Add reminders
-                        Group {
-                            
-                            Text("Add Reminders")
-                                .bold()
-                                .font(.title2)
-                            
-                            VStack (alignment: .leading, spacing: 10) {
+                        VStack (alignment: .leading, spacing: 20) {
+                    
+                            //Add reminders
+                            Group {
                                 
-                                // Pop-up sheet is adapted from the Composable Views and Animations project by Russell Gordon
-                                //https://github.com/lcs-rgordon/ComposableViewsAndAnimations
-                                Button {
-                                    
-                                    showAddBatteryLevelReminder = true
-                                    
-                                } label: {
-                                    
-                                    Label("Notify by battery level", systemImage: "plus.circle")
-                                        .foregroundColor(Color("teal"))
-                                    
-                                }
-                                .sheet(isPresented: $showAddBatteryLevelReminder) {
-                                    AddBatteryLevelReminderView(showThisView: $showAddBatteryLevelReminder, repeated: true)
-                                }
+                                Text("Add Reminders")
+                                    .bold()
+                                    .font(.title2)
                                 
-                                Divider()
-                                
-                                Button {
+                                VStack (alignment: .leading, spacing: 10) {
                                     
-                                    showAddTimeReminder = true
+                                    // Pop-up sheet is adapted from the Composable Views and Animations project by Russell Gordon
+                                    //https://github.com/lcs-rgordon/ComposableViewsAndAnimations
+                                    Button {
+                                        
+                                        showAddBatteryLevelReminder = true
+                                        
+                                    } label: {
+                                        
+                                        Label("Notify by battery level", systemImage: "plus.circle")
+                                            .foregroundColor(Color("teal"))
+                                        
+                                    }
+                                    .sheet(isPresented: $showAddBatteryLevelReminder) {
+                                        AddBatteryLevelReminderView(showThisView: $showAddBatteryLevelReminder, repeated: true)
+                                    }
                                     
-                                } label: {
+                                    Divider()
                                     
-                                    Label("Notify by time", systemImage: "plus.circle")
-                                        .foregroundColor(Color("teal"))
+                                    Button {
+                                        
+                                        showAddTimeReminder = true
+                                        
+                                    } label: {
+                                        
+                                        Label("Notify by time", systemImage: "plus.circle")
+                                            .foregroundColor(Color("teal"))
+                                        
+                                    }
+                                    .sheet(isPresented: $showAddTimeReminder) {
+                                        AddTimeReminderView(showThisView: $showAddTimeReminder)
+                                    }
                                     
                                 }
-                                .sheet(isPresented: $showAddTimeReminder) {
-                                    AddTimeReminderView(showThisView: $showAddTimeReminder)
-                                }
+                                .RoundedRectangelOverlay()
                                 
                             }
-                            .RoundedRectangelOverlay()
                             
-                        }
-                        
-                        //your reminders
-                        Group {
-                            
-                            Text("Your Reminders")
-                                .bold()
-                                .font(.title2)
-                            
-                            VStack {
+                            //your reminders
+                            Group {
                                 
-                                SimpleListItemView(title: "30%", description: "repeated", pushNotification: true)
+                                Text("Your Reminders")
+                                    .bold()
+                                    .font(.title2)
                                 
-                                Divider()
-                                
-                                SimpleListItemView(title: "22:30", description: "Weekdays", pushNotification: false)
+                                VStack {
+                                    
+                                    SimpleListItemView(title: "30%", description: "Repeated", pushNotification: true)
+                                    
+                                    Divider()
+                                    
+                                    SimpleListItemView(title: "22:30", description: "Weekdays", pushNotification: false)
+                                    
+                                }
+                                .RoundedRectangelOverlay()
                                 
                             }
-                            .RoundedRectangelOverlay()
                             
                         }
+                        .padding(.horizontal, 20)
                         
                     }
-                    
-                }
-                .padding(20)
-                .task {
-                    
-                    // Adapted from:
-                    // https://www.hackingwithswift.com/example-code/uikit/how-to-read-the-battery-level-of-an-iphone-or-ipad
-                    // Required to enable battery information monitoring
-                    UIDevice.current.isBatteryMonitoringEnabled = true
-                    
-                    // Show the device's current battery level once (when app opens)
-                    currentBatteryLevel = UIDevice.current.batteryLevel
-                }
+                    .padding(.vertical, 20)
+                    .task {
+                        
+                        // Adapted from:
+                        // https://www.hackingwithswift.com/example-code/uikit/how-to-read-the-battery-level-of-an-iphone-or-ipad
+                        // Required to enable battery information monitoring
+                        UIDevice.current.isBatteryMonitoringEnabled = true
+                        
+                        // Show the device's current battery level once (when app opens)
+                        currentBatteryLevel = UIDevice.current.batteryLevel
+                    }
                 
             }
             
