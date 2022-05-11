@@ -35,19 +35,15 @@ struct CompletionMeterView: View {
                 .rotationEffect(.degrees(-90))
                 // When the timer fires, the code in this block will run.
                 .onReceive(timer) { _ in
-                    
-                    // Stop when completion amount reaches the fill to value
-                    guard completionAmount < fillToValue / 100.0 else {
                         
                         // Stop the timer
                         timer.upstream.connect().cancel()
-
-                        return
-                    }
                     
                     // Animate the trim being closed
                     withAnimation(.easeInOut(duration: 1.5)) {
-                        completionAmount += fillToValue / 100.0 / 100.0
+                        
+                        completionAmount = fillToValue / 100.0
+                        
                     }
                     
                 }

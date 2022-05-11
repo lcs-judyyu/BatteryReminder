@@ -24,7 +24,7 @@ struct BatteryView: View {
     @State private var showAddTimeReminder = false
     
     // keep track of the list of battery level reminder
-    @Binding var listOfBatteryLevelReminders: [BatteryLevelReminder]   // empty list to start
+    @Binding var listOfBatteryLevelReminders: [BatteryLevelReminder] // empty list to start
     
     @State private var repeated = true
     
@@ -134,13 +134,14 @@ struct BatteryView: View {
                                 
                                 VStack {
                                     
-                                    ForEach(listOfBatteryLevelReminders, id: \.self) { batteryLevelReminder in
+                                    ForEach(listOfBatteryLevelReminders.reversed(), id: \.self) { batteryLevelReminder in
                                         
                                         SimpleListItemView(title: "\(batteryLevelReminder.number)%",
                                                            description: batteryLevelReminder.caption,
                                                            pushNotification: true)
                                         
                                                 }
+                                    .onDelete(perform: delete)
                                     
                                     Divider()
                                     
@@ -174,6 +175,13 @@ struct BatteryView: View {
             
         }
     }
+    
+    //a function to delete items in the list
+    func delete(at offsets: IndexSet) {
+        listOfBatteryLevelReminders.remove(atOffsets: offsets)
+        //persistFavourites()
+    }
+    
 }
 
 struct BatteryView_Previews: PreviewProvider {

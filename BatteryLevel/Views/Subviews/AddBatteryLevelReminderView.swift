@@ -95,6 +95,8 @@ struct AddBatteryLevelReminderView: View {
                                                                                isNotified: true)
                             //add to the list of reminders
                             listOfBatteryLevelReminders.append(newBatteryLevelReminder)
+                            
+                            print(listOfBatteryLevelReminders)
                            
                             hideView()
                         }

@@ -150,7 +150,6 @@ struct ReportView: View {
     
     // MARK: Functions
     //save data permanently
-
     
 }
 

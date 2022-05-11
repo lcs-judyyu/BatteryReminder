@@ -5,7 +5,7 @@
 //  Created by Judy Yu on 2022-05-09.
 //
 
-//Adapted from the Composable Views and Animations project by Russell Gordon
+//Source: the Composable Views and Animations project by Russell Gordon
 //https://github.com/lcs-rgordon/ComposableViewsAndAnimations
 import SwiftUI
 
