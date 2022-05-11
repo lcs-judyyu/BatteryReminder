@@ -26,6 +26,8 @@ struct BatteryView: View {
     // keep track of the list of battery level reminder
     @Binding var listOfBatteryLevelReminders: [BatteryLevelReminder]   // empty list to start
     
+    @State private var repeated = true
+    
     //MARK: Computed properties
     var roundedCurrentBatteryLevel: Int {
         
@@ -97,8 +99,10 @@ struct BatteryView: View {
                                         
                                     }
                                     .sheet(isPresented: $showAddBatteryLevelReminder) {
-                                        AddBatteryLevelReminderView(showThisView: $showAddBatteryLevelReminder,
-                                                                    repeated: true,
+                                        AddBatteryLevelReminderView(batteryLevelReminder: testBatteryLevelReminder,
+                                                                    showThisView: $showAddBatteryLevelReminder,
+                                                                    repeated: $repeated,
+                                                                    repeatedOrNot: "",
                                                                     listOfBatteryLevelReminders: $listOfBatteryLevelReminders)
                                     }
                                     
@@ -132,14 +136,13 @@ struct BatteryView: View {
                                 
                                 VStack {
                                     
-                                    ForEach(listOfBatteryLevelReminders, id: \.self) { batteryLevelReminders in
+                                    ForEach(listOfBatteryLevelReminders, id: \.self) { batteryLevelReminder in
                                         
-                                        SimpleListItemView(title: batteryLevelReminders.number,
-                                                           description: batteryLevelReminders.isRepeated,
+                                        SimpleListItemView(title: "\(batteryLevelReminder.number)%",
+                                                           description: batteryLevelReminder.isRepeated,
                                                            pushNotification: true)
                                         
                                                 }
-                                    SimpleListItemView(title: "30%", description: "Repeated", pushNotification: true)
                                     
                                     Divider()
                                     

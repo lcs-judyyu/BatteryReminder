@@ -25,10 +25,18 @@ struct AddTimeReminderView: View {
                 
                 VStack {
                     
-                    Text("")
+                    Text("This feature is not supported currently. Please check again later :)")
                     
                 }
                 
+            }
+            .toolbar {
+                
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("Cancel") {
+                        hideView()
+                    }
+                }
             }
             
         }

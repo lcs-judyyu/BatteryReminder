@@ -13,6 +13,8 @@ struct AddBatteryLevelReminderView: View {
     //Detect when app moves between foreground, background, and inactive atates
     @Environment(\.scenePhase) var scenePhase
     
+    var batteryLevelReminder: BatteryLevelReminder
+    
     // Controls whether this view is showing or not
     @Binding var showThisView: Bool
     
@@ -23,7 +25,9 @@ struct AddBatteryLevelReminderView: View {
     @State var selectedBatteryLevel = 30
     
     //is it repeated?
-    @State var repeated: Bool
+    @Binding var repeated: Bool
+    
+    @State var repeatedOrNot: String
     
     // Will be populated with battery charge level information
     @State private var currentBatteryLevel: Float = 0.0
@@ -78,7 +82,17 @@ struct AddBatteryLevelReminderView: View {
                     ToolbarItem(placement: .primaryAction) {
                         Button("Add") {
                             //add to the list of reminders
-                           
+                            selectedBatteryLevel = batteryLevelReminder.number
+                            
+                            if repeated == true {
+                                repeatedOrNot = "Repeated"
+                            } else {
+                                repeatedOrNot = "Not Repeated"
+                            }
+                            
+                            repeatedOrNot = batteryLevelReminder.isRepeated
+                            
+                            listOfBatteryLevelReminders.append(batteryLevelReminder)
                             
                             hideView()
                         }
@@ -114,11 +128,12 @@ struct AddBatteryLevelReminderView: View {
     }
 }
 
-struct AddBatteryLevelReminderView_Previews: PreviewProvider {
-    static var previews: some View {
-        AddBatteryLevelReminderView(showThisView: .constant(true),
-                                    selectedBatteryLevel: 30,
-                                    repeated: true,
-                                    listOfBatteryLevelReminders: .constant([testBatteryLevelReminder]))
-    }
-}
+//struct AddBatteryLevelReminderView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        AddBatteryLevelReminderView(batteryLevelReminder: testBatteryLevelReminder,
+//                                    showThisView: .constant(true),
+//                                    selectedBatteryLevel: 30,
+//                                    repeated: true,
+//                                    listOfBatteryLevelReminders: .constant([testBatteryLevelReminder]))
+//    }
+//}

@@ -26,10 +26,10 @@ struct Time: Identifiable {
 struct BatteryLevelReminder: Identifiable, Hashable {
     
     let id = UUID()
-    let number: String
+    let number: Int
     let isRepeated: String
     
 }
 
-let testBatteryLevelReminder = BatteryLevelReminder(number: "30",
+let testBatteryLevelReminder = BatteryLevelReminder(number: 30,
                                                     isRepeated: "Repeated")
