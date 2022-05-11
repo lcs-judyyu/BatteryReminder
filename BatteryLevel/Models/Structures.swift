@@ -7,11 +7,18 @@
 
 import Foundation
 
-//struct Article: Identifiable {
-//    
-//    let id = UUID()
-//    let imageName: String
-//    let title: String
-//    let description: String
-//    
-//}
+struct Article: Identifiable {
+    
+    let id = UUID()
+    let title: String
+    let url: String
+    
+}
+
+struct Time: Identifiable {
+    
+    let id = UUID()
+    let time: String
+    let date: String
+    
+}

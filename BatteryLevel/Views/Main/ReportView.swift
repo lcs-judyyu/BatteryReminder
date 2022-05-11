@@ -10,6 +10,8 @@ import SwiftUI
 struct ReportView: View {
     
     // MARK: Stored properties
+    //Detect when app moves between foreground, background, and inactive atates
+    @Environment(\.scenePhase) var scenePhase
     
     // Controls what article is showing in the pop-up sheet
     @State private var showPerformanceArticle = false
@@ -19,6 +21,9 @@ struct ReportView: View {
     @State private var lastTimeFullyCharged = Date()
     
     var timeHistory = "--"
+    
+    // keep track of the time history
+    @State var favourites: [Time] = []   // empty list to start
     
     //current battery state
     @State private var batteryState = UIDevice.BatteryState.unknown
@@ -61,6 +66,7 @@ struct ReportView: View {
                             if batteryState == .full {
                                 lastTimeFullyCharged = Date.now
                             }
+                                                    
                         }
                         
                     }
@@ -121,7 +127,52 @@ struct ReportView: View {
             
             
         }
+        .onChange(of: scenePhase) { newPhase in
+            if newPhase == .inactive {
+                print("Inactive")
+            } else if newPhase == .active{
+                print("Active")
+            } else {
+                print("Background")
+                
+                //permanently save the time
+                persistTime()
+            }
+        }
     }
+    
+    // MARK: Functions
+    //save data permanently
+    func persistTime() {
+        //get a location to save data
+        let filename = getDocumentsDirectory().appendingPathComponent(savedTimeHistoryLabel)
+        print(filename)
+        
+        //try to encodr data to JSON
+        do {
+            let encoder = JSONEncoder()
+            
+            //configure the encoder to "pretty print" the JSON
+            encoder.outputFormatting = .prettyPrinted
+            
+            //Encode the list of favourites
+            let data = try encoder.encode(lastTimeFullyCharged)
+            
+            //write JSON to a file in the filename location
+            try data.write(to: filename, options: [.atomicWrite, .completeFileProtection])
+            
+            //see the data
+            print("Save data to the document directory successfully.")
+            print("=========")
+            print(String(data: data, encoding: .utf8)!)
+            
+        } catch {
+            print("Unable to write list of favourites to the document directory")
+            print("=========")
+            print(error.localizedDescription)
+        }
+    }
+    
 }
 
 struct ReportView_Previews: PreviewProvider {
