@@ -14,22 +14,29 @@ struct BatteryLevelApp: App {
     // Ensure the AppDelegate class instance is connected to the SwiftUI structure instance for the app
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     
+    // Source of truth of the list of battery level reminder
+    @State var listOfBatteryLevelReminders: [BatteryLevelReminder] = []   // empty list to start
+    
     var body: some Scene {
         WindowGroup {
             
             TabView {
                 
-                BatteryView()
-                    .tabItem {
-                        Image(systemName: "battery.100.bolt")
-                        Text("Battery")
-                    }
+                NavigationView {
+                    BatteryView(listOfBatteryLevelReminders: $listOfBatteryLevelReminders)
+                }
+                .tabItem {
+                    Image(systemName: "battery.100.bolt")
+                    Text("Battery")
+                }
                 
-                ReportView()
-                    .tabItem {
-                        Image(systemName: "chart.bar.xaxis")
-                        Text("Report")
-                    }
+                NavigationView {
+                    ReportView()
+                }
+                .tabItem {
+                    Image(systemName: "chart.bar.xaxis")
+                    Text("Report")
+                }
                 
             }
             .accentColor(Color("seaGreen"))

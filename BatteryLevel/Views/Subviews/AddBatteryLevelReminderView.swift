@@ -10,6 +10,9 @@ import SwiftUI
 struct AddBatteryLevelReminderView: View {
     
     //MARK: Stored properties
+    //Detect when app moves between foreground, background, and inactive atates
+    @Environment(\.scenePhase) var scenePhase
+    
     // Controls whether this view is showing or not
     @Binding var showThisView: Bool
     
@@ -24,6 +27,9 @@ struct AddBatteryLevelReminderView: View {
     
     // Will be populated with battery charge level information
     @State private var currentBatteryLevel: Float = 0.0
+    
+    // keep track of the list of battery level reminder
+    @Binding var listOfBatteryLevelReminders: [BatteryLevelReminder]   // empty list to start
     
     var body: some View {
         
@@ -71,9 +77,10 @@ struct AddBatteryLevelReminderView: View {
                 .toolbar {
                     ToolbarItem(placement: .primaryAction) {
                         Button("Add") {
-                            hideView()
+                            //add to the list of reminders
+                           
                             
-                        //add to the list of reminders
+                            hideView()
                         }
                     }
                     
@@ -111,6 +118,7 @@ struct AddBatteryLevelReminderView_Previews: PreviewProvider {
     static var previews: some View {
         AddBatteryLevelReminderView(showThisView: .constant(true),
                                     selectedBatteryLevel: 30,
-                                    repeated: true)
+                                    repeated: true,
+                                    listOfBatteryLevelReminders: .constant([testBatteryLevelReminder]))
     }
 }

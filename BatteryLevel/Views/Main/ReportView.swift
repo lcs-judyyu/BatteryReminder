@@ -127,6 +127,9 @@ struct ReportView: View {
             
             
         }
+        .navigationTitle("Report")
+        // Make the nav bar be "small" at top of view
+        .navigationBarTitleDisplayMode(.inline)
         .onChange(of: scenePhase) { newPhase in
             if newPhase == .inactive {
                 print("Inactive")

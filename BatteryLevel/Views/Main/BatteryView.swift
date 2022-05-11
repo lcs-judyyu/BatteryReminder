@@ -24,7 +24,7 @@ struct BatteryView: View {
     @State private var showAddTimeReminder = false
     
     // keep track of the list of battery level reminder
-    @State var listOfBatteryLevelReminders: [BatteryLevelReminder] = []   // empty list to start
+    @Binding var listOfBatteryLevelReminders: [BatteryLevelReminder]   // empty list to start
     
     //MARK: Computed properties
     var roundedCurrentBatteryLevel: Int {
@@ -97,7 +97,9 @@ struct BatteryView: View {
                                         
                                     }
                                     .sheet(isPresented: $showAddBatteryLevelReminder) {
-                                        AddBatteryLevelReminderView(showThisView: $showAddBatteryLevelReminder, repeated: true)
+                                        AddBatteryLevelReminderView(showThisView: $showAddBatteryLevelReminder,
+                                                                    repeated: true,
+                                                                    listOfBatteryLevelReminders: $listOfBatteryLevelReminders)
                                     }
                                     
                                     Divider()
@@ -130,6 +132,13 @@ struct BatteryView: View {
                                 
                                 VStack {
                                     
+                                    ForEach(listOfBatteryLevelReminders, id: \.self) { batteryLevelReminders in
+                                        
+                                        SimpleListItemView(title: batteryLevelReminders.number,
+                                                           description: batteryLevelReminders.isRepeated,
+                                                           pushNotification: true)
+                                        
+                                                }
                                     SimpleListItemView(title: "30%", description: "Repeated", pushNotification: true)
                                     
                                     Divider()
@@ -158,6 +167,9 @@ struct BatteryView: View {
                     }
                 
             }
+            .navigationTitle("Battery")
+            // Make the nav bar be "small" at top of view
+            .navigationBarTitleDisplayMode(.inline)
             
         }
     }
@@ -166,7 +178,7 @@ struct BatteryView: View {
 struct BatteryView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            BatteryView()
+            BatteryView(listOfBatteryLevelReminders: .constant([testBatteryLevelReminder]))
         }
     }
 }
