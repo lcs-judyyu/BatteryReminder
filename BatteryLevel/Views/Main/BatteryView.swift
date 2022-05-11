@@ -99,10 +99,8 @@ struct BatteryView: View {
                                         
                                     }
                                     .sheet(isPresented: $showAddBatteryLevelReminder) {
-                                        AddBatteryLevelReminderView(batteryLevelReminder: testBatteryLevelReminder,
-                                                                    showThisView: $showAddBatteryLevelReminder,
-                                                                    repeated: $repeated,
-                                                                    repeatedOrNot: "",
+                                        AddBatteryLevelReminderView(showThisView: $showAddBatteryLevelReminder,
+                                                                    isRepeatedOrNot: "",
                                                                     listOfBatteryLevelReminders: $listOfBatteryLevelReminders)
                                     }
                                     
@@ -139,7 +137,7 @@ struct BatteryView: View {
                                     ForEach(listOfBatteryLevelReminders, id: \.self) { batteryLevelReminder in
                                         
                                         SimpleListItemView(title: "\(batteryLevelReminder.number)%",
-                                                           description: batteryLevelReminder.isRepeated,
+                                                           description: batteryLevelReminder.caption,
                                                            pushNotification: true)
                                         
                                                 }

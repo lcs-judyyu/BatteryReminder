@@ -139,75 +139,18 @@ struct ReportView: View {
                 print("Background")
                 
                 //permanently save the time
-                persistTime()
+                
             }
         }
         .task {
             //load the time
-            loadTime()
+            
         }
     }
     
     // MARK: Functions
     //save data permanently
-    func persistTime() {
-        //get a location to save data
-        let filename = getDocumentsDirectory().appendingPathComponent(savedTimeHistoryLabel)
-        print(filename)
-        
-        //try to encodr data to JSON
-        do {
-            let encoder = JSONEncoder()
-            
-            //configure the encoder to "pretty print" the JSON
-            encoder.outputFormatting = .prettyPrinted
-            
-            //Encode the list of favourites
-            let data = try encoder.encode(lastTimeFullyCharged)
-            
-            //write JSON to a file in the filename location
-            try data.write(to: filename, options: [.atomicWrite, .completeFileProtection])
-            
-            //see the data
-            print("Save data to the document directory successfully.")
-            print("=========")
-            print(String(data: data, encoding: .utf8)!)
-            
-        } catch {
-            print("Unable to write list of favourites to the document directory")
-            print("=========")
-            print(error.localizedDescription)
-        }
-    }
-    
-    //function for reloading the list of favourites
-    func loadTime() {
-        let filename = getDocumentsDirectory().appendingPathComponent(savedTimeHistoryLabel)
-        print(filename)
-        
-        do {
-            //load raw data
-            let data = try Data(contentsOf: filename)
-            
-            print("Save data to the document directory successfully.")
-            print("=========")
-            print(String(data: data, encoding: .utf8)!)
-            
-            //decode JSON
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
 
-            let decoder = JSONDecoder()
-            decoder.dateDecodingStrategy = .formatted(dateFormatter)
-            
-            //lastTimeFullyCharged = try JSONDecoder().decode(lastTimeFullyCharged.self, from: data)
-            
-        } catch {
-            print("Could not loas the data from the stored JSON file")
-            print("=========")
-            print(error.localizedDescription)
-        }
-    }
     
 }
 

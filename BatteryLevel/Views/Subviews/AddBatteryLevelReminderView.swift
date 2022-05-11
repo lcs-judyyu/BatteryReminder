@@ -10,10 +10,8 @@ import SwiftUI
 struct AddBatteryLevelReminderView: View {
     
     //MARK: Stored properties
-    //Detect when app moves between foreground, background, and inactive atates
+    //Detect when moves between foreground, background, and inactive atates
     @Environment(\.scenePhase) var scenePhase
-    
-    var batteryLevelReminder: BatteryLevelReminder
     
     // Controls whether this view is showing or not
     @Binding var showThisView: Bool
@@ -22,14 +20,14 @@ struct AddBatteryLevelReminderView: View {
     let listOfPickerOptions: [Int] = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95]
     
     // Keep track of user selected battery level to receive notification
-    @State var selectedBatteryLevel = 30
+    @State var newSelectedBatteryLevel = 30
     
     //is it repeated?
-    @Binding var repeated: Bool
+    @State var newReminderIsRepeated = true
     
-    @State var repeatedOrNot: String
+    @State var isRepeatedOrNot: String
     
-    // Will be populated with battery charge level information
+    // Will be populated with battery level information
     @State private var currentBatteryLevel: Float = 0.0
     
     // keep track of the list of battery level reminder
@@ -53,7 +51,7 @@ struct AddBatteryLevelReminderView: View {
                             .font(.title3)
                         
                         HStack {
-                            Picker("Please choose a number", selection: $selectedBatteryLevel) {
+                            Picker("Please choose a number", selection: $newSelectedBatteryLevel) {
                                 
                                 ForEach(listOfPickerOptions, id: \.self) {
                                     Text("\($0)")
@@ -67,7 +65,7 @@ struct AddBatteryLevelReminderView: View {
                     }
                     .RoundedRectangelOverlay()
                     
-                    Toggle("Repeated", isOn: $repeated)
+                    Toggle("Repeated", isOn: $newReminderIsRepeated)
                         .font(.title3)
                         .toggleStyle(SwitchToggleStyle(tint: Color("goldDrop")))
                         .RoundedRectangelOverlay()
@@ -81,19 +79,23 @@ struct AddBatteryLevelReminderView: View {
                 .toolbar {
                     ToolbarItem(placement: .primaryAction) {
                         Button("Add") {
-                            //add to the list of reminders
-                            selectedBatteryLevel = batteryLevelReminder.number
                             
-                            if repeated == true {
-                                repeatedOrNot = "Repeated"
+                            if newReminderIsRepeated == true {
+                                isRepeatedOrNot = "Repeated"
                             } else {
-                                repeatedOrNot = "Not Repeated"
+                                isRepeatedOrNot = "Not Repeated"
                             }
                             
-                            repeatedOrNot = batteryLevelReminder.isRepeated
+                            //new
+                            let newId = listOfBatteryLevelReminders.count + 1
                             
-                            listOfBatteryLevelReminders.append(batteryLevelReminder)
-                            
+                            let newBatteryLevelReminder = BatteryLevelReminder(number: newSelectedBatteryLevel,
+                                                                               isRecurring: newReminderIsRepeated,
+                                                                               caption: isRepeatedOrNot,
+                                                                               isNotified: true)
+                            //add to the list of reminders
+                            listOfBatteryLevelReminders.append(newBatteryLevelReminder)
+                           
                             hideView()
                         }
                     }
@@ -128,12 +130,10 @@ struct AddBatteryLevelReminderView: View {
     }
 }
 
-//struct AddBatteryLevelReminderView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        AddBatteryLevelReminderView(batteryLevelReminder: testBatteryLevelReminder,
-//                                    showThisView: .constant(true),
-//                                    selectedBatteryLevel: 30,
-//                                    repeated: true,
-//                                    listOfBatteryLevelReminders: .constant([testBatteryLevelReminder]))
-//    }
-//}
+struct AddBatteryLevelReminderView_Previews: PreviewProvider {
+    static var previews: some View {
+        AddBatteryLevelReminderView(showThisView: .constant(true),
+                                    isRepeatedOrNot: "Repeated",
+                                    listOfBatteryLevelReminders: .constant([testBatteryLevelReminder]))
+    }
+}

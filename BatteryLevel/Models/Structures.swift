@@ -27,9 +27,25 @@ struct BatteryLevelReminder: Identifiable, Hashable {
     
     let id = UUID()
     let number: Int
-    let isRepeated: String
+    let isRecurring: Bool
+    let caption: String
+    let isNotified: Bool
     
 }
 
 let testBatteryLevelReminder = BatteryLevelReminder(number: 30,
-                                                    isRepeated: "Repeated")
+                                                    isRecurring: true,
+                                                    caption: "Repeated",
+                                                    isNotified: true)
+
+let testBatteryLevelReminders = [
+    BatteryLevelReminder(number: 30,
+                         isRecurring: true,
+                         caption: "Repeated",
+                         isNotified: true)
+    ,
+    BatteryLevelReminder(number: 50,
+                         isRecurring: false,
+                         caption: "Not Repeated",
+                         isNotified: true)
+]
