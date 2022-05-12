@@ -132,26 +132,24 @@ struct ReportView: View {
                         
                         ZStack {
                             
-                            // Shows list of articles, when there are some to show
-                            ForEach(articlesToShow, id: \.self) { currentArticle in
-                                
-                                NavigationLink(destination: {
+                            VStack (alignment: .leading) {
+                                // Shows list of articles, when there are some to show
+                                ForEach(articlesToShow, id: \.self) { currentArticle in
                                     
-                                    //navigates to embedded websites
-                                    FullPageWebView(currentArticle: currentArticle)
-                                    
-                                }, label: {
-                                    
-                                    VStack(alignment: .leading) {
+                                    NavigationLink(destination: {
                                         
-                                        Text(currentArticle.title)
-                                            .font(.headline)
+                                        //navigates to embedded websites
+                                        FullPageWebView(currentArticle: currentArticle)
                                         
-                                    }
+                                    }, label: {
+                                            
+                                            WebListItemView(currentArticle: currentArticle)
+                                        
+                                    })
                                     
-                                })
-                                
+                                }
                             }
+                            .RoundedRectangelOverlay()
                             
                             // Show a message when there are no results yet
                             HStack {

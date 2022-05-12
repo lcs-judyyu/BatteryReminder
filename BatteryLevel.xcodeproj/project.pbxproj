@@ -27,6 +27,7 @@
 		5AF2439C282D6DC400FE779B /* WebViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF2439B282D6DC400FE779B /* WebViewContainer.swift */; };
 		5AF2439E282D6E0000FE779B /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF2439D282D6E0000FE779B /* WebView.swift */; };
 		5AF243A0282D6E9000FE779B /* FullPageWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF2439F282D6E9000FE779B /* FullPageWebView.swift */; };
+		5AF243A3282D7C9200FE779B /* WebListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF243A2282D7C9200FE779B /* WebListItemView.swift */; };
 		81C072C82827E42F004235B4 /* BatteryLevelApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C072C72827E42F004235B4 /* BatteryLevelApp.swift */; };
 		81C072CA2827E42F004235B4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C072C92827E42F004235B4 /* ContentView.swift */; };
 		81C072CC2827E431004235B4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81C072CB2827E431004235B4 /* Assets.xcassets */; };
@@ -56,6 +57,7 @@
 		5AF2439B282D6DC400FE779B /* WebViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewContainer.swift; sourceTree = "<group>"; };
 		5AF2439D282D6E0000FE779B /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		5AF2439F282D6E9000FE779B /* FullPageWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullPageWebView.swift; sourceTree = "<group>"; };
+		5AF243A2282D7C9200FE779B /* WebListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebListItemView.swift; sourceTree = "<group>"; };
 		81C072C42827E42F004235B4 /* BatteryLevel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BatteryLevel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		81C072C72827E42F004235B4 /* BatteryLevelApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryLevelApp.swift; sourceTree = "<group>"; };
 		81C072C92827E42F004235B4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 				5AF243852829DC9700FE779B /* SharedConstants.swift */,
 				5AF2438B2829E68900FE779B /* SimpleListItemView.swift */,
 				5AF2439F282D6E9000FE779B /* FullPageWebView.swift */,
+				5AF243A2282D7C9200FE779B /* WebListItemView.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -297,6 +300,7 @@
 				5AF243842829D00A00FE779B /* SharedFunctions.swift in Sources */,
 				5AF243882829DDCA00FE779B /* RoundedRectangleOverlayViewModifier.swift in Sources */,
 				5AF2439C282D6DC400FE779B /* WebViewContainer.swift in Sources */,
+				5AF243A3282D7C9200FE779B /* WebListItemView.swift in Sources */,
 				5A59C21B2828804300D48815 /* TipsArticleView.swift in Sources */,
 				5A59C2202828877700D48815 /* ArticlesCardView.swift in Sources */,
 				5AF24399282D6D2F00FE779B /* WebViewModel.swift in Sources */,
