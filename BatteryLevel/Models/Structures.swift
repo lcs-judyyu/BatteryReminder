@@ -28,7 +28,7 @@ struct BatteryLevelReminder: Decodable, Hashable, Encodable {
     let number: Int
     let isRecurring: Bool
     let caption: String
-    let isNotified: Bool
+    var isNotified: Bool
     
 }
 

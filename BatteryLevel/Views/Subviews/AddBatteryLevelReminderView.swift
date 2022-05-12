@@ -92,10 +92,17 @@ struct AddBatteryLevelReminderView: View {
                                                                                caption: isRepeatedOrNot,
                                                                                isNotified: true)
                             
-                            let hadSameReminder = listOfBatteryLevelReminders.contains { addedReminder in
-                                if case newBatteryLevelReminder = addedReminder {
+                            let hadSameReminder = listOfBatteryLevelReminders.contains { existedReminder in
+                                if case newBatteryLevelReminder = existedReminder {
                                     
-                                    //addedReminder.isNotified = true
+                                    //Source: https://www.codingem.com/swift-how-to-get-index-of-item-in-array/
+                                    //get the index of the existed reminder
+                                    let existedReminderIndex = listOfBatteryLevelReminders.firstIndex(where: {$0 == existedReminder})
+                                    print(existedReminderIndex ?? 0)
+                                    
+                                    //remove the existed reminder
+                                    listOfBatteryLevelReminders.remove(at: existedReminderIndex ?? 0)
+                                    
                                     return true
                                     
                                 } else {
@@ -104,9 +111,11 @@ struct AddBatteryLevelReminderView: View {
                             }
                             
                             //Add to the list of reminders
-                            if listOfBatteryLevelReminders.contains(newBatteryLevelReminder) {
+                            if hadSameReminder == true {
                                 
-                                print("This reminder already existed in your reminders")
+                                print("This reminder already existed in your reminders so the added reminder is deleted")
+                                
+                                listOfBatteryLevelReminders.append(newBatteryLevelReminder)
                                 
                             } else {
 
