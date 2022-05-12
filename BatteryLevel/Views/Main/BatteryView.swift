@@ -174,6 +174,21 @@ struct BatteryView: View {
                         
                         // Show the device's current battery level once (when app opens)
                         currentBatteryLevel = UIDevice.current.batteryLevel
+                        
+                        //load the list of battery level reminders from saved file
+                        loadListOfBatteryLevelReminders()
+                    }
+                    .onChange(of: scenePhase) { newPhase in
+                        if newPhase == .inactive {
+                            print("Inactive")
+                        } else if newPhase == .active{
+                            print("Active")
+                        } else {
+                            print("Background")
+                            
+                            //permanently save the list of battery level reminders
+                            persistListOfBatteryLevelReminders()
+                        }
                     }
                 
             }
@@ -193,7 +208,60 @@ struct BatteryView: View {
         
     }
     
+    //function for saving the list of battery level reminders permanently
+    func persistListOfBatteryLevelReminders() {
+        //get a location to save data
+        let filename = getDocumentsDirectory().appendingPathComponent(savedBatteryLevelRemindersLabel)
+        print(filename)
+        
+        //try to encodr data to JSON
+        do {
+            let encoder = JSONEncoder()
+            
+            //configure the encoder to "pretty print" the JSON
+            encoder.outputFormatting = .prettyPrinted
+            
+            //Encode the list of favourites
+            let data = try encoder.encode(listOfBatteryLevelReminders)
+            
+            //write JSON to a file in the filename location
+            try data.write(to: filename, options: [.atomicWrite, .completeFileProtection])
+            
+            //see the data
+            print("Save data to the document directory successfully.")
+            print("=========")
+            print(String(data: data, encoding: .utf8)!)
+            
+        } catch {
+            print("Unable to write list of favourites to the document directory")
+            print("=========")
+            print(error.localizedDescription)
+        }
+    }
     
+    //function for reloading the list of battery level reminders
+    func loadListOfBatteryLevelReminders() {
+        let filename = getDocumentsDirectory().appendingPathComponent(savedBatteryLevelRemindersLabel)
+        print(filename)
+        
+        do {
+            //load raw data
+            let data = try Data(contentsOf: filename)
+            
+            print("Save data to the document directory successfully.")
+            print("=========")
+            print(String(data: data, encoding: .utf8)!)
+            
+            //decode JSON into Swift native data structures
+            //NOTE: [] are used since we load into an array
+            listOfBatteryLevelReminders = try JSONDecoder().decode([BatteryLevelReminder].self, from: data)
+            
+        } catch {
+            print("Could not loas the data from the stored JSON file")
+            print("=========")
+            print(error.localizedDescription)
+        }
+    }
     
 }
 
