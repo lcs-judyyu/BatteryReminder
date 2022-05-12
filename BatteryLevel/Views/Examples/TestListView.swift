@@ -86,7 +86,21 @@ struct TestListView: View {
                                    pushNotification: batteryLevelReminder.isNotified)
                 
                         }
-            .onDelete(perform: delete)
+            //.onDelete(perform: delete)
+            .onDelete { index in
+                
+                // get the item from the reversed list
+                let theItem = listOfBatteryLevelReminders.reversed()[index.first!]
+                
+                // get the index of the item from the original list and remove it
+                if let newIndex = listOfBatteryLevelReminders.firstIndex(of: theItem) {
+                    listOfBatteryLevelReminders.remove(at: newIndex)
+                }
+                
+                //save the new list
+                persistListOfBatteryLevelReminders()
+            }
+                        
             }
                     
                 }
@@ -102,17 +116,77 @@ struct TestListView: View {
                 
                 // Show the device's current battery level once (when app opens)
                 currentBatteryLevel = UIDevice.current.batteryLevel
+                
+                loadListOfBatteryLevelReminders()
+            }
+            .onChange(of: scenePhase) { newPhase in
+                if newPhase == .inactive {
+                    print("Inactive")
+                } else if newPhase == .active{
+                    print("Active")
+                } else {
+                    print("Background")
+                    
+                    //permanently save the list of battery level reminders
+                    persistListOfBatteryLevelReminders()
+                }
             }
         }
     }
     
-    //a function to delete items in the list
-    func delete(at offsets: IndexSet) {
+    //function for saving the list of battery level reminders permanently
+    func persistListOfBatteryLevelReminders() {
+        //get a location to save data
+        let filename = getDocumentsDirectory().appendingPathComponent(savedBatteryLevelRemindersLabel)
+        print(filename)
         
-        print(offsets)
-        listOfBatteryLevelReminders.remove(atOffsets: offsets)
-        //persistFavourites()
+        //try to encodr data to JSON
+        do {
+            let encoder = JSONEncoder()
+            
+            //configure the encoder to "pretty print" the JSON
+            encoder.outputFormatting = .prettyPrinted
+            
+            //Encode the list of favourites
+            let data = try encoder.encode(listOfBatteryLevelReminders)
+            
+            //write JSON to a file in the filename location
+            try data.write(to: filename, options: [.atomicWrite, .completeFileProtection])
+            
+            //see the data
+            print("Save data to the document directory successfully.")
+            print("=========")
+            print(String(data: data, encoding: .utf8)!)
+            
+        } catch {
+            print("Unable to write list of favourites to the document directory")
+            print("=========")
+            print(error.localizedDescription)
+        }
+    }
+    
+    //function for reloading the list of battery level reminders
+    func loadListOfBatteryLevelReminders() {
+        let filename = getDocumentsDirectory().appendingPathComponent(savedBatteryLevelRemindersLabel)
+        print(filename)
         
+        do {
+            //load raw data
+            let data = try Data(contentsOf: filename)
+            
+            print("Save data to the document directory successfully.")
+            print("=========")
+            print(String(data: data, encoding: .utf8)!)
+            
+            //decode JSON into Swift native data structures
+            //NOTE: [] are used since we load into an array
+            listOfBatteryLevelReminders = try JSONDecoder().decode([BatteryLevelReminder].self, from: data)
+            
+        } catch {
+            print("Could not load the data from the stored JSON file")
+            print("=========")
+            print(error.localizedDescription)
+        }
     }
     
 }

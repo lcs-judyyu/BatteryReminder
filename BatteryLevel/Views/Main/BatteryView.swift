@@ -37,175 +37,179 @@ struct BatteryView: View {
     
     var body: some View {
         
-        //ScrollView { //deleted
+        ///ScrollView { //deleted
         
-        //NavigationView { //new changes
+        ///NavigationView { //new changes
+        
+        ZStack {
             
-            ZStack {
+            //Background color
+            Color("backgroundGray")
+                .edgesIgnoringSafeArea(.all)
+            
+            
+            VStack (alignment: .leading, spacing: 20) {
                 
-                //Background color
-                Color("backgroundGray")
-                    .edgesIgnoringSafeArea(.all)
-                
+                //current battery level
+                Group {
+                    Text("Current Battery Level")
+                        .bold()
+                        .font(.title2)
+                        .padding(.leading, 20)
                     
-                    VStack (alignment: .leading, spacing: 20) {
+                    HStack {
+                        Spacer()
                         
-                        //current battery level
-                        Group {
-                            Text("Current Battery Level")
-                                .bold()
-                                .font(.title2)
-                                .padding(.leading, 20)
-                            
-                            HStack {
-                                Spacer()
-                                
-                                //a completion meter for current battery state
-                                CompletionMeterView(fillToValue: CGFloat(roundedCurrentBatteryLevel))
-                                    .padding(.vertical, 15)
-                                    .onBatteryLevelChanged { newLevel in
-                                        currentBatteryLevel = newLevel
-                                        print("Current battery level is \(currentBatteryLevel), rounded to \(roundedCurrentBatteryLevel)")
-                                    }
-                                
-                                Spacer()
-                            }
+                        //a completion meter for current battery state
+                        CompletionMeterView(fillToValue: CGFloat(roundedCurrentBatteryLevel))
                             .padding(.vertical, 15)
-                            .background(Color.white)
-                            .overlay(
-                                Rectangle()
-                                    .stroke(Color(.sRGB, red: 150/255, green: 150/255, blue: 150/255, opacity: 0.1), lineWidth: 1)
-                            )
-                        }
+                            .onBatteryLevelChanged { newLevel in
+                                currentBatteryLevel = newLevel
+                                print("Current battery level is \(currentBatteryLevel), rounded to \(roundedCurrentBatteryLevel)")
+                            }
                         
-                        VStack (alignment: .leading, spacing: 20) {
+                        Spacer()
+                    }
+                    .padding(.vertical, 15)
+                    .background(Color.white)
+                    .overlay(
+                        Rectangle()
+                            .stroke(Color(.sRGB, red: 150/255, green: 150/255, blue: 150/255, opacity: 0.1), lineWidth: 1)
+                    )
+                }
+                
+                VStack (alignment: .leading, spacing: 20) {
                     
-                            //Add reminders
-                            Group {
+                    //Add reminders
+                    Group {
+                        
+                        Text("Add Reminders")
+                            .bold()
+                            .font(.title2)
+                        
+                        VStack (alignment: .leading, spacing: 10) {
+                            
+                            // Pop-up sheet is adapted from the Composable Views and Animations project by Russell Gordon
+                            //https://github.com/lcs-rgordon/ComposableViewsAndAnimations
+                            Button {
                                 
-                                Text("Add Reminders")
-                                    .bold()
-                                    .font(.title2)
+                                showAddBatteryLevelReminder = true
                                 
-                                VStack (alignment: .leading, spacing: 10) {
-                                    
-                                    // Pop-up sheet is adapted from the Composable Views and Animations project by Russell Gordon
-                                    //https://github.com/lcs-rgordon/ComposableViewsAndAnimations
-                                    Button {
-                                        
-                                        showAddBatteryLevelReminder = true
-                                        
-                                    } label: {
-                                        
-                                        Label("Notify by battery level", systemImage: "plus.circle")
-                                            .foregroundColor(Color("teal"))
-                                        
-                                    }
-                                    .sheet(isPresented: $showAddBatteryLevelReminder) {
-                                        AddBatteryLevelReminderView(showThisView: $showAddBatteryLevelReminder,
-                                                                    isRepeatedOrNot: "",
-                                                                    listOfBatteryLevelReminders: $listOfBatteryLevelReminders)
-                                    }
-                                    
-                                    Divider()
-                                    
-                                    Button {
-                                        
-                                        showAddTimeReminder = true
-                                        
-                                    } label: {
-                                        
-                                        Label("Notify by time", systemImage: "plus.circle")
-                                            .foregroundColor(Color("teal"))
-                                        
-                                    }
-                                    .sheet(isPresented: $showAddTimeReminder) {
-                                        AddTimeReminderView(showThisView: $showAddTimeReminder)
-                                    }
-                                    
-                                }
-                                .RoundedRectangelOverlay()
+                            } label: {
+                                
+                                Label("Notify by battery level", systemImage: "plus.circle")
+                                    .foregroundColor(Color("teal"))
                                 
                             }
+                            .sheet(isPresented: $showAddBatteryLevelReminder) {
+                                AddBatteryLevelReminderView(showThisView: $showAddBatteryLevelReminder,
+                                                            isRepeatedOrNot: "",
+                                                            listOfBatteryLevelReminders: $listOfBatteryLevelReminders)
+                            }
                             
-                            //your reminders
-                            Group {
+                            Divider()
+                            
+                            Button {
                                 
-                                Text("Your Reminders")
-                                    .bold()
-                                    .font(.title2)
+                                showAddTimeReminder = true
                                 
-                                VStack {
-                                    
-                                    List { //new changes
-                                    
-                                    ForEach(listOfBatteryLevelReminders.reversed(), id: \.self) { batteryLevelReminder in
-                                        
-                                        SimpleListItemView(title: "\(batteryLevelReminder.number)%",
-                                                           description: batteryLevelReminder.caption,
-                                                           pushNotification: batteryLevelReminder.isNotified)
-                                        
-                                                }
-                                    .onDelete(perform: delete)
-                                    } //new changes
-                                    
-                                    TestListView(listOfBatteryLevelReminders: $listOfBatteryLevelReminders) //new changes
-                                    
-                                    Divider()
-                                    
-                                    SimpleListItemView(title: "22:30", description: "Weekdays", pushNotification: false)
-                                    
-                                }
-                                .RoundedRectangelOverlay()
+                            } label: {
                                 
+                                Label("Notify by time", systemImage: "plus.circle")
+                                    .foregroundColor(Color("teal"))
+                                
+                            }
+                            .sheet(isPresented: $showAddTimeReminder) {
+                                AddTimeReminderView(showThisView: $showAddTimeReminder)
                             }
                             
                         }
-                        .padding(.horizontal, 20)
+                        .RoundedRectangelOverlay()
                         
                     }
-                    .padding(.vertical, 20)
-                    .task {
+                    
+                    //your reminders
+                    Group {
                         
-                        // Adapted from:
-                        // https://www.hackingwithswift.com/example-code/uikit/how-to-read-the-battery-level-of-an-iphone-or-ipad
-                        // Required to enable battery information monitoring
-                        UIDevice.current.isBatteryMonitoringEnabled = true
+                        Text("Your Reminders")
+                            .bold()
+                            .font(.title2)
                         
-                        // Show the device's current battery level once (when app opens)
-                        currentBatteryLevel = UIDevice.current.batteryLevel
-                        
-                        //load the list of battery level reminders from saved file
-                        loadListOfBatteryLevelReminders()
-                    }
-                    .onChange(of: scenePhase) { newPhase in
-                        if newPhase == .inactive {
-                            print("Inactive")
-                        } else if newPhase == .active{
-                            print("Active")
-                        } else {
-                            print("Background")
+                        VStack {
                             
-                            //permanently save the list of battery level reminders
-                            persistListOfBatteryLevelReminders()
+                            List { ///new changes
+                                
+                                ForEach(listOfBatteryLevelReminders.reversed(), id: \.self) { batteryLevelReminder in
+                                    
+                                    SimpleListItemView(title: "\(batteryLevelReminder.number)%",
+                                                       description: batteryLevelReminder.caption,
+                                                       pushNotification: batteryLevelReminder.isNotified)
+                                    
+                                }
+                                .onDelete { index in
+                                    
+                                    // get the item from the reversed list
+                                    let theItem = listOfBatteryLevelReminders.reversed()[index.first!]
+                                    
+                                    // get the index of the item from the original list and remove it
+                                    if let newIndex = listOfBatteryLevelReminders.firstIndex(of: theItem) {
+                                        listOfBatteryLevelReminders.remove(at: newIndex)
+                                    }
+                                    
+                                    //save the new list
+                                    persistListOfBatteryLevelReminders()
+                                }
+                                
+                            } ///new changes
+                            
+                            TestListView(listOfBatteryLevelReminders: $listOfBatteryLevelReminders) //new changes
+                            
+                            Divider()
+                            
+                            SimpleListItemView(title: "22:30", description: "Weekdays", pushNotification: false)
+                            
                         }
+                        .RoundedRectangelOverlay()
+                        
                     }
+                    
+                }
+                .padding(.horizontal, 20)
                 
             }
-            .navigationTitle("Battery")
-            // Make the nav bar be "small" at top of view
-            .navigationBarTitleDisplayMode(.inline)
+            .padding(.vertical, 20)
+            .task {
+                
+                // Adapted from:
+                // https://www.hackingwithswift.com/example-code/uikit/how-to-read-the-battery-level-of-an-iphone-or-ipad
+                // Required to enable battery information monitoring
+                UIDevice.current.isBatteryMonitoringEnabled = true
+                
+                // Show the device's current battery level once (when app opens)
+                currentBatteryLevel = UIDevice.current.batteryLevel
+                
+                //load the list of battery level reminders from saved file
+                loadListOfBatteryLevelReminders()
+            }
+            .onChange(of: scenePhase) { newPhase in
+                if newPhase == .inactive {
+                    print("Inactive")
+                } else if newPhase == .active{
+                    print("Active")
+                } else {
+                    print("Background")
+                    
+                    //permanently save the list of battery level reminders
+                    persistListOfBatteryLevelReminders()
+                }
+            }
             
-        //}
-    }
-    
-    //a function to delete items in the list
-    func delete(at offsets: IndexSet) {
+        }
+        .navigationTitle("Battery")
+        // Make the nav bar be "small" at top of view
+        .navigationBarTitleDisplayMode(.inline)
         
-        print(offsets)
-        listOfBatteryLevelReminders.remove(atOffsets: offsets)
-        //persistFavourites()
-        
+        ///} //new changes
     }
     
     //function for saving the list of battery level reminders permanently
@@ -257,7 +261,7 @@ struct BatteryView: View {
             listOfBatteryLevelReminders = try JSONDecoder().decode([BatteryLevelReminder].self, from: data)
             
         } catch {
-            print("Could not loas the data from the stored JSON file")
+            print("Could not load the data from the stored JSON file")
             print("=========")
             print(error.localizedDescription)
         }
