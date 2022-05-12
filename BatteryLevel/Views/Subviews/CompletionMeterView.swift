@@ -28,16 +28,16 @@ struct CompletionMeterView: View {
         ZStack {
             
             Circle()
-                // Traces, or makes a trim, for the outline of a shape
+            // Traces, or makes a trim, for the outline of a shape
                 .trim(from: 0, to: completionAmount)
                 .stroke(Color("seaGreen"), lineWidth: 26)
                 .frame(width: 230, height: 230)
                 .rotationEffect(.degrees(-90))
-                // When the timer fires, the code in this block will run.
+            // When the timer fires, the code in this block will run.
                 .onReceive(timer) { _ in
-                        
-                        // Stop the timer
-                        timer.upstream.connect().cancel()
+                    
+                    // Stop the timer
+                    timer.upstream.connect().cancel()
                     
                     // Animate the trim being closed
                     withAnimation(.easeInOut(duration: 1.5)) {
@@ -51,7 +51,7 @@ struct CompletionMeterView: View {
             Text("\(Int(fillToValue))%")
                 .font(Font.custom("Courier-Bold", size: 45.0))
                 .animation(.default)
-
+            
         }
     }
     

@@ -17,7 +17,7 @@ import SwiftUI
 // https://www.hackingwithswift.com/quick-start/swiftui/how-to-detect-device-rotation
 struct DeviceBatteryStateViewModifier: ViewModifier {
     let action: (UIDevice.BatteryState) -> Void
-
+    
     func body(content: Content) -> some View {
         content
             .onAppear()

@@ -127,15 +127,6 @@ struct BatteryView: View {
                         
                     }
                     
-                    //your reminders
-//                    Group {
-//
-//                        Text("Your Reminders")
-//                            .bold()
-//                            .font(.title2)
-//
-//                    }
-                    
                 }
                 .padding(.horizontal, 20)
                 
@@ -148,48 +139,50 @@ struct BatteryView: View {
                         .padding(.horizontal, 20)
                     
                     ZStack (alignment: .top) {
-                    
-                    Group {
-                        List { ///new changes
+                        
+                        Group {
                             
-                            ForEach(listOfBatteryLevelReminders.reversed(), id: \.self) { batteryLevelReminder in
+                            List {
                                 
-                                SimpleListItemView(title: "\(batteryLevelReminder.number)%",
-                                                   description: batteryLevelReminder.caption,
-                                                   pushNotification: batteryLevelReminder.isNotified)
-                                
-                            }
-                            .onDelete { index in
-                                
-                                //Source: https://stackoverflow.com/questions/70059435/how-to-handle-ondelete-for-swiftui-list-array-with-reversed
-                                // get the item from the reversed list
-                                let theItem = listOfBatteryLevelReminders.reversed()[index.first!]
-                                
-                                // get the index of the item from the original list and remove it
-                                if let newIndex = listOfBatteryLevelReminders.firstIndex(of: theItem) {
-                                    listOfBatteryLevelReminders.remove(at: newIndex)
+                                ForEach(listOfBatteryLevelReminders.reversed(), id: \.self) { batteryLevelReminder in
+                                    
+                                    SimpleListItemView(title: "\(batteryLevelReminder.number)%",
+                                                       description: batteryLevelReminder.caption,
+                                                       pushNotification: batteryLevelReminder.isNotified)
                                     
                                 }
+                                .onDelete { index in
+                                    
+                                    //Source: https://stackoverflow.com/questions/70059435/how-to-handle-ondelete-for-swiftui-list-array-with-reversed
+                                    // get the item from the reversed list
+                                    let theItem = listOfBatteryLevelReminders.reversed()[index.first!]
+                                    
+                                    // get the index of the item from the original list and remove it
+                                    if let newIndex = listOfBatteryLevelReminders.firstIndex(of: theItem) {
+                                        listOfBatteryLevelReminders.remove(at: newIndex)
+                                        
+                                    }
+                                    
+                                    //save the new list
+                                    persistListOfBatteryLevelReminders()
+                                }
                                 
-                                //save the new list
-                                persistListOfBatteryLevelReminders()
                             }
                             
                         }
+                        .opacity(listOfRemindersIsEmpty ? 0.0 : 1.0)
+                        
+                        HStack {
+                            
+                            Text("You haven't added any reminders")
+                            
+                            Spacer()
+                            
+                        }
+                        .RoundedRectangelOverlay()
+                        .padding(.horizontal, 20)
+                        .opacity(listOfRemindersIsEmpty ? 1.0 : 0.0)
                     }
-                    .opacity(listOfRemindersIsEmpty ? 0.0 : 1.0)
-                    
-                    HStack {
-                        
-                        Text("You haven't added any reminders")
-                        
-                        Spacer()
-                        
-                    }
-                    .RoundedRectangelOverlay()
-                    .padding(.horizontal, 20)
-                    .opacity(listOfRemindersIsEmpty ? 1.0 : 0.0)
-                }
                     
                 }
                 

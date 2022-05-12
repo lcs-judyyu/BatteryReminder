@@ -64,7 +64,7 @@ func publishNotification(title: String,
 //return the location of the Documents directory for the app
 func getDocumentsDirectory() -> URL{
     let paths = FileManager.default.urls(for: .documentDirectory,
-                                            in: .userDomainMask)
+                                         in: .userDomainMask)
     
     //return the first path
     return paths[0]

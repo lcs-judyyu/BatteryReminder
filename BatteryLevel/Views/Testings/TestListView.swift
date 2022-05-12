@@ -34,7 +34,7 @@ struct TestListView: View {
         return Int((currentBatteryLevel * 100).rounded())
         
     }
-
+    
     
     var body: some View {
         NavigationView {
@@ -76,32 +76,32 @@ struct TestListView: View {
                     }
                     
                     
-            
+                    
                     List {
-            
-            ForEach(listOfBatteryLevelReminders.reversed(), id: \.self) { batteryLevelReminder in
-                
-                SimpleListItemView(title: "\(batteryLevelReminder.number)%",
-                                   description: batteryLevelReminder.caption,
-                                   pushNotification: batteryLevelReminder.isNotified)
-                
-                        }
-            //.onDelete(perform: delete)
-            .onDelete { index in
-                
-                // get the item from the reversed list
-                let theItem = listOfBatteryLevelReminders.reversed()[index.first!]
-                
-                // get the index of the item from the original list and remove it
-                if let newIndex = listOfBatteryLevelReminders.firstIndex(of: theItem) {
-                    listOfBatteryLevelReminders.remove(at: newIndex)
-                }
-                
-                //save the new list
-                persistListOfBatteryLevelReminders()
-            }
                         
-            }
+                        ForEach(listOfBatteryLevelReminders.reversed(), id: \.self) { batteryLevelReminder in
+                            
+                            SimpleListItemView(title: "\(batteryLevelReminder.number)%",
+                                               description: batteryLevelReminder.caption,
+                                               pushNotification: batteryLevelReminder.isNotified)
+                            
+                        }
+                        //.onDelete(perform: delete)
+                        .onDelete { index in
+                            
+                            // get the item from the reversed list
+                            let theItem = listOfBatteryLevelReminders.reversed()[index.first!]
+                            
+                            // get the index of the item from the original list and remove it
+                            if let newIndex = listOfBatteryLevelReminders.firstIndex(of: theItem) {
+                                listOfBatteryLevelReminders.remove(at: newIndex)
+                            }
+                            
+                            //save the new list
+                            persistListOfBatteryLevelReminders()
+                        }
+                        
+                    }
                     
                 }
                 .padding(.vertical, 20)

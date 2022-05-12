@@ -78,7 +78,7 @@ struct ReportView: View {
                                 lastTimeFullyCharged = Date.now
                                 print(lastTimeFullyCharged)
                             }
-                                                    
+                            
                         }
                         
                     }

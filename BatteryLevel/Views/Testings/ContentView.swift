@@ -30,7 +30,7 @@ struct ContentView: View {
                 .onBatteryLevelChanged { newLevel in
                     currentBatteryLevel = newLevel
                 }
-
+            
             Text("Battery state is:")
                 .padding(.top)
             Group {
@@ -51,7 +51,7 @@ struct ContentView: View {
             .onBatteryStateChanged { newState in
                 batteryState = newState
             }
-
+            
             Text("Device orientation is:")
                 .padding(.top)
             Group {
