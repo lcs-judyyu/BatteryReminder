@@ -86,15 +86,22 @@ struct AddBatteryLevelReminderView: View {
                                 isRepeatedOrNot = "Not Repeated"
                             }
                             
-                            //new
-                            let newId = listOfBatteryLevelReminders.count + 1
-                            
+                            //New reminder
                             let newBatteryLevelReminder = BatteryLevelReminder(number: newSelectedBatteryLevel,
                                                                                isRecurring: newReminderIsRepeated,
                                                                                caption: isRepeatedOrNot,
                                                                                isNotified: true)
-                            //add to the list of reminders
+                            
+                            //Add to the list of reminders
+                            if listOfBatteryLevelReminders.contains(newBatteryLevelReminder) {
+                                
+                                print("This reminder already existed in your reminders")
+                                
+                            } else {
+
                             listOfBatteryLevelReminders.append(newBatteryLevelReminder)
+                                
+                            }
                             
                             print(listOfBatteryLevelReminders)
                            

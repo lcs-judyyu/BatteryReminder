@@ -23,9 +23,8 @@ struct Time: Identifiable {
     
 }
 
-struct BatteryLevelReminder: Identifiable, Hashable {
-    
-    let id = UUID()
+struct BatteryLevelReminder: Decodable, Hashable, Encodable {
+
     let number: Int
     let isRecurring: Bool
     let caption: String

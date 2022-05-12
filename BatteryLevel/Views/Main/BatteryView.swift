@@ -37,13 +37,16 @@ struct BatteryView: View {
     
     var body: some View {
         
-        ScrollView {
+        //ScrollView { //deleted
+        
+        //NavigationView { //new changes
             
             ZStack {
                 
                 //Background color
                 Color("backgroundGray")
                     .edgesIgnoringSafeArea(.all)
+                
                     
                     VStack (alignment: .leading, spacing: 20) {
                         
@@ -134,14 +137,19 @@ struct BatteryView: View {
                                 
                                 VStack {
                                     
+                                    List { //new changes
+                                    
                                     ForEach(listOfBatteryLevelReminders.reversed(), id: \.self) { batteryLevelReminder in
                                         
                                         SimpleListItemView(title: "\(batteryLevelReminder.number)%",
                                                            description: batteryLevelReminder.caption,
-                                                           pushNotification: true)
+                                                           pushNotification: batteryLevelReminder.isNotified)
                                         
                                                 }
                                     .onDelete(perform: delete)
+                                    } //new changes
+                                    
+                                    TestListView(listOfBatteryLevelReminders: $listOfBatteryLevelReminders) //new changes
                                     
                                     Divider()
                                     
@@ -173,14 +181,19 @@ struct BatteryView: View {
             // Make the nav bar be "small" at top of view
             .navigationBarTitleDisplayMode(.inline)
             
-        }
+        //}
     }
     
     //a function to delete items in the list
     func delete(at offsets: IndexSet) {
+        
+        print(offsets)
         listOfBatteryLevelReminders.remove(atOffsets: offsets)
         //persistFavourites()
+        
     }
+    
+    
     
 }
 
