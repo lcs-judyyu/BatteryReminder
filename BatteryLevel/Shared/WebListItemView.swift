@@ -21,13 +21,18 @@ struct WebListItemView: View {
             
         }, label: {
                 
-            VStack(alignment: .leading, spacing: 10) {
+            VStack(alignment: .leading, spacing: 12) {
                 
                 HStack {
                     Text(currentArticle.title)
-                        .foregroundColor(Color("darkOrange"))
+                        .foregroundColor(.black)
                     
                     Spacer()
+                    
+                    Image(systemName: "chevron.right")
+                        .scaleEffect(0.7)
+                        .foregroundColor(.gray)
+                        .opacity(0.6)
                 }
                 
                 Divider()

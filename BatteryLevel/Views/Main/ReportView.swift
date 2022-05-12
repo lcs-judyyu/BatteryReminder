@@ -136,16 +136,7 @@ struct ReportView: View {
                                 // Shows list of articles, when there are some to show
                                 ForEach(articlesToShow, id: \.self) { currentArticle in
                                     
-                                    NavigationLink(destination: {
-                                        
-                                        //navigates to embedded websites
-                                        FullPageWebView(currentArticle: currentArticle)
-                                        
-                                    }, label: {
-                                            
-                                            WebListItemView(currentArticle: currentArticle)
-                                        
-                                    })
+                                    WebListItemView(currentArticle: currentArticle)
                                     
                                 }
                             }
