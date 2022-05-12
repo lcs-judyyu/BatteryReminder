@@ -28,6 +28,9 @@
 		5AF2439E282D6E0000FE779B /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF2439D282D6E0000FE779B /* WebView.swift */; };
 		5AF243A0282D6E9000FE779B /* FullPageWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF2439F282D6E9000FE779B /* FullPageWebView.swift */; };
 		5AF243A3282D7C9200FE779B /* WebListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF243A2282D7C9200FE779B /* WebListItemView.swift */; };
+		5AF243A6282DC7B700FE779B /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 5AF243A5282DC7B700FE779B /* Lottie */; };
+		5AF243A8282DC8B400FE779B /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF243A7282DC8B400FE779B /* LottieView.swift */; };
+		5AF243AA282DCA0200FE779B /* 94408-check-mark-success-done-complete-icon.json in Resources */ = {isa = PBXBuildFile; fileRef = 5AF243A9282DCA0200FE779B /* 94408-check-mark-success-done-complete-icon.json */; };
 		81C072C82827E42F004235B4 /* BatteryLevelApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C072C72827E42F004235B4 /* BatteryLevelApp.swift */; };
 		81C072CA2827E42F004235B4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C072C92827E42F004235B4 /* ContentView.swift */; };
 		81C072CC2827E431004235B4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81C072CB2827E431004235B4 /* Assets.xcassets */; };
@@ -58,6 +61,8 @@
 		5AF2439D282D6E0000FE779B /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		5AF2439F282D6E9000FE779B /* FullPageWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullPageWebView.swift; sourceTree = "<group>"; };
 		5AF243A2282D7C9200FE779B /* WebListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebListItemView.swift; sourceTree = "<group>"; };
+		5AF243A7282DC8B400FE779B /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
+		5AF243A9282DCA0200FE779B /* 94408-check-mark-success-done-complete-icon.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "94408-check-mark-success-done-complete-icon.json"; sourceTree = "<group>"; };
 		81C072C42827E42F004235B4 /* BatteryLevel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BatteryLevel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		81C072C72827E42F004235B4 /* BatteryLevelApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryLevelApp.swift; sourceTree = "<group>"; };
 		81C072C92827E42F004235B4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -72,6 +77,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5AF243A6282DC7B700FE779B /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -143,6 +149,8 @@
 			children = (
 				5AF2439B282D6DC400FE779B /* WebViewContainer.swift */,
 				5AF2439D282D6E0000FE779B /* WebView.swift */,
+				5AF243A7282DC8B400FE779B /* LottieView.swift */,
+				5AF243A9282DCA0200FE779B /* 94408-check-mark-success-done-complete-icon.json */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -224,6 +232,9 @@
 			dependencies = (
 			);
 			name = BatteryLevel;
+			packageProductDependencies = (
+				5AF243A5282DC7B700FE779B /* Lottie */,
+			);
 			productName = BatteryLevel;
 			productReference = 81C072C42827E42F004235B4 /* BatteryLevel.app */;
 			productType = "com.apple.product-type.application";
@@ -252,6 +263,9 @@
 				Base,
 			);
 			mainGroup = 81C072BB2827E42F004235B4;
+			packageReferences = (
+				5AF243A4282DC7B700FE779B /* XCRemoteSwiftPackageReference "lottie-ios" */,
+			);
 			productRefGroup = 81C072C52827E42F004235B4 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -267,6 +281,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				81C072CF2827E431004235B4 /* Preview Assets.xcassets in Resources */,
+				5AF243AA282DCA0200FE779B /* 94408-check-mark-success-done-complete-icon.json in Resources */,
 				81C072CC2827E431004235B4 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -299,6 +314,7 @@
 				81C072DB2827EA8E004235B4 /* DeviceBatteryStateViewModifier.swift in Sources */,
 				5A59C2172828800600D48815 /* ReportView.swift in Sources */,
 				5AF24390282A9F8600FE779B /* AddTimeReminderView.swift in Sources */,
+				5AF243A8282DC8B400FE779B /* LottieView.swift in Sources */,
 				5AF24397282C8A5C00FE779B /* TestListView.swift in Sources */,
 				81C072D62827E984004235B4 /* DeviceRotationViewModifier.swift in Sources */,
 				81C072C82827E42F004235B4 /* BatteryLevelApp.swift in Sources */,
@@ -503,6 +519,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5AF243A4282DC7B700FE779B /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5AF243A5282DC7B700FE779B /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5AF243A4282DC7B700FE779B /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 81C072BC2827E42F004235B4 /* Project object */;
 }

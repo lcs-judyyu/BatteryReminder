@@ -9,6 +9,7 @@
 //https://github.com/lcs-rgordon/ComposableViewsAndAnimations
 import SwiftUI
 import UIKit
+import Lottie
 
 struct CompletionMeterView: View {
     
@@ -51,6 +52,9 @@ struct CompletionMeterView: View {
             Text("\(Int(fillToValue))%")
                 .font(Font.custom("Courier-Bold", size: 45.0))
                 .animation(.default)
+            
+            //an animation
+            //LottieView(animationNamed: "94408-check-mark-success-done-complete-icon")
             
         }
     }
