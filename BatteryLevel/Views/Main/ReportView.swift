@@ -39,6 +39,9 @@ struct ReportView: View {
     //current battery state
     @State private var batteryState = UIDevice.BatteryState.unknown
     
+    // List of articles that will be loaded from the Sheety endpoint in JSON format
+    @State var articlesToShow: [Article] = []
+    
     var body: some View {
         
         ScrollView {
@@ -83,54 +86,84 @@ struct ReportView: View {
                         
                     }
                     
-                    Text("about batteries".capitalized(with: .current))
-                        .bold()
-                        .font(.title2)
+                    Group {
+                        
+                        Text("about batteries".capitalized(with: .current))
+                            .bold()
+                            .font(.title2)
+                        
+                        // Pop-up sheet is adapted from the Composable Views and Animations project by Russell Gordon
+                        //https://github.com/lcs-rgordon/ComposableViewsAndAnimations
+                        Button {
+                            
+                            showPerformanceArticle = true
+                            
+                        } label: {
+                            
+                            ArticlesCardView(imageName: "Performance",
+                                             title: "Battery and Performance",
+                                             description: "All about your battery")
+                            
+                        }
+                        .sheet(isPresented: $showPerformanceArticle) {
+                            PerformanceArticleView(showThisView: $showPerformanceArticle)
+                        }
+                        
+                        Button {
+                            
+                            showTipsArticle = true
+                            
+                        } label: {
+                            
+                            ArticlesCardView(imageName: "Tips",
+                                             title: "General Performance Tips",
+                                             description: "Improving your battery performance")
+                            
+                        }
+                        .sheet(isPresented: $showTipsArticle) {
+                            TipsArticleView(showThisView: $showTipsArticle)
+                        }
+                        
+                    }
                     
-                    // Pop-up sheet is adapted from the Composable Views and Animations project by Russell Gordon
-                    //https://github.com/lcs-rgordon/ComposableViewsAndAnimations
-                    Button {
-                        
-                        showPerformanceArticle = true
-                        
-                    } label: {
-                        
-                        ArticlesCardView(imageName: "Performance",
-                                         title: "Battery and Performance",
-                                         description: "All about your battery")
-                        
-                    }
-                    .sheet(isPresented: $showPerformanceArticle) {
-                        PerformanceArticleView(showThisView: $showPerformanceArticle)
-                    }
-                    
-                    Button {
-                        
-                        showTipsArticle = true
-                        
-                    } label: {
-                        
-                        ArticlesCardView(imageName: "Tips",
-                                         title: "General Performance Tips",
-                                         description: "Improving your battery performance")
-                        
-                    }
-                    .sheet(isPresented: $showTipsArticle) {
-                        TipsArticleView(showThisView: $showTipsArticle)
-                    }
+                    //External Articles
+                    Group {
                     
                     Text("External Articles")
                         .bold()
                         .font(.title2)
                     
-                    HStack {
+                    ZStack {
                         
-                        Text("a list item that navigates to an embedded website")
+                        // Shows list of articles, when there are some to show
+                        ForEach(articlesToShow, id: \.self) { currentArticle in
+                            
+                            NavigationLink(destination: {
+                                
+                                //navigates to embedded websites
+                                
+                            }, label: {
+                                
+                                Text(currentArticle.title)
+                                    .font(.headline)
+                                
+                            })
+                            
+                        }
                         
-                        Spacer()
+                        // Show a message when there are no results yet
+                        HStack {
+                            
+                            Text("Loading...")
+                            
+                            Spacer()
+                        }
+                        .RoundedRectangelOverlay()
+                        .opacity(articlesToShow.isEmpty ? 1.0 : 0.0)
+
+                    }
                         
                     }
-                    .RoundedRectangelOverlay()
                     
                 }
                 .padding(20)
@@ -161,13 +194,52 @@ struct ReportView: View {
     }
     
     // MARK: Functions
-    
+    func fetchResults() async {
+        
+        // Set the address of the JSON endpoint
+        let url = URL(string: Articles.endpoint)!
+        
+        // Configure a URLRequest instance
+        // Defines what type of request will be sent to the address noted above
+        var request = URLRequest(url: url)
+        request.setValue("application/json",
+                         forHTTPHeaderField: "Accept")
+        request.httpMethod = "GET"  // Getting data from the web server...
+        
+        // Start a URL session to interact with the endpoint
+        let urlSession = URLSession.shared
+        
+        // Fetch the results of this search
+        do {
+            // Get the raw data from the endpoint
+            let (data, _) = try await urlSession.data(for: request)
+            
+            // DEBUG: See what raw JSON data was returned from the server
+            print(String(data: data, encoding: .utf8)!)
+            
+            // Attempt to decode and return the object all the rows of the spreadsheet
+            // NOTE: We decode to Announcements.self since the endpoint
+            //       returns a single JSON object
+            let decodedArticles = try JSONDecoder().decode(Articles.self, from: data)
+            
+            // Now, we access the rows of the spreadsheet
+            articlesToShow = decodedArticles.list
+            
+        } catch {
+            
+            // Report about what happened
+            print("Could not retrieve / decode JSON from endpoint.")
+            print(error)
+            
+        }
+        
+    }
 }
 
 struct ReportView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            ReportView()
+            ReportView(articlesToShow: testArticles)
         }
     }
 }
