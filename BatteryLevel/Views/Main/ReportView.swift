@@ -139,14 +139,15 @@ struct ReportView: View {
                         ForEach(articlesToShow, id: \.self) { currentArticle in
                             
                             NavigationLink(destination: {
-                                
+
                                 //navigates to embedded websites
-                                
+                                FullPageWebView(currentArticle: currentArticle)
+
                             }, label: {
-                                
+
                                 Text(currentArticle.title)
                                     .font(.headline)
-                                
+
                             })
                             
                         }
