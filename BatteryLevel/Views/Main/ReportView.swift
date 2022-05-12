@@ -125,41 +125,45 @@ struct ReportView: View {
                     
                     //External Articles
                     Group {
-                    
-                    Text("External Articles")
-                        .bold()
-                        .font(.title2)
-                    
-                    ZStack {
                         
-                        // Shows list of articles, when there are some to show
-                        ForEach(articlesToShow, id: \.self) { currentArticle in
+                        Text("External Articles")
+                            .bold()
+                            .font(.title2)
+                        
+                        ZStack {
                             
-                            NavigationLink(destination: {
-
-                                //navigates to embedded websites
-                                FullPageWebView(currentArticle: currentArticle)
-
-                            }, label: {
-
-                                Text(currentArticle.title)
-                                    .font(.headline)
-
-                            })
+                            // Shows list of articles, when there are some to show
+                            ForEach(articlesToShow, id: \.self) { currentArticle in
+                                
+                                NavigationLink(destination: {
+                                    
+                                    //navigates to embedded websites
+                                    FullPageWebView(currentArticle: currentArticle)
+                                    
+                                }, label: {
+                                    
+                                    VStack(alignment: .leading) {
+                                        
+                                        Text(currentArticle.title)
+                                            .font(.headline)
+                                        
+                                    }
+                                    
+                                })
+                                
+                            }
+                            
+                            // Show a message when there are no results yet
+                            HStack {
+                                
+                                Text("Loading...")
+                                
+                                Spacer()
+                            }
+                            .RoundedRectangelOverlay()
+                            .opacity(articlesToShow.isEmpty ? 1.0 : 0.0)
                             
                         }
-                        
-                        // Show a message when there are no results yet
-                        HStack {
-                            
-                            Text("Loading...")
-                            
-                            Spacer()
-                        }
-                        .RoundedRectangelOverlay()
-                        .opacity(articlesToShow.isEmpty ? 1.0 : 0.0)
-
-                    }
                         
                     }
                     
@@ -188,6 +192,9 @@ struct ReportView: View {
         .task {
             //load the time
             print(lastTimeFullyCharged)
+            
+            //load the list of external articles
+            await fetchResults()
         }
     }
     
