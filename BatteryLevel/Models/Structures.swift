@@ -31,7 +31,7 @@ struct Articles: Codable {
     
     // Will eventually be populated with data matching all the rows of the spreadsheet
     // Begins as an empty list
-    var list: [Article] = []
+    var sheet1: [Article] = []
     
     // Defines the endpoint for reading/writing spreadsheet data
     static let endpoint = "https://api.sheety.co/5cca2c9d2b851afd1532a526e511ea69/batteryArticles/sheet1"

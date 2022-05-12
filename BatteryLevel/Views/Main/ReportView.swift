@@ -194,6 +194,8 @@ struct ReportView: View {
     }
     
     // MARK: Functions
+    //Source: Concept Review project by Russell Gordon
+    //https://github.com/lcs-rgordon/ConceptReview/tree/main
     func fetchResults() async {
         
         // Set the address of the JSON endpoint
@@ -218,12 +220,13 @@ struct ReportView: View {
             print(String(data: data, encoding: .utf8)!)
             
             // Attempt to decode and return the object all the rows of the spreadsheet
-            // NOTE: We decode to Announcements.self since the endpoint
-            //       returns a single JSON object
+            // NOTE: We decode to Articles.self since the endpoint returns a single JSON object
             let decodedArticles = try JSONDecoder().decode(Articles.self, from: data)
             
             // Now, we access the rows of the spreadsheet
-            articlesToShow = decodedArticles.list
+            articlesToShow = decodedArticles.sheet1
+            
+            print(articlesToShow)
             
         } catch {
             
