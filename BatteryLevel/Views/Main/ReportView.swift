@@ -220,8 +220,6 @@ struct ReportView: View {
             // Now, we access the rows of the spreadsheet
             articlesToShow = decodedArticles.sheet1
             
-            print(articlesToShow)
-            
         } catch {
             
             // Report about what happened
