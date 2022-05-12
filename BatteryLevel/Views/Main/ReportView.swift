@@ -62,11 +62,8 @@ struct ReportView: View {
                         
                         HStack {
                             
-                            //time first
-                            Text(lastTimeFullyCharged.formatted(date: .omitted, time: .standard))
-                            
-                            //then date
-                            Text(lastTimeFullyCharged.formatted(date: .abbreviated, time: .omitted))
+                            //display the date and time
+                            Text(lastTimeFullyCharged.formatted(date: .abbreviated, time: .standard))
                             
                             Spacer()
                             
