@@ -31,7 +31,7 @@ struct CompletionMeterView: View {
                 // Traces, or makes a trim, for the outline of a shape
                 .trim(from: 0, to: completionAmount)
                 .stroke(Color("seaGreen"), lineWidth: 26)
-                .frame(width: 250, height: 250)
+                .frame(width: 230, height: 230)
                 .rotationEffect(.degrees(-90))
                 // When the timer fires, the code in this block will run.
                 .onReceive(timer) { _ in
@@ -49,7 +49,7 @@ struct CompletionMeterView: View {
                 }
             
             Text("\(Int(fillToValue))%")
-                .font(Font.custom("Courier-Bold", size: 50.0))
+                .font(Font.custom("Courier-Bold", size: 45.0))
                 .animation(.default)
 
         }

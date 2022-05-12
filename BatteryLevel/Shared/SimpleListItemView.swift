@@ -19,7 +19,7 @@ struct SimpleListItemView: View {
     
     var body: some View {
         
-        VStack(alignment: .leading, spacing: 5) {
+        VStack(alignment: .leading, spacing: 3) {
             
             Toggle(title, isOn: $pushNotification)
                 .font(.title)

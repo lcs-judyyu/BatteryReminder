@@ -35,11 +35,20 @@ struct BatteryView: View {
         
     }
     
+    var listOfRemindersIsEmpty: Bool {
+        
+        if listOfBatteryLevelReminders.isEmpty {
+            
+            return true
+            
+        } else {
+            
+            return false
+        }
+        
+    }
+    
     var body: some View {
-        
-        ///ScrollView { //deleted
-        
-        ///NavigationView { //new changes
         
         ZStack {
             
@@ -87,7 +96,7 @@ struct BatteryView: View {
                             .bold()
                             .font(.title2)
                         
-                        VStack (alignment: .leading, spacing: 10) {
+                        VStack (alignment: .leading, spacing: 20) {
                             
                             // Pop-up sheet is adapted from the Composable Views and Animations project by Russell Gordon
                             //https://github.com/lcs-rgordon/ComposableViewsAndAnimations
@@ -97,8 +106,14 @@ struct BatteryView: View {
                                 
                             } label: {
                                 
-                                Label("Notify by battery level", systemImage: "plus.circle")
-                                    .foregroundColor(Color("teal"))
+                                HStack {
+                                    
+                                    Label("Notify by battery level", systemImage: "plus.circle")
+                                        .foregroundColor(Color("teal"))
+                                    
+                                    Spacer()
+                                    
+                                }
                                 
                             }
                             .sheet(isPresented: $showAddBatteryLevelReminder) {
@@ -107,74 +122,76 @@ struct BatteryView: View {
                                                             listOfBatteryLevelReminders: $listOfBatteryLevelReminders)
                             }
                             
-                            Divider()
-                            
-                            Button {
-                                
-                                showAddTimeReminder = true
-                                
-                            } label: {
-                                
-                                Label("Notify by time", systemImage: "plus.circle")
-                                    .foregroundColor(Color("teal"))
-                                
-                            }
-                            .sheet(isPresented: $showAddTimeReminder) {
-                                AddTimeReminderView(showThisView: $showAddTimeReminder)
-                            }
-                            
                         }
                         .RoundedRectangelOverlay()
                         
                     }
                     
                     //your reminders
-                    Group {
-                        
-                        Text("Your Reminders")
-                            .bold()
-                            .font(.title2)
-                        
-                        VStack {
-                            
-                            List { ///new changes
-                                
-                                ForEach(listOfBatteryLevelReminders.reversed(), id: \.self) { batteryLevelReminder in
-                                    
-                                    SimpleListItemView(title: "\(batteryLevelReminder.number)%",
-                                                       description: batteryLevelReminder.caption,
-                                                       pushNotification: batteryLevelReminder.isNotified)
-                                    
-                                }
-                                .onDelete { index in
-                                    
-                                    // get the item from the reversed list
-                                    let theItem = listOfBatteryLevelReminders.reversed()[index.first!]
-                                    
-                                    // get the index of the item from the original list and remove it
-                                    if let newIndex = listOfBatteryLevelReminders.firstIndex(of: theItem) {
-                                        listOfBatteryLevelReminders.remove(at: newIndex)
-                                    }
-                                    
-                                    //save the new list
-                                    persistListOfBatteryLevelReminders()
-                                }
-                                
-                            } ///new changes
-                            
-                            TestListView(listOfBatteryLevelReminders: $listOfBatteryLevelReminders) //new changes
-                            
-                            Divider()
-                            
-                            SimpleListItemView(title: "22:30", description: "Weekdays", pushNotification: false)
-                            
-                        }
-                        .RoundedRectangelOverlay()
-                        
-                    }
+//                    Group {
+//
+//                        Text("Your Reminders")
+//                            .bold()
+//                            .font(.title2)
+//
+//                    }
                     
                 }
                 .padding(.horizontal, 20)
+                
+                //your reminders
+                Group {
+                    
+                    Text("Your Reminders")
+                        .bold()
+                        .font(.title2)
+                        .padding(.horizontal, 20)
+                    
+                    ZStack (alignment: .top) {
+                    
+                    Group {
+                        List { ///new changes
+                            
+                            ForEach(listOfBatteryLevelReminders.reversed(), id: \.self) { batteryLevelReminder in
+                                
+                                SimpleListItemView(title: "\(batteryLevelReminder.number)%",
+                                                   description: batteryLevelReminder.caption,
+                                                   pushNotification: batteryLevelReminder.isNotified)
+                                
+                            }
+                            .onDelete { index in
+                                
+                                //Source: https://stackoverflow.com/questions/70059435/how-to-handle-ondelete-for-swiftui-list-array-with-reversed
+                                // get the item from the reversed list
+                                let theItem = listOfBatteryLevelReminders.reversed()[index.first!]
+                                
+                                // get the index of the item from the original list and remove it
+                                if let newIndex = listOfBatteryLevelReminders.firstIndex(of: theItem) {
+                                    listOfBatteryLevelReminders.remove(at: newIndex)
+                                    
+                                }
+                                
+                                //save the new list
+                                persistListOfBatteryLevelReminders()
+                            }
+                            
+                        }
+                    }
+                    .opacity(listOfRemindersIsEmpty ? 0.0 : 1.0)
+                    
+                    HStack {
+                        
+                        Text("You haven't added any reminders")
+                        
+                        Spacer()
+                        
+                    }
+                    .RoundedRectangelOverlay()
+                    .padding(.horizontal, 20)
+                    .opacity(listOfRemindersIsEmpty ? 1.0 : 0.0)
+                }
+                    
+                }
                 
             }
             .padding(.vertical, 20)
@@ -209,7 +226,6 @@ struct BatteryView: View {
         // Make the nav bar be "small" at top of view
         .navigationBarTitleDisplayMode(.inline)
         
-        ///} //new changes
     }
     
     //function for saving the list of battery level reminders permanently

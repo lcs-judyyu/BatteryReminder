@@ -38,14 +38,6 @@ struct BatteryLevelApp: App {
                     Text("Report")
                 }
                 
-                NavigationView {
-                    TestListView(listOfBatteryLevelReminders: $listOfBatteryLevelReminders)
-                }
-                .tabItem {
-                    Image(systemName: "chart.bar.xaxis")
-                    Text("Test")
-                }
-                
             }
             .accentColor(Color("seaGreen"))
             

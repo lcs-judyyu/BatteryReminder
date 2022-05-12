@@ -116,13 +116,13 @@
 			path = Subviews;
 			sourceTree = "<group>";
 		};
-		5AF24393282AAB2900FE779B /* Examples */ = {
+		5AF24393282AAB2900FE779B /* Testings */ = {
 			isa = PBXGroup;
 			children = (
 				81C072C92827E42F004235B4 /* ContentView.swift */,
 				5AF24396282C8A5C00FE779B /* TestListView.swift */,
 			);
-			path = Examples;
+			path = Testings;
 			sourceTree = "<group>";
 		};
 		81C072BB2827E42F004235B4 = {
@@ -179,7 +179,7 @@
 		81C072D82827E991004235B4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				5AF24393282AAB2900FE779B /* Examples */,
+				5AF24393282AAB2900FE779B /* Testings */,
 				5AF24391282AAADC00FE779B /* Main */,
 				5AF24392282AAAE700FE779B /* Subviews */,
 			);
