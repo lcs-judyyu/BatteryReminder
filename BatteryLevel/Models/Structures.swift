@@ -15,14 +15,6 @@ struct Article: Identifiable {
     
 }
 
-struct Time: Identifiable {
-    
-    let id = UUID()
-    let time: String
-    let date: String
-    
-}
-
 struct BatteryLevelReminder: Decodable, Hashable, Encodable {
 
     let number: Int

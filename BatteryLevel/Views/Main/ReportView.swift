@@ -32,7 +32,7 @@ struct ReportView: View {
     @State private var showTipsArticle = false
     
     //Store last time fully charged
-    @AppStorage("timeHistory") var lastTimeFullyCharged: Date = Date()
+    @AppStorage("lastTimeFullyCharged") var lastTimeFullyCharged: Date = Date()
     
     //var timeHistory = "--"
     
@@ -62,7 +62,7 @@ struct ReportView: View {
                             //time first
                             Text(lastTimeFullyCharged.formatted(date: .omitted, time: .standard))
                             
-                            //date
+                            //then date
                             Text(lastTimeFullyCharged.formatted(date: .abbreviated, time: .omitted))
                             
                             Spacer()

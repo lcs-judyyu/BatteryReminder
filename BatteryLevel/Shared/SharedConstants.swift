@@ -13,6 +13,4 @@ import Foundation
 let myNotificationsIdentifier = "ca.on.lcs.BatteryLevel"
 
 //define filename that we will write data to in the directory
-let savedTimeHistoryLabel = "savedTimeHistorys"
-
 let savedBatteryLevelRemindersLabel = "savedBatteryLevelReminders"

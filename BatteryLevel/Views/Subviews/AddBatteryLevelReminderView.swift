@@ -93,7 +93,7 @@ struct AddBatteryLevelReminderView: View {
                                                                                isNotified: true)
                             
                             let hadSameReminder = listOfBatteryLevelReminders.contains { existedReminder in
-                                if case newBatteryLevelReminder = existedReminder {
+                                if newBatteryLevelReminder == existedReminder {
                                     
                                     //Source: https://www.codingem.com/swift-how-to-get-index-of-item-in-array/
                                     //get the index of the existed reminder
