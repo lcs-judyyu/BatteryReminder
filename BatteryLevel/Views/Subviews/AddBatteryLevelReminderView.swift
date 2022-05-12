@@ -92,6 +92,17 @@ struct AddBatteryLevelReminderView: View {
                                                                                caption: isRepeatedOrNot,
                                                                                isNotified: true)
                             
+                            let hadSameReminder = listOfBatteryLevelReminders.contains { addedReminder in
+                                if case newBatteryLevelReminder = addedReminder {
+                                    
+                                    //addedReminder.isNotified = true
+                                    return true
+                                    
+                                } else {
+                                    return false
+                                }
+                            }
+                            
                             //Add to the list of reminders
                             if listOfBatteryLevelReminders.contains(newBatteryLevelReminder) {
                                 

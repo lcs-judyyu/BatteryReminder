@@ -7,6 +7,20 @@
 
 import SwiftUI
 
+//Adapted from : https://swiftwombat.com/how-to-store-a-date-using-appstorage-in-swiftui/
+//format a date to String and map it back
+extension Date: RawRepresentable {
+    private static let formatter = ISO8601DateFormatter()
+    
+    public var rawValue: String {
+        Date.formatter.string(from: self)
+    }
+    
+    public init?(rawValue: String) {
+        self = Date.formatter.date(from: rawValue) ?? Date()
+    }
+}
+
 struct ReportView: View {
     
     // MARK: Stored properties
@@ -18,12 +32,9 @@ struct ReportView: View {
     @State private var showTipsArticle = false
     
     //Store last time fully charged
-    @State private var lastTimeFullyCharged = Date()
+    @AppStorage("timeHistory") var lastTimeFullyCharged: Date = Date()
     
-    var timeHistory = "--"
-    
-    // keep track of the time history
-    @State var history: [Time] = []   // empty list to start
+    //var timeHistory = "--"
     
     //current battery state
     @State private var batteryState = UIDevice.BatteryState.unknown
@@ -65,6 +76,7 @@ struct ReportView: View {
                             
                             if batteryState == .full {
                                 lastTimeFullyCharged = Date.now
+                                print(lastTimeFullyCharged)
                             }
                                                     
                         }
@@ -138,13 +150,14 @@ struct ReportView: View {
             } else {
                 print("Background")
                 
-                //permanently save the time
-                
+                //save the time
+                //lastTimeFullyCharged = Date()
+                print(lastTimeFullyCharged)
             }
         }
         .task {
             //load the time
-            
+            print(lastTimeFullyCharged)
         }
     }
     
