@@ -59,9 +59,51 @@ struct BatteryView: View {
                         //a completion meter for current battery state
                         CompletionMeterView(fillToValue: CGFloat(roundedCurrentBatteryLevel))
                             .padding(.vertical, 15)
+                            .onBatteryStateChanged { newState in
+                                
+                                batteryState = newState
+                                
+                                print(batteryState)
+                                
+                            }
                             .onBatteryLevelChanged { newLevel in
+                                
                                 currentBatteryLevel = newLevel
                                 print("Current battery level is \(currentBatteryLevel), rounded to \(roundedCurrentBatteryLevel)")
+                                
+                                //only send reminder if battery state is unknown or unplugged
+                                if batteryState == .unknown || batteryState == .unplugged {
+                                    
+                                    //loop over the list of battery level reminders
+                                    for batteryReminder in listOfBatteryLevelReminders {
+                                        
+                                        print(batteryReminder.number)
+                                        
+                                        if batteryReminder.number == roundedCurrentBatteryLevel {
+                                            
+                                            //push notification
+                                            publishNotification(title: "Reminder:",
+                                                                subtitle: "You batery level is \(batteryReminder.number)%",
+                                                                body: "Consider charging your phone 😉",
+                                                                timeUntil: 1,
+                                                                identifier: myNotificationsIdentifier)
+                                            
+                                            print(batteryReminder.isRecurring)
+                                            
+                                            //check if the reminder is not repeated
+                                            if batteryReminder.isRecurring == false {
+                                                
+                                                //batteryReminder.isNotified = false
+                                                
+                                            }
+                                            
+                                            print(batteryReminder.isNotified)
+                                            
+                                        }
+                                    }
+                                    
+                                }
+                                
                             }
                         
                         Spacer()
