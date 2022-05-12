@@ -168,7 +168,6 @@
 			children = (
 				81C072C72827E42F004235B4 /* BatteryLevelApp.swift */,
 				5AB1280D2829CA5900778729 /* Delegates */,
-				81C072D92827E9C8004235B4 /* Extensions */,
 				5A59C21328286A4D00D48815 /* Models */,
 				5A59C21E282886FF00D48815 /* Shared */,
 				81C072D82827E991004235B4 /* Views */,
@@ -207,13 +206,6 @@
 				5AF24392282AAAE700FE779B /* Subviews */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		81C072D92827E9C8004235B4 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -35,19 +35,6 @@ struct BatteryView: View {
         
     }
     
-    var listOfRemindersIsEmpty: Bool {
-        
-        if listOfBatteryLevelReminders.isEmpty {
-            
-            return true
-            
-        } else {
-            
-            return false
-        }
-        
-    }
-    
     var body: some View {
         
         ZStack {
@@ -170,7 +157,7 @@ struct BatteryView: View {
                             }
                             
                         }
-                        .opacity(listOfRemindersIsEmpty ? 0.0 : 1.0)
+                        .opacity(listOfBatteryLevelReminders.isEmpty ? 0.0 : 1.0)
                         
                         HStack {
                             
@@ -181,7 +168,7 @@ struct BatteryView: View {
                         }
                         .RoundedRectangelOverlay()
                         .padding(.horizontal, 20)
-                        .opacity(listOfRemindersIsEmpty ? 1.0 : 0.0)
+                        .opacity(listOfBatteryLevelReminders.isEmpty ? 1.0 : 0.0)
                     }
                     
                 }
