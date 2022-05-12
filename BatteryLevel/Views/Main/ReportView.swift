@@ -151,7 +151,6 @@ struct ReportView: View {
                 print("Background")
                 
                 //save the time
-                //lastTimeFullyCharged = Date()
                 print(lastTimeFullyCharged)
             }
         }
@@ -162,7 +161,6 @@ struct ReportView: View {
     }
     
     // MARK: Functions
-    //save data permanently
     
 }
 

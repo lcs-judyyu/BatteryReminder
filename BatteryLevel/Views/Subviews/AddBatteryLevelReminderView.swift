@@ -113,7 +113,7 @@ struct AddBatteryLevelReminderView: View {
                             //Add to the list of reminders
                             if hadSameReminder == true {
                                 
-                                print("This reminder already existed in your reminders so the added reminder is deleted")
+                                print("This reminder already existed. The existed reminder is deleted and new reminder is added.")
                                 
                                 listOfBatteryLevelReminders.append(newBatteryLevelReminder)
                                 
