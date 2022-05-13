@@ -34,7 +34,7 @@ struct ReportView: View {
     //Store last time fully charged
     @AppStorage("lastTimeFullyCharged") var lastTimeFullyCharged: Date = Date()
     
-    //var timeHistory = "--"
+    @State var timeHistory = "--"
     
     //current battery state
     @State private var batteryState = UIDevice.BatteryState.unknown
@@ -63,7 +63,7 @@ struct ReportView: View {
                         HStack {
                             
                             //display the date and time
-                            Text(lastTimeFullyCharged.formatted(date: .abbreviated, time: .standard))
+                            Text(timeHistory)
                             
                             Spacer()
                             
@@ -77,6 +77,8 @@ struct ReportView: View {
                             if batteryState == .full {
                                 lastTimeFullyCharged = Date.now
                                 print(lastTimeFullyCharged)
+                                
+                                timeHistory = lastTimeFullyCharged.formatted(date: .abbreviated, time: .standard)
                             }
                             
                         }

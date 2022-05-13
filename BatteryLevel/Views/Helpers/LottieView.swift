@@ -22,7 +22,7 @@ struct LottieView: UIViewRepresentable {
         let animationView = AnimationView()
         let animation = Animation.named(animationNamed)
         animationView.animation = animation
-        animationView.contentMode = .scaleAspectFit
+        animationView.contentMode = .scaleAspectFill
         animationView.loopMode = .playOnce
         animationView.play()
         
@@ -47,7 +47,7 @@ struct LottieView: UIViewRepresentable {
     
     struct LottieView_Previews: PreviewProvider {
         static var previews: some View {
-            LottieView(animationNamed: "782-check-mark-success")
+            LottieView(animationNamed: "94408-check-mark-success-done-complete-icon")
         }
     }
 }
