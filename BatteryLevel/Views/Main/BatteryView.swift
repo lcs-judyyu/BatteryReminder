@@ -93,7 +93,11 @@ struct BatteryView: View {
                                             //check if the reminder is not repeated
                                             if batteryReminder.isRecurring == false {
                                                 
-                                                //batteryReminder.isNotified = false
+                                                //get the index of the battery reminder
+                                                let indexOfBatteryReminder = listOfBatteryLevelReminders.firstIndex(of: batteryReminder)
+                                                
+                                                //remove the not repeated reminder
+                                                listOfBatteryLevelReminders.remove(at: indexOfBatteryReminder ?? 0)
                                                 
                                             }
                                             
@@ -177,7 +181,7 @@ struct BatteryView: View {
                                     
                                     SimpleListItemView(title: "\(batteryLevelReminder.number)%",
                                                        description: batteryLevelReminder.caption,
-                                                       pushNotification: batteryLevelReminder.isNotified)
+                                                       pushNotification: batteryLevelReminder.isRecurring)
                                     
                                 }
                                 .onDelete { index in
