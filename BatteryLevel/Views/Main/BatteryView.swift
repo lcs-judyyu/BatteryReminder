@@ -2,8 +2,6 @@
 //  BatteryView.swift
 //  BatteryLevel
 //
-//  Created by Judy Yu on 2022-05-08.
-//
 
 import SwiftUI
 
@@ -131,8 +129,6 @@ struct BatteryView: View {
                         
                         VStack (alignment: .leading, spacing: 20) {
                             
-                            // Pop-up sheet is adapted from the Composable Views and Animations project by Russell Gordon
-                            //https://github.com/lcs-rgordon/ComposableViewsAndAnimations
                             Button {
                                 
                                 showAddBatteryLevelReminder = true
@@ -186,7 +182,6 @@ struct BatteryView: View {
                                 }
                                 .onDelete { index in
                                     
-                                    //Source: https://stackoverflow.com/questions/70059435/how-to-handle-ondelete-for-swiftui-list-array-with-reversed
                                     // get the item from the reversed list
                                     let theItem = listOfBatteryLevelReminders.reversed()[index.first!]
                                     

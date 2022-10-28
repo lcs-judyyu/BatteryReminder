@@ -2,8 +2,6 @@
 //  AddTimeReminderView.swift
 //  BatteryLevel
 //
-//  Created by Judy Yu on 2022-05-10.
-//
 
 import SwiftUI
 

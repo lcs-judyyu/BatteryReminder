@@ -2,8 +2,6 @@
 //  AppDelegate.swift
 //  BatteryLevel
 //
-//  Created by Judy Yu on 2022-05-09.
-//
 
 //Adapted from the Local Notifications Example project by Russell Gordon
 import Foundation

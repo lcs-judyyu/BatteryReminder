@@ -2,11 +2,7 @@
 //  SimpleListItemView.swift
 //  BatteryLevel
 //
-//  Created by Judy Yu on 2022-05-09.
-//
 
-//Source: the Composable Views and Animations project by Russell Gordon
-//https://github.com/lcs-rgordon/ComposableViewsAndAnimations
 import SwiftUI
 
 struct SimpleListItemView: View {

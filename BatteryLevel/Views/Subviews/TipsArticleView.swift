@@ -2,12 +2,8 @@
 //  TipsArticleView.swift
 //  BatteryLevel
 //
-//  Created by Judy Yu on 2022-05-08.
-//
 
 import SwiftUI
-
-//Source: https://www.apple.com/ca/batteries/maximizing-performance/
 
 struct TipsArticleView: View {
     

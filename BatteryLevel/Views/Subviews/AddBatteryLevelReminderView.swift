@@ -2,8 +2,6 @@
 //  AddBatteryLevelReminderView.swift
 //  BatteryLevel
 //
-//  Created by Judy Yu on 2022-05-10.
-//
 
 import SwiftUI
 
@@ -95,7 +93,6 @@ struct AddBatteryLevelReminderView: View {
                             let hadSameReminder = listOfBatteryLevelReminders.contains { existedReminder in
                                 if newBatteryLevelReminder == existedReminder {
                                     
-                                    //Source: https://www.codingem.com/swift-how-to-get-index-of-item-in-array/
                                     //get the index of the existed reminder
                                     let existedReminderIndex = listOfBatteryLevelReminders.firstIndex(where: {$0 == existedReminder})
                                     print(existedReminderIndex ?? 0)
@@ -143,8 +140,6 @@ struct AddBatteryLevelReminderView: View {
                 }
                 .task {
                     
-                    // Adapted from:
-                    // https://www.hackingwithswift.com/example-code/uikit/how-to-read-the-battery-level-of-an-iphone-or-ipad
                     // Required to enable battery information monitoring
                     UIDevice.current.isBatteryMonitoringEnabled = true
                     

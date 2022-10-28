@@ -2,11 +2,7 @@
 //  WebView.swift
 //  BatteryLevel
 //
-//  Created by Judy Yu on 2022-05-12.
-//
 
-//Adapted from Culminating Task Code Snippets Project by Russell Gordon
-//https://github.com/lcs-judyyu/CulminatingTaskCodeSnippets/tree/main
 import SwiftUI
 
 struct WebView: View {

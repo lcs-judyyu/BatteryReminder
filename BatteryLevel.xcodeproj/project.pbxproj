@@ -125,13 +125,6 @@
 			path = Subviews;
 			sourceTree = "<group>";
 		};
-		5AF24393282AAB2900FE779B /* Testings */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Testings;
-			sourceTree = "<group>";
-		};
 		5AF2439A282D6D9C00FE779B /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -194,7 +187,6 @@
 			isa = PBXGroup;
 			children = (
 				5AF2439A282D6D9C00FE779B /* Helpers */,
-				5AF24393282AAB2900FE779B /* Testings */,
 				5AF24391282AAADC00FE779B /* Main */,
 				5AF24392282AAAE700FE779B /* Subviews */,
 			);

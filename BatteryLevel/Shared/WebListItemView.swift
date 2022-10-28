@@ -2,8 +2,6 @@
 //  WebListItemView.swift
 //  BatteryLevel
 //
-//  Created by Judy Yu on 2022-05-12.
-//
 
 import SwiftUI
 

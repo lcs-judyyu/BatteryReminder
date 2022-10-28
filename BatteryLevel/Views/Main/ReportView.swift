@@ -2,12 +2,9 @@
 //  ReportView.swift
 //  BatteryLevel
 //
-//  Created by Judy Yu on 2022-05-08.
-//
 
 import SwiftUI
 
-//Adapted from : https://swiftwombat.com/how-to-store-a-date-using-appstorage-in-swiftui/
 //format a date to String and map it back
 extension Date: RawRepresentable {
     private static let formatter = ISO8601DateFormatter()
