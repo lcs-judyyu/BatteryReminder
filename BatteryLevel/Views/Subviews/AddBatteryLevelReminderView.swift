@@ -114,15 +114,9 @@ struct AddBatteryLevelReminderView: View {
                                 
                                 listOfBatteryLevelReminders.append(newBatteryLevelReminder)
                                 
-                                // Save the new list
-                                persistListOfBatteryLevelReminders()
-                                
                             } else {
                                 
                                 listOfBatteryLevelReminders.append(newBatteryLevelReminder)
-                                
-                                // Save the new list
-                                persistListOfBatteryLevelReminders()
                                 
                             }
                             
@@ -159,36 +153,6 @@ struct AddBatteryLevelReminderView: View {
         showThisView = false
     }
     
-    //function for saving the list of battery level reminders permanently
-    func persistListOfBatteryLevelReminders() {
-        //get a location to save data
-        let filename = getDocumentsDirectory().appendingPathComponent(savedBatteryLevelRemindersLabel)
-        print(filename)
-        
-        //try to encodr data to JSON
-        do {
-            let encoder = JSONEncoder()
-            
-            //configure the encoder to "pretty print" the JSON
-            encoder.outputFormatting = .prettyPrinted
-            
-            //Encode the list of favourites
-            let data = try encoder.encode(listOfBatteryLevelReminders)
-            
-            //write JSON to a file in the filename location
-            try data.write(to: filename, options: [.atomicWrite, .completeFileProtection])
-            
-            //see the data
-            print("Save data to the document directory successfully.")
-            print("=========")
-            print(String(data: data, encoding: .utf8)!)
-            
-        } catch {
-            print("Unable to write list of favourites to the document directory")
-            print("=========")
-            print(error.localizedDescription)
-        }
-    }
 }
 
 struct AddBatteryLevelReminderView_Previews: PreviewProvider {
