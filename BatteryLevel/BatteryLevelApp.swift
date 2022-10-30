@@ -31,8 +31,8 @@ struct BatteryLevelApp: App {
                     ReportView()
                 }
                 .tabItem {
-                    Image(systemName: "chart.bar.xaxis")
-                    Text("Report")
+                    Image(systemName: "info.bubble")
+                    Text("More Info")
                 }
                 
             }

@@ -8,8 +8,6 @@ import SwiftUI
 struct BatteryView: View {
     
     // MARK: Stored properties
-    // Detect when app moves between foreground, background, and inactive atates
-    @Environment(\.scenePhase) var scenePhase
     
     // Will be populated with battery charge level information
     @State private var currentBatteryLevel: Float = 0.0
@@ -222,15 +220,6 @@ struct BatteryView: View {
                 // Show the device's current battery level once (when app opens)
                 currentBatteryLevel = UIDevice.current.batteryLevel
                 
-            }
-            .onChange(of: scenePhase) { newPhase in
-                if newPhase == .inactive {
-                    print("Inactive")
-                } else if newPhase == .active{
-                    print("Active")
-                } else {
-                    print("Background")
-                }
             }
             
         }

@@ -21,17 +21,10 @@ extension Date: RawRepresentable {
 struct ReportView: View {
     
     // MARK: Stored properties
-    //Detect when app moves between foreground, background, and inactive atates
-    @Environment(\.scenePhase) var scenePhase
     
     // Controls what article is showing in the pop-up sheet
     @State private var showPerformanceArticle = false
     @State private var showTipsArticle = false
-    
-    //Store last time fully charged
-    @AppStorage("lastTimeFullyCharged") var lastTimeFullyCharged: Date = Date()
-    
-    @State var timeHistory = "--"
     
     //current battery state
     @State private var batteryState = UIDevice.BatteryState.unknown
@@ -50,37 +43,6 @@ struct ReportView: View {
                     .edgesIgnoringSafeArea(.all)
                 
                 VStack (alignment: .leading, spacing: 20){
-                    
-                    Group {
-                        
-                        Text("Last time charged to 100%:")
-                            .bold()
-                            .font(.title2)
-                        
-                        HStack {
-                            
-                            //display the date and time
-                            Text(timeHistory)
-                            
-                            Spacer()
-                            
-                        }
-                        .font(.title3)
-                        .RoundedRectangelOverlay()
-                        .onBatteryStateChanged { newState in
-                            batteryState = newState
-                            print("Battery state is \(batteryState)")
-                            
-                            if batteryState == .full {
-                                lastTimeFullyCharged = Date.now
-                                print(lastTimeFullyCharged)
-                                
-                                timeHistory = lastTimeFullyCharged.formatted(date: .abbreviated, time: .standard)
-                            }
-                            
-                        }
-                        
-                    }
                     
                     Group {
                         
@@ -162,33 +124,18 @@ struct ReportView: View {
             
             
         }
-        .navigationTitle("Report")
-        // Make the nav bar be "small" at top of view
+        .navigationTitle("More Information")
+        // Make the nav bar be inlined at top of view
         .navigationBarTitleDisplayMode(.inline)
-        .onChange(of: scenePhase) { newPhase in
-            if newPhase == .inactive {
-                print("Inactive")
-            } else if newPhase == .active{
-                print("Active")
-            } else {
-                print("Background")
-                
-                //save the time
-                print(lastTimeFullyCharged)
-            }
-        }
         .task {
-            //load the time
-            print(lastTimeFullyCharged)
             
             //load the list of external articles
             await fetchResults()
+            
         }
     }
     
     // MARK: Functions
-    //Source: Concept Review project by Russell Gordon
-    //https://github.com/lcs-rgordon/ConceptReview/tree/main
     func fetchResults() async {
         
         // Set the address of the JSON endpoint
