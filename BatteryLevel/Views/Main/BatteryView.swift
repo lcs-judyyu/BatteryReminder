@@ -15,14 +15,11 @@ struct BatteryView: View {
     // Will be populated with battery state information
     @State private var batteryState = UIDevice.BatteryState.unknown
     
-    // Controls what type of reminder can be added in the pop-up sheet
+    // Controls the pop-up sheet
     @State private var showAddBatteryLevelReminder = false
-    @State private var showAddTimeReminder = false
     
     // Keep track of the list of battery level reminder
-    @Binding var listOfBatteryLevelReminders: [BatteryLevelReminder] // Empty list to start
-    
-    @State private var repeated = true
+    @Binding var listOfBatteryLevelReminders: [BatteryLevelReminder]
     
     // MARK: Computed properties
     var roundedCurrentBatteryLevel: Int {
@@ -84,8 +81,6 @@ struct BatteryView: View {
                                                                 timeUntil: 1,
                                                                 identifier: myNotificationsIdentifier)
                                             
-                                            print(batteryReminder.isRecurring)
-                                            
                                             // Check if the reminder is not repeated
                                             if batteryReminder.isRecurring == false {
                                                 
@@ -97,9 +92,8 @@ struct BatteryView: View {
                                                 
                                             }
                                             
-                                            print(batteryReminder.isNotified)
-                                            
                                         }
+                                        
                                     }
                                     
                                 }
@@ -224,7 +218,7 @@ struct BatteryView: View {
             
         }
         .navigationTitle("Battery")
-        // Make the nav bar be "small" at top of view
+        // Make the nav bar be inlined at top of view
         .navigationBarTitleDisplayMode(.inline)
         
     }

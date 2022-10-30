@@ -11,7 +11,7 @@ struct CompletionMeterView: View {
     
     // MARK: Stored properties
     
-    // Show completion up to what percentage?
+    // Show completion up to x percentage
     let fillToValue: CGFloat
     
     // Controls the amount of trim to show, as a percentage
