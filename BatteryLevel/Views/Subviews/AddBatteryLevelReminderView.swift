@@ -29,7 +29,7 @@ struct AddBatteryLevelReminderView: View {
     @State private var currentBatteryLevel: Float = 0.0
     
     // Keep track of the list of battery level reminder
-    @Binding var listOfBatteryLevelReminders: [BatteryLevelReminder]   // Empty list to start
+    @Binding var listOfBatteryLevelReminders: [BatteryLevelReminder]
     
     var body: some View {
         
@@ -84,7 +84,7 @@ struct AddBatteryLevelReminderView: View {
                                 isRepeatedOrNot = "Not Repeated"
                             }
                             
-                            //New reminder
+                            // New reminder
                             let newBatteryLevelReminder = BatteryLevelReminder(number: newSelectedBatteryLevel,
                                                                                isRecurring: newReminderIsRepeated,
                                                                                caption: isRepeatedOrNot,
@@ -137,7 +137,7 @@ struct AddBatteryLevelReminderView: View {
     }
     
     // MARK: Functions
-    //Hide this view
+    // Hide this view
     func hideView() {
         showThisView = false
     }

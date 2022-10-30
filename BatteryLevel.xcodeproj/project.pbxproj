@@ -20,7 +20,6 @@
 		5AF243882829DDCA00FE779B /* RoundedRectangleOverlayViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF243872829DDCA00FE779B /* RoundedRectangleOverlayViewModifier.swift */; };
 		5AF2438C2829E68900FE779B /* SimpleListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF2438B2829E68900FE779B /* SimpleListItemView.swift */; };
 		5AF2438E282A9F7400FE779B /* AddBatteryLevelReminderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF2438D282A9F7400FE779B /* AddBatteryLevelReminderView.swift */; };
-		5AF24390282A9F8600FE779B /* AddTimeReminderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF2438F282A9F8600FE779B /* AddTimeReminderView.swift */; };
 		5AF24395282AAB9200FE779B /* CompletionMeterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF24394282AAB9200FE779B /* CompletionMeterView.swift */; };
 		5AF24399282D6D2F00FE779B /* WebViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF24398282D6D2F00FE779B /* WebViewModel.swift */; };
 		5AF2439C282D6DC400FE779B /* WebViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF2439B282D6DC400FE779B /* WebViewContainer.swift */; };
@@ -48,7 +47,6 @@
 		5AF243872829DDCA00FE779B /* RoundedRectangleOverlayViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedRectangleOverlayViewModifier.swift; sourceTree = "<group>"; };
 		5AF2438B2829E68900FE779B /* SimpleListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleListItemView.swift; sourceTree = "<group>"; };
 		5AF2438D282A9F7400FE779B /* AddBatteryLevelReminderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBatteryLevelReminderView.swift; sourceTree = "<group>"; };
-		5AF2438F282A9F8600FE779B /* AddTimeReminderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTimeReminderView.swift; sourceTree = "<group>"; };
 		5AF24394282AAB9200FE779B /* CompletionMeterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletionMeterView.swift; sourceTree = "<group>"; };
 		5AF24398282D6D2F00FE779B /* WebViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewModel.swift; sourceTree = "<group>"; };
 		5AF2439B282D6DC400FE779B /* WebViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewContainer.swift; sourceTree = "<group>"; };
@@ -117,7 +115,6 @@
 			isa = PBXGroup;
 			children = (
 				5AF2438D282A9F7400FE779B /* AddBatteryLevelReminderView.swift */,
-				5AF2438F282A9F8600FE779B /* AddTimeReminderView.swift */,
 				5A59C2182828803200D48815 /* PerformanceArticleView.swift */,
 				5A59C21A2828804300D48815 /* TipsArticleView.swift */,
 				5AF24394282AAB9200FE779B /* CompletionMeterView.swift */,
@@ -288,7 +285,6 @@
 				5AF24399282D6D2F00FE779B /* WebViewModel.swift in Sources */,
 				81C072DB2827EA8E004235B4 /* DeviceBatteryStateViewModifier.swift in Sources */,
 				5A59C2172828800600D48815 /* ReportView.swift in Sources */,
-				5AF24390282A9F8600FE779B /* AddTimeReminderView.swift in Sources */,
 				81C072C82827E42F004235B4 /* BatteryLevelApp.swift in Sources */,
 				5AF24395282AAB9200FE779B /* CompletionMeterView.swift in Sources */,
 			);
