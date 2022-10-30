@@ -3,7 +3,6 @@
 //  BatteryLevel
 //
 
-//Adapted from the Local Notifications Example project by Russell Gordon
 import Foundation
 import os
 import UserNotifications
@@ -20,8 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Logger().notice("Delegate for UNUserNotificationCenter has been set.")
         
         // Ask for permission to send notifications.
-        // This will only present a dialog to the user
-        // if the app has never asked before.
+        // This will only present a dialog to the user if the app has never asked before.
         askNotificationPermission()
         
         return true
@@ -31,10 +29,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 extension AppDelegate: UNUserNotificationCenterDelegate {
     
-    // This is run when a notification is received
+    // Run when a notification is received
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         
-        // Make the notification appear by invoking the completion handler (completion handler is automatically given to us by the operating system)
+        // Make the notification appear by invoking the completion handler
         // NOTE: Notification will not appear when device is in "Do Not Disturb" mode.
         completionHandler([.alert, .badge, .sound])
     }

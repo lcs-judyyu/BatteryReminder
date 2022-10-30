@@ -14,7 +14,7 @@ struct WebListItemView: View {
         
         NavigationLink(destination: {
             
-            //navigates to embedded websites
+            // Navigates to embedded websites
             FullPageWebView(currentArticle: currentArticle)
             
         }, label: {

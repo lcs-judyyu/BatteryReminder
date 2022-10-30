@@ -21,6 +21,7 @@ struct RoundedRectangleOverlayViewModifier: ViewModifier {
     
 }
 
+// A View wrapper to make the modifier easier to use
 extension View {
     
     func RoundedRectangelOverlay() -> some View {

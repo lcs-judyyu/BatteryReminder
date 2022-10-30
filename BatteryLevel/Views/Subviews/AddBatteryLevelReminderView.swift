@@ -7,20 +7,20 @@ import SwiftUI
 
 struct AddBatteryLevelReminderView: View {
     
-    //MARK: Stored properties
-    //Detect when moves between foreground, background, and inactive atates
+    // MARK: Stored properties
+    // Detect when moves between foreground, background, and inactive atates
     @Environment(\.scenePhase) var scenePhase
     
     // Controls whether this view is showing or not
     @Binding var showThisView: Bool
     
-    //list of number options
+    // List of number options
     let listOfPickerOptions: [Int] = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95]
     
     // Keep track of user selected battery level to receive notification
     @State var newSelectedBatteryLevel = 30
     
-    //is it repeated?
+    // Is it repeated?
     @State var newReminderIsRepeated = true
     
     @State var isRepeatedOrNot: String
@@ -28,8 +28,8 @@ struct AddBatteryLevelReminderView: View {
     // Will be populated with battery level information
     @State private var currentBatteryLevel: Float = 0.0
     
-    // keep track of the list of battery level reminder
-    @Binding var listOfBatteryLevelReminders: [BatteryLevelReminder]   // empty list to start
+    // Keep track of the list of battery level reminder
+    @Binding var listOfBatteryLevelReminders: [BatteryLevelReminder]   // Empty list to start
     
     var body: some View {
         
@@ -37,7 +37,7 @@ struct AddBatteryLevelReminderView: View {
             
             ZStack {
                 
-                //Background color
+                // Background color
                 Color("backgroundGray")
                     .edgesIgnoringSafeArea(.all)
                 
@@ -93,11 +93,11 @@ struct AddBatteryLevelReminderView: View {
                             let hadSameReminder = listOfBatteryLevelReminders.contains { existedReminder in
                                 if newBatteryLevelReminder == existedReminder {
                                     
-                                    //get the index of the existed reminder
+                                    // Get the index of the existed reminder
                                     let existedReminderIndex = listOfBatteryLevelReminders.firstIndex(where: {$0 == existedReminder})
                                     print(existedReminderIndex ?? 0)
                                     
-                                    //remove the existed reminder
+                                    // Remove the existed reminder
                                     listOfBatteryLevelReminders.remove(at: existedReminderIndex ?? 0)
                                     
                                     return true
@@ -107,21 +107,21 @@ struct AddBatteryLevelReminderView: View {
                                 }
                             }
                             
-                            //Add to the list of reminders
+                            // Add to the list of reminders
                             if hadSameReminder == true {
                                 
                                 print("This reminder already existed. The existed reminder is deleted and new reminder is added.")
                                 
                                 listOfBatteryLevelReminders.append(newBatteryLevelReminder)
                                 
-                                //save the new list
+                                // Save the new list
                                 persistListOfBatteryLevelReminders()
                                 
                             } else {
                                 
                                 listOfBatteryLevelReminders.append(newBatteryLevelReminder)
                                 
-                                //save the new list
+                                // Save the new list
                                 persistListOfBatteryLevelReminders()
                                 
                             }

@@ -7,7 +7,7 @@ import SwiftUI
 
 struct ArticlesCardView: View {
     
-    //MARK: Stored properties
+    // MARK: Stored properties
     let imageName: String
     let title: String
     let description: String

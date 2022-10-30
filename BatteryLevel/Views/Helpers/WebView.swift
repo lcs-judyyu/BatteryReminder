@@ -10,7 +10,7 @@ struct WebView: View {
     // MARK: Stored properties
     @ObservedObject var webViewModel: WebViewModel
     
-    // Should navigation be restricted to a given page or site?
+    // Navigation restricted to a given page or site
     @State var restrictToAddressBeginningWith: String
     
     // MARK: Computed properties

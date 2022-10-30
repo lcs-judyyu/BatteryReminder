@@ -8,7 +8,7 @@ import SwiftUI
 struct BatteryView: View {
     
     // MARK: Stored properties
-    //Detect when app moves between foreground, background, and inactive atates
+    // Detect when app moves between foreground, background, and inactive atates
     @Environment(\.scenePhase) var scenePhase
     
     // Will be populated with battery charge level information
@@ -21,12 +21,12 @@ struct BatteryView: View {
     @State private var showAddBatteryLevelReminder = false
     @State private var showAddTimeReminder = false
     
-    // keep track of the list of battery level reminder
+    // Keep track of the list of battery level reminder
     @Binding var listOfBatteryLevelReminders: [BatteryLevelReminder] // empty list to start
     
     @State private var repeated = true
     
-    //MARK: Computed properties
+    // MARK: Computed properties
     var roundedCurrentBatteryLevel: Int {
         
         return Int((currentBatteryLevel * 100).rounded())
@@ -37,14 +37,14 @@ struct BatteryView: View {
         
         ZStack {
             
-            //Background color
+            // Background color
             Color("backgroundGray")
                 .edgesIgnoringSafeArea(.all)
             
             
             VStack (alignment: .leading, spacing: 20) {
                 
-                //current battery level
+                // Current battery level
                 Group {
                     Text("Current Battery Level")
                         .bold()
@@ -54,7 +54,7 @@ struct BatteryView: View {
                     HStack {
                         Spacer()
                         
-                        //a completion meter for current battery state
+                        // A completion meter for current battery state
                         CompletionMeterView(fillToValue: CGFloat(roundedCurrentBatteryLevel))
                             .padding(.vertical, 15)
                             .onBatteryStateChanged { newState in
@@ -69,17 +69,17 @@ struct BatteryView: View {
                                 currentBatteryLevel = newLevel
                                 print("Current battery level is \(currentBatteryLevel), rounded to \(roundedCurrentBatteryLevel)")
                                 
-                                //only send reminder if battery state is unknown or unplugged
+                                // Only send reminder if battery state is unknown or unplugged
                                 if batteryState == .unknown || batteryState == .unplugged {
                                     
-                                    //loop over the list of battery level reminders
+                                    // Loop over the list of battery level reminders
                                     for batteryReminder in listOfBatteryLevelReminders {
                                         
                                         print(batteryReminder.number)
                                         
                                         if batteryReminder.number == roundedCurrentBatteryLevel {
                                             
-                                            //push notification
+                                            // Push notification
                                             publishNotification(title: "Reminder:",
                                                                 subtitle: "You batery level is \(batteryReminder.number)%",
                                                                 body: "Consider charging your phone 😉",
@@ -88,13 +88,13 @@ struct BatteryView: View {
                                             
                                             print(batteryReminder.isRecurring)
                                             
-                                            //check if the reminder is not repeated
+                                            // Check if the reminder is not repeated
                                             if batteryReminder.isRecurring == false {
                                                 
-                                                //get the index of the battery reminder
+                                                // Get the index of the battery reminder
                                                 let indexOfBatteryReminder = listOfBatteryLevelReminders.firstIndex(of: batteryReminder)
                                                 
-                                                //remove the not repeated reminder
+                                                // Remove the not repeated reminder
                                                 listOfBatteryLevelReminders.remove(at: indexOfBatteryReminder ?? 0)
                                                 
                                             }
@@ -120,7 +120,7 @@ struct BatteryView: View {
                 
                 VStack (alignment: .leading, spacing: 20) {
                     
-                    //Add reminders
+                    // Add reminders
                     Group {
                         
                         Text("Add Reminders")
@@ -159,7 +159,7 @@ struct BatteryView: View {
                 }
                 .padding(.horizontal, 20)
                 
-                //your reminders
+                // Your reminders
                 Group {
                     
                     Text("Your Reminders")
@@ -182,16 +182,16 @@ struct BatteryView: View {
                                 }
                                 .onDelete { index in
                                     
-                                    // get the item from the reversed list
+                                    // Get the item from the reversed list
                                     let theItem = listOfBatteryLevelReminders.reversed()[index.first!]
                                     
-                                    // get the index of the item from the original list and remove it
+                                    // Get the index of the item from the original list and remove it
                                     if let newIndex = listOfBatteryLevelReminders.firstIndex(of: theItem) {
                                         listOfBatteryLevelReminders.remove(at: newIndex)
                                         
                                     }
                                     
-                                    //save the new list
+                                    // Save the new list
                                     persistListOfBatteryLevelReminders()
                                 }
                                 
@@ -218,15 +218,13 @@ struct BatteryView: View {
             .padding(.vertical, 20)
             .task {
                 
-                // Adapted from:
-                // https://www.hackingwithswift.com/example-code/uikit/how-to-read-the-battery-level-of-an-iphone-or-ipad
                 // Required to enable battery information monitoring
                 UIDevice.current.isBatteryMonitoringEnabled = true
                 
                 // Show the device's current battery level once (when app opens)
                 currentBatteryLevel = UIDevice.current.batteryLevel
                 
-                //load the list of battery level reminders from saved file
+                // Load the list of battery level reminders from saved file
                 loadListOfBatteryLevelReminders()
             }
             .onChange(of: scenePhase) { newPhase in

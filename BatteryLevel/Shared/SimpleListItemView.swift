@@ -7,7 +7,7 @@ import SwiftUI
 
 struct SimpleListItemView: View {
     
-    //Stored properties
+    // Stored properties
     var title: String
     var description: String
     

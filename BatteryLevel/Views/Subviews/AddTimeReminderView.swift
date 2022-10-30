@@ -7,7 +7,7 @@ import SwiftUI
 
 struct AddTimeReminderView: View {
     
-    //MARK: Stored properties
+    // MARK: Stored properties
     // Controls whether this view is showing or not
     @Binding var showThisView: Bool
     
@@ -17,7 +17,7 @@ struct AddTimeReminderView: View {
             
             ZStack {
                 
-                //Background color
+                // Background color
                 Color("backgroundGray")
                     .edgesIgnoringSafeArea(.all)
                 
@@ -42,7 +42,7 @@ struct AddTimeReminderView: View {
     }
     
     // MARK: Functions
-    //Hide this view
+    // Hide this view
     func hideView() {
         showThisView = false
     }

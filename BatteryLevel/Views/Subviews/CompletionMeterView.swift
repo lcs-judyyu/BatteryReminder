@@ -25,12 +25,12 @@ struct CompletionMeterView: View {
         ZStack {
             
             Circle()
-            // Traces, or makes a trim, for the outline of a shape
+            // Trim for the outline of a shape
                 .trim(from: 0, to: completionAmount)
                 .stroke(Color("seaGreen"), lineWidth: 26)
                 .frame(width: 230, height: 230)
                 .rotationEffect(.degrees(-90))
-            // When the timer fires, the code in this block will run.
+            // When the timer fires, run the code
                 .onReceive(timer) { _ in
                     
                     // Stop the timer

@@ -12,7 +12,7 @@ struct BatteryLevelApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     
     // Source of truth of the list of battery level reminder
-    @State var listOfBatteryLevelReminders: [BatteryLevelReminder] = []   // empty list to start
+    @State var listOfBatteryLevelReminders: [BatteryLevelReminder] = []   // Empty list to start
     
     var body: some Scene {
         WindowGroup {
