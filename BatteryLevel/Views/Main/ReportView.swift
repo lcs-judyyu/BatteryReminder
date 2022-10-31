@@ -5,19 +5,6 @@
 
 import SwiftUI
 
-//format a date to String and map it back
-extension Date: RawRepresentable {
-    private static let formatter = ISO8601DateFormatter()
-    
-    public var rawValue: String {
-        Date.formatter.string(from: self)
-    }
-    
-    public init?(rawValue: String) {
-        self = Date.formatter.date(from: rawValue) ?? Date()
-    }
-}
-
 struct ReportView: View {
     
     // MARK: Stored properties
@@ -25,9 +12,6 @@ struct ReportView: View {
     // Controls what article is showing in the pop-up sheet
     @State private var showPerformanceArticle = false
     @State private var showTipsArticle = false
-    
-    //current battery state
-    @State private var batteryState = UIDevice.BatteryState.unknown
     
     // List of articles that will be loaded from the Sheety endpoint in JSON format
     @State var articlesToShow: [Article] = []
@@ -38,7 +22,7 @@ struct ReportView: View {
             
             ZStack {
                 
-                //Background color
+                // Background color
                 Color("backgroundGray")
                     .edgesIgnoringSafeArea(.all)
                 
@@ -50,8 +34,6 @@ struct ReportView: View {
                             .bold()
                             .font(.title2)
                         
-                        // Pop-up sheet is adapted from the Composable Views and Animations project by Russell Gordon
-                        //https://github.com/lcs-rgordon/ComposableViewsAndAnimations
                         Button {
                             
                             showPerformanceArticle = true
@@ -84,7 +66,7 @@ struct ReportView: View {
                         
                     }
                     
-                    //External Articles
+                    // External Articles
                     Group {
                         
                         Text("External Articles")
@@ -98,6 +80,10 @@ struct ReportView: View {
                                 ForEach(articlesToShow, id: \.self) { currentArticle in
                                     
                                     WebListItemView(currentArticle: currentArticle)
+                                    
+                                    if currentArticle.id - 1 != articlesToShow.count {
+                                        Divider()
+                                    }
                                     
                                 }
                             }
@@ -146,7 +132,7 @@ struct ReportView: View {
         var request = URLRequest(url: url)
         request.setValue("application/json",
                          forHTTPHeaderField: "Accept")
-        request.httpMethod = "GET"  // Getting data from the web server...
+        request.httpMethod = "GET"  // Getting data from the web server
         
         // Start a URL session to interact with the endpoint
         let urlSession = URLSession.shared

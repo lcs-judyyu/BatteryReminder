@@ -23,17 +23,15 @@ struct WebListItemView: View {
                 
                 HStack {
                     Text(currentArticle.title)
-                        .foregroundColor(.black)
+                        .foregroundColor(Color.black)
                     
                     Spacer()
                     
                     Image(systemName: "chevron.right")
                         .scaleEffect(0.7)
-                        .foregroundColor(.gray)
+                        .foregroundColor(Color.gray)
                         .opacity(0.6)
                 }
-                
-                Divider()
                 
             }
             

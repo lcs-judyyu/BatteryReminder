@@ -47,6 +47,6 @@ struct ArticlesCardView_Previews: PreviewProvider {
     static var previews: some View {
         ArticlesCardView(imageName: "Performance",
                          title: "Battery and Performance",
-                         description: "How does your battery work?")
+                         description: "All about your battery")
     }
 }

@@ -28,21 +28,23 @@ struct Article: Identifiable, Codable, Hashable {
 struct Articles: Codable {
     
     // Will eventually be populated with data matching all the rows of the spreadsheet
-    // Begins as an empty list
-    var sheet1: [Article] = []
+    var sheet1: [Article] = [] // Empty list to begin with
     
     // Defines the endpoint for reading/writing spreadsheet data
     static let endpoint = "https://api.sheety.co/5cca2c9d2b851afd1532a526e511ea69/batteryArticles/sheet1"
     
 }
 
-let testArticles = [Article(id: 2,
-                            title: "How do Lithium Batteries Work?",
-                            url: "https://batteryuniversity.com/article/bu-204-how-do-lithium-batteries-work")
-                    ,
-                    Article(id: 3,
-                            title: "How to Prolong Lithium-based Batteries?",
-                            url: "https://batteryuniversity.com/article/bu-808-how-to-prolong-lithium-based-batteries")
+let testArticles = [
+    
+    Article(id: 2,
+            title: "How do Lithium Batteries Work?",
+            url: "https://batteryuniversity.com/article/bu-204-how-do-lithium-batteries-work")
+            ,
+    Article(id: 3,
+            title: "How to Prolong Lithium-based Batteries?",
+            url: "https://batteryuniversity.com/article/bu-808-how-to-prolong-lithium-based-batteries")
+    
 ]
 
 

@@ -10,7 +10,6 @@ struct SimpleListItemView: View {
     // MARK: Stored properties
     var title: String
     var repeated: Bool
-    
     @State var pushNotification: Bool
     
     // MARK: Computed properties

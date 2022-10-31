@@ -18,7 +18,7 @@ struct AddBatteryLevelReminderView: View {
     // Keep track of user selected battery level to receive notification
     @State var newSelectedBatteryLevel = 30
     
-    // Is it repeated?
+    // Is the new reminder repeated?
     @State var newReminderIsRepeated = true
     
     // Will be populated with battery level information
@@ -91,7 +91,7 @@ struct AddBatteryLevelReminderView: View {
                                 
                                 listOfBatteryLevelReminders.append(newBatteryLevelReminder)
                                 
-                                print("This reminder already exist. The existed reminder is added to the top of the list.")
+                                print("This reminder already exist. It is now added to the top of the list.")
                                 
                             } else {
                                 
