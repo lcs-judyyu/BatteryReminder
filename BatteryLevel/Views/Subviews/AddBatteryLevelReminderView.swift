@@ -136,7 +136,9 @@ struct AddBatteryLevelReminderView: View {
 
 struct AddBatteryLevelReminderView_Previews: PreviewProvider {
     static var previews: some View {
-        AddBatteryLevelReminderView(showThisView: .constant(true),
-                                    listOfBatteryLevelReminders: .constant(testBatteryLevelReminders))
+        NavigationView {
+            AddBatteryLevelReminderView(showThisView: .constant(true),
+                                        listOfBatteryLevelReminders: .constant(testBatteryLevelReminders))
+        }
     }
 }

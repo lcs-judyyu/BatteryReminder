@@ -18,7 +18,7 @@ struct SimpleListItemView: View {
         if repeated == true {
             return "Repeated"
         } else {
-            return "Not Repeaated"
+            return "Not Repeated"
         }
         
     }
