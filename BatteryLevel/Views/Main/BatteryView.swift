@@ -228,9 +228,22 @@ struct BatteryView_Previews: PreviewProvider {
     
     static var previews: some View {
         NavigationView {
-            BatteryView(listOfBatteryLevelReminders: Binding.constant(testBatteryLevelReminders))
+            LiveBatteryView()
         }
     }
     
+    // Create a view to simulate the App Level Entry Point -> BatteryView connection
+    struct LiveBatteryView: View {
+        
+        // Populate some reminders to start
+        @State var reminders: [BatteryLevelReminder] = testBatteryLevelReminders
+        
+        var body: some View {
+            
+            BatteryView(listOfBatteryLevelReminders: $reminders)
+            
+        }
+        
+    }
     
 }

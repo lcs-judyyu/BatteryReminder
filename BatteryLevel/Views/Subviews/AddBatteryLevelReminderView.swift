@@ -15,7 +15,7 @@ struct AddBatteryLevelReminderView: View {
     // List of number options
     let listOfPickerOptions: [Int] = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95]
     
-    // Keep track of user selected battery level to receive notification
+    // Keep track of user selected battery level
     @State var newSelectedBatteryLevel = 30
     
     // Is the new reminder repeated?
