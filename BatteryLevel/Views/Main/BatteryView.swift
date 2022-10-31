@@ -139,7 +139,6 @@ struct BatteryView: View {
                             }
                             .sheet(isPresented: $showAddBatteryLevelReminder) {
                                 AddBatteryLevelReminderView(showThisView: $showAddBatteryLevelReminder,
-                                                            isRepeatedOrNot: "",
                                                             listOfBatteryLevelReminders: $listOfBatteryLevelReminders)
                             }
                             
@@ -167,9 +166,9 @@ struct BatteryView: View {
                                 
                                 ForEach(listOfBatteryLevelReminders.reversed(), id: \.self) { batteryLevelReminder in
                                     
-                                    SimpleListItemView(title: "\(batteryLevelReminder.number)%",
-                                                       description: batteryLevelReminder.caption,
-                                                       pushNotification: batteryLevelReminder.isRecurring)
+                                    SimpleListItemView(title: "\(batteryLevelReminder.number)",
+                                                       repeated: batteryLevelReminder.isRecurring,
+                                                       pushNotification: batteryLevelReminder.isNotified)
                                     
                                 }
                                 .onDelete { index in
@@ -226,9 +225,12 @@ struct BatteryView: View {
 }
 
 struct BatteryView_Previews: PreviewProvider {
+    
     static var previews: some View {
         NavigationView {
-            BatteryView(listOfBatteryLevelReminders: .constant([testBatteryLevelReminder]))
+            BatteryView(listOfBatteryLevelReminders: Binding.constant(testBatteryLevelReminders))
         }
     }
+    
+    
 }

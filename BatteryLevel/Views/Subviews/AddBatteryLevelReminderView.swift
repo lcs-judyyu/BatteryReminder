@@ -8,8 +8,6 @@ import SwiftUI
 struct AddBatteryLevelReminderView: View {
     
     // MARK: Stored properties
-    // Detect when moves between foreground, background, and inactive atates
-    @Environment(\.scenePhase) var scenePhase
     
     // Controls whether this view is showing or not
     @Binding var showThisView: Bool
@@ -22,8 +20,6 @@ struct AddBatteryLevelReminderView: View {
     
     // Is it repeated?
     @State var newReminderIsRepeated = true
-    
-    @State var isRepeatedOrNot: String
     
     // Will be populated with battery level information
     @State private var currentBatteryLevel: Float = 0.0
@@ -78,18 +74,12 @@ struct AddBatteryLevelReminderView: View {
                     ToolbarItem(placement: .primaryAction) {
                         Button("Add") {
                             
-                            if newReminderIsRepeated == true {
-                                isRepeatedOrNot = "Repeated"
-                            } else {
-                                isRepeatedOrNot = "Not Repeated"
-                            }
-                            
                             // New reminder
                             let newBatteryLevelReminder = BatteryLevelReminder(number: newSelectedBatteryLevel,
                                                                                isRecurring: newReminderIsRepeated,
-                                                                               caption: isRepeatedOrNot,
                                                                                isNotified: true)
                             
+                            // When new reminder is in the list already
                             if listOfBatteryLevelReminders.contains(newBatteryLevelReminder) {
                                 
                                 // Get the index of the existed reminder
@@ -147,7 +137,6 @@ struct AddBatteryLevelReminderView: View {
 struct AddBatteryLevelReminderView_Previews: PreviewProvider {
     static var previews: some View {
         AddBatteryLevelReminderView(showThisView: .constant(true),
-                                    isRepeatedOrNot: "Repeated",
-                                    listOfBatteryLevelReminders: .constant([testBatteryLevelReminder]))
+                                    listOfBatteryLevelReminders: .constant(testBatteryLevelReminders))
     }
 }

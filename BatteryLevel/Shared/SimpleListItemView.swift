@@ -7,17 +7,28 @@ import SwiftUI
 
 struct SimpleListItemView: View {
     
-    // Stored properties
+    // MARK: Stored properties
     var title: String
-    var description: String
+    var repeated: Bool
     
     @State var pushNotification: Bool
+    
+    // MARK: Computed properties
+    var description: String {
+        
+        if repeated == true {
+            return "Repeated"
+        } else {
+            return "Not Repeaated"
+        }
+        
+    }
     
     var body: some View {
         
         VStack(alignment: .leading, spacing: 3) {
             
-            Toggle(title, isOn: $pushNotification)
+            Toggle("\(title)%", isOn: $pushNotification)
                 .font(.title)
                 .toggleStyle(SwitchToggleStyle(tint: Color("goldDrop")))
                 .disabled(true)
@@ -32,8 +43,8 @@ struct SimpleListItemView: View {
 
 struct SimpleListItemView_Previews: PreviewProvider {
     static var previews: some View {
-        SimpleListItemView(title: "Some title",
-                           description: "repeated",
+        SimpleListItemView(title: "30",
+                           repeated: true,
                            pushNotification: true)
     }
 }

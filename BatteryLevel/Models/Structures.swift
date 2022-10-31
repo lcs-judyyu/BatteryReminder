@@ -50,12 +50,22 @@ struct BatteryLevelReminder: Decodable, Hashable, Encodable {
     
     let number: Int
     let isRecurring: Bool
-    let caption: String
     var isNotified: Bool
     
 }
 
-let testBatteryLevelReminder = BatteryLevelReminder(number: 30,
-                                                    isRecurring: true,
-                                                    caption: "Repeated",
-                                                    isNotified: true)
+let testBatteryLevelReminders = [
+
+    BatteryLevelReminder(number: 30,
+                         isRecurring: true,
+                         isNotified: true)
+    ,
+    BatteryLevelReminder(number: 50,
+                         isRecurring: true,
+                         isNotified: true)
+    ,
+    BatteryLevelReminder(number: 60,
+                         isRecurring: true,
+                         isNotified: true)
+
+]
