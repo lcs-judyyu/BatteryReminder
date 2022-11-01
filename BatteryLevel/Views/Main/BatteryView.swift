@@ -115,9 +115,37 @@ struct BatteryView: View {
                     // Add reminders
                     Group {
                         
-                        Text("Add Reminders")
-                            .bold()
-                            .font(.title2)
+                        HStack {
+                            
+                            Text("Add Reminders")
+                                .bold()
+                                .font(.title2)
+                            
+                            Spacer()
+                            
+                            Menu {
+                                
+                                Button("Not Repeated", action: {
+                                    
+                                })
+                                Button("Repeated", action: {
+                                    
+                                })
+                                Button("All", action: {
+                                    
+                                })
+                                
+                                    } label: {
+                                        
+                                        Image(systemName: "line.3.horizontal.decrease.circle.fill")
+                                            .resizable()
+                                            .frame(width: 30,
+                                                   height: 30)
+                                            .foregroundColor(Color("eaternBlue"))
+                                        
+                                    }
+                            
+                        }
                         
                         VStack (alignment: .leading, spacing: 20) {
                             
