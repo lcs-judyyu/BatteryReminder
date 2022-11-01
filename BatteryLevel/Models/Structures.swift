@@ -63,7 +63,7 @@ let testBatteryLevelReminders = [
                          isNotified: true)
     ,
     BatteryLevelReminder(number: 50,
-                         isRecurring: true,
+                         isRecurring: false,
                          isNotified: true)
     ,
     BatteryLevelReminder(number: 60,

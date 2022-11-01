@@ -72,11 +72,11 @@ struct BatteryView: View {
                                         
                                         print(batteryReminder.number)
                                         
-                                        if batteryReminder.number == roundedCurrentBatteryLevel {
+                                        if batteryReminder.number == roundedCurrentBatteryLevel && batteryReminder.isNotified == true {
                                             
                                             // Push notification
                                             publishNotification(title: "Reminder:",
-                                                                subtitle: "You batery level is \(batteryReminder.number)%",
+                                                                subtitle: "You battery level is \(batteryReminder.number)%",
                                                                 body: "Consider charging your phone 😉",
                                                                 timeUntil: 1,
                                                                 identifier: myNotificationsIdentifier)
