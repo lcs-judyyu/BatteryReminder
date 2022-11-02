@@ -214,8 +214,6 @@ struct BatteryView: View {
                                 }
                                 .onDelete(perform: removeReminders)
                                 
-                                
-                                
                             }
                             
                         }
@@ -231,6 +229,7 @@ struct BatteryView: View {
                         .RoundedRectangelOverlay()
                         .padding(.horizontal, 20)
                         .opacity(listOfBatteryLevelReminders.isEmpty ? 1.0 : 0.0)
+                        
                     }
                     
                 }

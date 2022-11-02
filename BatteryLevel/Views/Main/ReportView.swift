@@ -30,7 +30,7 @@ struct ReportView: View {
                     
                     Group {
                         
-                        Text("about batteries".capitalized(with: .current))
+                        Text("About Batteries")
                             .bold()
                             .font(.title2)
                         

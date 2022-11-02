@@ -123,7 +123,9 @@ struct TipsArticleView: View {
     // MARK: Functions
     // Hide this view
     func hideView() {
+        
         showThisView = false
+        
     }
 }
 

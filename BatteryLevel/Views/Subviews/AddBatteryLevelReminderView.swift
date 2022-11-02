@@ -21,11 +21,18 @@ struct AddBatteryLevelReminderView: View {
     // Is the new reminder repeated?
     @State var newReminderIsRepeated = true
     
+    // Keep track of the list of battery level reminder
+    @Binding var listOfBatteryLevelReminders: [BatteryLevelReminder]
+    
     // Will be populated with battery level information
     @State private var currentBatteryLevel: Float = 0.0
     
-    // Keep track of the list of battery level reminder
-    @Binding var listOfBatteryLevelReminders: [BatteryLevelReminder]
+    // MARK: Computed properties
+    var roundedCurrentBatteryLevel: Int {
+        
+        return Int((currentBatteryLevel * 100).rounded())
+        
+    }
     
     var body: some View {
         
@@ -66,7 +73,7 @@ struct AddBatteryLevelReminderView: View {
                     
                     Spacer()
                     
-                    Text("Current Battery Level: \(String(format: "%3.0f", (currentBatteryLevel) * 100.0))%")
+                    Text("Current Battery Level: \(roundedCurrentBatteryLevel)%")
                     
                 }
                 .padding()
@@ -116,8 +123,9 @@ struct AddBatteryLevelReminderView: View {
                     // Required to enable battery information monitoring
                     UIDevice.current.isBatteryMonitoringEnabled = true
                     
-                    // Show the device's current battery level once (when app opens)
+                    // Show the device's current battery level once when app opens
                     currentBatteryLevel = UIDevice.current.batteryLevel
+                    
                 }
                 
             }
@@ -129,7 +137,9 @@ struct AddBatteryLevelReminderView: View {
     // MARK: Functions
     // Hide this view
     func hideView() {
+        
         showThisView = false
+        
     }
     
     // For removing reminders from the list
