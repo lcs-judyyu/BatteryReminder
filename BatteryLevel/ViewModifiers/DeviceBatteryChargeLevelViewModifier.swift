@@ -21,7 +21,9 @@ struct DeviceBatteryChargeLevelViewModifier: ViewModifier {
 
 // A View wrapper to make the modifier easier to use
 extension View {
+    
     func onBatteryLevelChanged(perform action: @escaping (Float) -> Void) -> some View {
         self.modifier(DeviceBatteryChargeLevelViewModifier(action: action))
     }
+    
 }

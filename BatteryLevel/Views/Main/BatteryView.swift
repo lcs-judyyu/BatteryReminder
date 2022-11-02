@@ -13,7 +13,7 @@ struct BatteryView: View {
     @State private var currentBatteryLevel: Float = 0.0
     
     // Will be populated with battery state information
-    @State private var batteryState = UIDevice.BatteryState.unknown
+    @State private var currentBatteryState = UIDevice.BatteryState.unknown
     
     // Controls the pop-up sheet
     @State private var showAddBatteryLevelReminder = false
@@ -57,9 +57,9 @@ struct BatteryView: View {
                             .padding(.vertical, 15)
                             .onBatteryStateChanged { newState in
                                 
-                                batteryState = newState
+                                currentBatteryState = newState
                                 
-                                print(batteryState)
+                                print(currentBatteryState)
                                 
                             }
                             .onBatteryLevelChanged { newLevel in
@@ -68,12 +68,10 @@ struct BatteryView: View {
                                 print("Current battery level is \(currentBatteryLevel), rounded to \(roundedCurrentBatteryLevel)")
                                 
                                 // Only send reminder if battery state is unknown or unplugged
-                                if batteryState == .unknown || batteryState == .unplugged {
+                                if currentBatteryState == .unknown || currentBatteryState == .unplugged {
                                     
                                     // Loop over the list of battery level reminders
                                     for batteryReminder in listOfBatteryLevelReminders {
-                                        
-                                        print(batteryReminder.number)
                                         
                                         if batteryReminder.number == roundedCurrentBatteryLevel && batteryReminder.isNotified == true {
                                             
@@ -244,7 +242,7 @@ struct BatteryView: View {
                 // Required to enable battery information monitoring
                 UIDevice.current.isBatteryMonitoringEnabled = true
                 
-                // Show the device's current battery level once (when app opens)
+                // Show the device's current battery level once when app opens
                 currentBatteryLevel = UIDevice.current.batteryLevel
                 
             }

@@ -27,8 +27,8 @@ struct CompletionMeterView: View {
             Circle()
             // Trim for the outline of a shape
                 .trim(from: 0, to: completionAmount)
-                .stroke(Color("seaGreen"), lineWidth: 26)
-                .frame(width: 220, height: 220)
+                .stroke(Color("seaGreen"), lineWidth: 25)
+                .frame(width: 200, height: 200)
                 .rotationEffect(.degrees(-90))
             // When the timer fires, run the code
                 .onReceive(timer) { _ in

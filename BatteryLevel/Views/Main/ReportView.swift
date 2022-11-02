@@ -146,10 +146,10 @@ struct ReportView: View {
             print(String(data: data, encoding: .utf8)!)
             
             // Attempt to decode and return the object all the rows of the spreadsheet
-            // NOTE: We decode to Articles.self since the endpoint returns a single JSON object
+            // NOTE: decode to Articles.self since the endpoint returns a single JSON object
             let decodedArticles = try JSONDecoder().decode(Articles.self, from: data)
             
-            // Now, we access the rows of the spreadsheet
+            // Access the rows of the spreadsheet
             articlesToShow = decodedArticles.sheet1
             
         } catch {
