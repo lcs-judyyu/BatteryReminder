@@ -67,8 +67,8 @@ struct PerformanceArticleView: View {
             """)
                         }
                     }
-                    .padding(.horizontal, 15)
-                    .padding(.bottom, 20)
+                    .padding(.horizontal, 18)
+                    .padding(.bottom, 18)
                 }
                 
             }

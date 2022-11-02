@@ -166,13 +166,12 @@ struct BatteryView: View {
                             
                             Text("Filtered by: \(selectedReminderVisibility.rawValue)")
                                 .foregroundColor(Color.gray)
-                                .font(.callout)
+                                .font(.caption)
                         }
                         
                         Spacer()
                         
                         Menu {
-                            Section {
                                 
                                 // Picker to allow user to select what reminders to show
                                 Picker("Filter", selection: $selectedReminderVisibility) {
@@ -187,17 +186,13 @@ struct BatteryView: View {
                                         .tag(ReminderVisibility.all)
                                     
                                 }
-                                
-                                Text("Filtered by:")
-                                
-                            }
                             
                         } label: {
                             
                             Image(systemName: "line.3.horizontal.decrease.circle.fill")
                                 .resizable()
-                                .frame(width: 32,
-                                       height: 32)
+                                .frame(width: 35,
+                                       height: 35)
                                 .foregroundColor(Color("easternBlue"))
                                 .padding([.trailing, .bottom], 10)
                             
