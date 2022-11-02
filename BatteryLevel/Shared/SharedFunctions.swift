@@ -84,7 +84,7 @@ func filter(_ listOfReminders: [BatteryLevelReminder], by visibility: ReminderVi
                 
             } else if visibility == .notRepeated && currentReminder.isRecurring == false {
                 
-                filteredReminders.insert(currentReminder, at: 0)
+                filteredReminders.append(currentReminder)
                 
             }
             

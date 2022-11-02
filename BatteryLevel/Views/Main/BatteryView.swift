@@ -212,7 +212,7 @@ struct BatteryView: View {
                             
                             List {
                                 
-                                ForEach(listOfBatteryLevelReminders, id: \.self) { batteryLevelReminder in
+                                ForEach(filter(listOfBatteryLevelReminders, by: selectedReminderVisibility), id: \.self) { batteryLevelReminder in
                                     
                                     SimpleListItemView(title: "\(batteryLevelReminder.number)",
                                                        repeated: batteryLevelReminder.isRecurring,
@@ -220,6 +220,8 @@ struct BatteryView: View {
                                     
                                 }
                                 .onDelete(perform: removeReminders)
+                                
+                                
                                 
                             }
                             
