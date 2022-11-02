@@ -172,20 +172,20 @@ struct BatteryView: View {
                         Spacer()
                         
                         Menu {
+                            
+                            // Picker to allow user to select what reminders to show
+                            Picker("Filter", selection: $selectedReminderVisibility) {
                                 
-                                // Picker to allow user to select what reminders to show
-                                Picker("Filter", selection: $selectedReminderVisibility) {
-                                    
-                                    Text(ReminderVisibility.notRepeated.rawValue)
-                                        .tag(ReminderVisibility.notRepeated)
-                                    
-                                    Text(ReminderVisibility.repeated.rawValue)
-                                        .tag(ReminderVisibility.repeated)
-                                    
-                                    Text(ReminderVisibility.all.rawValue)
-                                        .tag(ReminderVisibility.all)
-                                    
-                                }
+                                Text(ReminderVisibility.notRepeated.rawValue)
+                                    .tag(ReminderVisibility.notRepeated)
+                                
+                                Text(ReminderVisibility.repeated.rawValue)
+                                    .tag(ReminderVisibility.repeated)
+                                
+                                Text(ReminderVisibility.all.rawValue)
+                                    .tag(ReminderVisibility.all)
+                                
+                            }
                             
                         } label: {
                             

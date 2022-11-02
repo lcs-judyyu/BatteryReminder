@@ -18,7 +18,7 @@ struct WebListItemView: View {
             FullPageWebView(currentArticle: currentArticle)
             
         }, label: {
-                
+            
             VStack(alignment: .leading, spacing: 12) {
                 
                 HStack {

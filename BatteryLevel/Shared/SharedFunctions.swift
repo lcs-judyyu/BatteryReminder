@@ -65,17 +65,17 @@ func getDocumentsDirectory() -> URL{
 // Filter the list of reminders to be shown
 func filter(_ listOfReminders: [BatteryLevelReminder], by visibility: ReminderVisibility) -> [BatteryLevelReminder] {
     
-    // When the user wants to see all results, just return the list provided
+    // When the user wants to see all reminders, just return the list provided
     if visibility == .all {
         
         return listOfReminders
         
     } else {
         
-        // Create an empty list of results
+        // Create an empty list of reminders
         var filteredReminders: [BatteryLevelReminder] = []
         
-        // Iterate over the list of results, and build a new list that only includes the selected type of reminders
+        // Iterate over the list of reminders, and build a new list that only includes the selected type of reminders
         for currentReminder in listOfReminders {
             
             if visibility == .repeated && currentReminder.isRecurring == true {

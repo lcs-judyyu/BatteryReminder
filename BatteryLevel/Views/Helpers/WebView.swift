@@ -19,7 +19,7 @@ struct WebView: View {
         VStack(alignment: .center) {
             
             ZStack {
-
+                
                 // If navigation has occured, and there is a page to go back to, allow this via a button
                 Button(action: {
                     
@@ -28,19 +28,19 @@ struct WebView: View {
                 }, label: {
                     
                     if webViewModel.canGoBack {
-
+                        
                         HStack {
-
+                            
                             Image(systemName: "arrow.backward.circle")
                                 .frame(width: 22, height: 22, alignment: .center)
                                 .foregroundColor(.black)
                                 .padding(.horizontal, 10)
                                 .padding(.top, 10)
-
+                            
                             Spacer()
-
+                            
                         }
-                                                
+                        
                     } else {
                         EmptyView()
                             .frame(width: 0, height: 0, alignment: .center)
@@ -55,7 +55,6 @@ struct WebView: View {
                     .padding(.top, 10)
                     .multilineTextAlignment(.center)
                 
-
             }
             
             ZStack {
@@ -68,7 +67,7 @@ struct WebView: View {
                 }
                 
             }
-
+            
         }
         
     }
@@ -82,7 +81,7 @@ struct WebView: View {
 
 struct WebView_Previews: PreviewProvider {
     static var previews: some View {
-        WebView(address: "https://www.russellgordon.ca")
+        WebView(address: "https://www.google.com")
     }
 }
 

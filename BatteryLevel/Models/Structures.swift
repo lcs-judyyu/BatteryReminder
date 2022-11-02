@@ -40,7 +40,7 @@ let testArticles = [
     Article(id: 2,
             title: "How do Lithium Batteries Work?",
             url: "https://batteryuniversity.com/article/bu-204-how-do-lithium-batteries-work")
-            ,
+    ,
     Article(id: 3,
             title: "How to Prolong Lithium-based Batteries?",
             url: "https://batteryuniversity.com/article/bu-808-how-to-prolong-lithium-based-batteries")
@@ -57,7 +57,7 @@ struct BatteryLevelReminder: Decodable, Hashable, Encodable {
 }
 
 let testBatteryLevelReminders = [
-
+    
     BatteryLevelReminder(number: 30,
                          isRecurring: true,
                          isNotified: true)
@@ -69,5 +69,5 @@ let testBatteryLevelReminders = [
     BatteryLevelReminder(number: 60,
                          isRecurring: true,
                          isNotified: true)
-
+    
 ]

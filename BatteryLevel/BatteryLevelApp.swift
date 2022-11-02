@@ -7,7 +7,7 @@ import SwiftUI
 
 @main
 struct BatteryLevelApp: App {
-
+    
     // Ensure the AppDelegate class instance is connected to the SwiftUI structure instance for the app
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     

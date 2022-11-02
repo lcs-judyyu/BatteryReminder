@@ -131,7 +131,7 @@ struct AddBatteryLevelReminderView: View {
     func hideView() {
         showThisView = false
     }
-    //MARK: Functions
+    
     // For removing reminders from the list
     func removeReminders(at offsets: IndexSet) {
         
