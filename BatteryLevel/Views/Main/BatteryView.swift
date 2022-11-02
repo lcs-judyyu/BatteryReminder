@@ -155,53 +155,53 @@ struct BatteryView: View {
                 
                 // Your reminders
                 Group {
+                    
+                    HStack {
                         
-                        HStack {
+                        VStack(alignment: .leading, spacing: 5) {
                             
-                            VStack(alignment: .leading, spacing: 5) {
+                            Text("Your Reminders")
+                                .bold()
+                                .font(.title2)
+                            
+                            Text("Filtered by: \(selectedReminderVisibility.rawValue)")
+                                .foregroundColor(Color.gray)
+                                .font(.callout)
+                        }
+                        
+                        Spacer()
+                        
+                        Menu {
+                            Section {
                                 
-                                Text("Your Reminders")
-                                    .bold()
-                                    .font(.title2)
-                                
-                                Text("Filtered by: \(selectedReminderVisibility.rawValue)")
-                                    .foregroundColor(Color.gray)
-                                    .font(.callout)
-                            }
-                            
-                            Spacer()
-                            
-                            Menu {
-                                Section {
+                                // Picker to allow user to select what reminders to show
+                                Picker("Filter", selection: $selectedReminderVisibility) {
                                     
-                                    // Picker to allow user to select what reminders to show
-                                    Picker("Filter", selection: $selectedReminderVisibility) {
-                                        
-                                        Text(ReminderVisibility.notRepeated.rawValue)
-                                            .tag(ReminderVisibility.notRepeated)
-                                        
-                                        Text(ReminderVisibility.repeated.rawValue)
-                                            .tag(ReminderVisibility.repeated)
-                                        
-                                        Text(ReminderVisibility.all.rawValue)
-                                            .tag(ReminderVisibility.all)
-                                        
-                                    }
+                                    Text(ReminderVisibility.notRepeated.rawValue)
+                                        .tag(ReminderVisibility.notRepeated)
                                     
-                                    Text("Filtered by:")
+                                    Text(ReminderVisibility.repeated.rawValue)
+                                        .tag(ReminderVisibility.repeated)
+                                    
+                                    Text(ReminderVisibility.all.rawValue)
+                                        .tag(ReminderVisibility.all)
                                     
                                 }
                                 
-                            } label: {
-                                
-                                Image(systemName: "line.3.horizontal.decrease.circle.fill")
-                                    .resizable()
-                                    .frame(width: 32,
-                                           height: 32)
-                                    .foregroundColor(Color("easternBlue"))
-                                    .padding([.trailing, .bottom], 10)
+                                Text("Filtered by:")
                                 
                             }
+                            
+                        } label: {
+                            
+                            Image(systemName: "line.3.horizontal.decrease.circle.fill")
+                                .resizable()
+                                .frame(width: 32,
+                                       height: 32)
+                                .foregroundColor(Color("easternBlue"))
+                                .padding([.trailing, .bottom], 10)
+                            
+                        }
                         
                     }
                     .padding(.horizontal, 20)
@@ -269,8 +269,6 @@ struct BatteryView: View {
         .navigationBarTitleDisplayMode(.inline)
         
     }
-    
-    //MARK: Functions
     
 }
 

@@ -9,7 +9,7 @@ import UserNotifications
 
 // Purpose: These two functions combined allow local notifications to be scheduled by the application
 
-/// Invoke this function once prior to the first time a notification needs to be published
+// Invoke this function once prior to the first time a notification needs to be published
 func askNotificationPermission() {
     UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
         if success {
@@ -20,7 +20,7 @@ func askNotificationPermission() {
     }
 }
 
-/// Publish a local notification that runs after a specified wait time in seconds; creates a non-repeating notification
+// Publish a local notification that runs after a specified wait time in seconds; creates a non-repeating notification
 /// - Parameters:
 ///   - title: The title of the notification; should be kept brief.
 ///   - subtitle: The subtitle of the notification; should be kept brief.
@@ -53,11 +53,45 @@ func publishNotification(title: String,
     
 }
 
-//return the location of the Documents directory for the app
+// Return the location of the Documents directory for the app
 func getDocumentsDirectory() -> URL{
     let paths = FileManager.default.urls(for: .documentDirectory,
                                          in: .userDomainMask)
     
-    //return the first path
+    // Return the first path
     return paths[0]
+}
+
+// Filter the list of reminders to be shown
+func filter(_ listOfReminders: [BatteryLevelReminder], by visibility: ReminderVisibility) -> [BatteryLevelReminder] {
+    
+    // When the user wants to see all results, just return the list provided
+    if visibility == .all {
+        
+        return listOfReminders
+        
+    } else {
+        
+        // Create an empty list of results
+        var filteredReminders: [BatteryLevelReminder] = []
+        
+        // Iterate over the list of results, and build a new list that only includes the selected type of reminders
+        for currentReminder in listOfReminders {
+            
+            if visibility == .repeated && currentReminder.isRecurring == true {
+                
+                filteredReminders.append(currentReminder)
+                
+            } else if visibility == .notRepeated && currentReminder.isRecurring == false {
+                
+                filteredReminders.insert(currentReminder, at: 0)
+                
+            }
+            
+        }
+        
+        // Return the filtered list of reminders
+        return filteredReminders
+    }
+    
 }
