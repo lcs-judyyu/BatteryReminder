@@ -21,6 +21,9 @@ struct BatteryView: View {
     // Keep track of the list of battery level reminder
     @Binding var listOfBatteryLevelReminders: [BatteryLevelReminder]
     
+    // Tracks what results should be visible currently
+    @State private var selectedReminderVisibility: ReminderVisibility = .all
+    
     // MARK: Computed properties
     var roundedCurrentBatteryLevel: Int {
         
@@ -115,37 +118,9 @@ struct BatteryView: View {
                     // Add reminders
                     Group {
                         
-                        HStack {
-                            
-                            Text("Add Reminders")
-                                .bold()
-                                .font(.title2)
-                            
-                            Spacer()
-                            
-                            Menu {
-                                
-                                Button("Not Repeated", action: {
-                                    
-                                })
-                                Button("Repeated", action: {
-                                    
-                                })
-                                Button("All", action: {
-                                    
-                                })
-                                
-                                    } label: {
-                                        
-                                        Image(systemName: "line.3.horizontal.decrease.circle.fill")
-                                            .resizable()
-                                            .frame(width: 30,
-                                                   height: 30)
-                                            .foregroundColor(Color("eaternBlue"))
-                                        
-                                    }
-                            
-                        }
+                        Text("Add Reminders")
+                            .bold()
+                            .font(.title2)
                         
                         VStack (alignment: .leading, spacing: 20) {
                             
@@ -181,10 +156,53 @@ struct BatteryView: View {
                 // Your reminders
                 Group {
                     
-                    Text("Your Reminders")
-                        .bold()
-                        .font(.title2)
-                        .padding(.horizontal, 20)
+                    VStack(alignment: .leading, spacing: 0) {
+                        
+                        HStack {
+                            
+                            Text("Your Reminders")
+                                .bold()
+                                .font(.title2)
+                            
+                            Spacer()
+                            
+                            Menu {
+                                Section("Header 1") {
+                                    
+                                    // Picker to allow user to select what reminders to show
+                                    Picker("Filter", selection: $selectedReminderVisibility) {
+                                        
+                                        Text(ReminderVisibility.notRepeated.rawValue)
+                                            .tag(ReminderVisibility.notRepeated)
+                                        
+                                        Text(ReminderVisibility.repeated.rawValue)
+                                            .tag(ReminderVisibility.repeated)
+                                        
+                                        Text(ReminderVisibility.all.rawValue)
+                                            .tag(ReminderVisibility.all)
+                                        
+                                    }
+                                    
+                                }
+                                
+                            } label: {
+                                
+                                Image(systemName: "line.3.horizontal.decrease.circle.fill")
+                                    .resizable()
+                                    .frame(width: 32,
+                                           height: 32)
+                                    .foregroundColor(Color("eaternBlue"))
+                                
+                            }
+                            
+                        }
+                        
+                        Text("Filtered by: \(selectedReminderVisibility.rawValue)")
+                            .foregroundColor(Color.gray)
+                            .font(.caption2)
+                        
+                    }
+                    .padding(.horizontal, 20)
                     
                     ZStack (alignment: .top) {
                         
