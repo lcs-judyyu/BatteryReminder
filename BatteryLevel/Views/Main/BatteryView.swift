@@ -155,19 +155,24 @@ struct BatteryView: View {
                 
                 // Your reminders
                 Group {
-                    
-                    VStack(alignment: .leading, spacing: 0) {
                         
                         HStack {
                             
-                            Text("Your Reminders")
-                                .bold()
-                                .font(.title2)
+                            VStack(alignment: .leading, spacing: 5) {
+                                
+                                Text("Your Reminders")
+                                    .bold()
+                                    .font(.title2)
+                                
+                                Text("Filtered by: \(selectedReminderVisibility.rawValue)")
+                                    .foregroundColor(Color.gray)
+                                    .font(.callout)
+                            }
                             
                             Spacer()
                             
                             Menu {
-                                Section("Header 1") {
+                                Section {
                                     
                                     // Picker to allow user to select what reminders to show
                                     Picker("Filter", selection: $selectedReminderVisibility) {
@@ -183,6 +188,8 @@ struct BatteryView: View {
                                         
                                     }
                                     
+                                    Text("Filtered by:")
+                                    
                                 }
                                 
                             } label: {
@@ -191,15 +198,10 @@ struct BatteryView: View {
                                     .resizable()
                                     .frame(width: 32,
                                            height: 32)
-                                    .foregroundColor(Color("eaternBlue"))
+                                    .foregroundColor(Color("easternBlue"))
+                                    .padding([.trailing, .bottom], 10)
                                 
                             }
-                            
-                        }
-                        
-                        Text("Filtered by: \(selectedReminderVisibility.rawValue)")
-                            .foregroundColor(Color.gray)
-                            .font(.caption2)
                         
                     }
                     .padding(.horizontal, 20)
@@ -267,6 +269,8 @@ struct BatteryView: View {
         .navigationBarTitleDisplayMode(.inline)
         
     }
+    
+    //MARK: Functions
     
 }
 
