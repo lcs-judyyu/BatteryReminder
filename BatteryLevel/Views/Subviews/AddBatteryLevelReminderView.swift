@@ -89,13 +89,13 @@ struct AddBatteryLevelReminderView: View {
                                 // Remove the existed reminder
                                 listOfBatteryLevelReminders.remove(at: existedReminderIndex ?? 0)
                                 
-                                listOfBatteryLevelReminders.append(newBatteryLevelReminder)
+                                listOfBatteryLevelReminders.insert(newBatteryLevelReminder, at: 0)
                                 
                                 print("This reminder already exist. It is now added to the top of the list.")
                                 
                             } else {
                                 
-                                listOfBatteryLevelReminders.append(newBatteryLevelReminder)
+                                listOfBatteryLevelReminders.insert(newBatteryLevelReminder, at: 0)
                                 
                             }
                             
@@ -130,6 +130,13 @@ struct AddBatteryLevelReminderView: View {
     // Hide this view
     func hideView() {
         showThisView = false
+    }
+    //MARK: Functions
+    // For removing reminders from the list
+    func removeReminders(at offsets: IndexSet) {
+        
+        listOfBatteryLevelReminders.remove(atOffsets: offsets)
+        
     }
     
 }

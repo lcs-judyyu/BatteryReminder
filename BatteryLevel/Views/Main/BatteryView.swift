@@ -212,25 +212,14 @@ struct BatteryView: View {
                             
                             List {
                                 
-                                ForEach(listOfBatteryLevelReminders.reversed(), id: \.self) { batteryLevelReminder in
+                                ForEach(listOfBatteryLevelReminders, id: \.self) { batteryLevelReminder in
                                     
                                     SimpleListItemView(title: "\(batteryLevelReminder.number)",
                                                        repeated: batteryLevelReminder.isRecurring,
                                                        pushNotification: batteryLevelReminder.isNotified)
                                     
                                 }
-                                .onDelete { index in
-                                    
-                                    // Get the item from the reversed list
-                                    let theItem = listOfBatteryLevelReminders.reversed()[index.first!]
-                                    
-                                    // Get the index of the item from the original list and remove it
-                                    if let newIndex = listOfBatteryLevelReminders.firstIndex(of: theItem) {
-                                        listOfBatteryLevelReminders.remove(at: newIndex)
-                                        
-                                    }
-                                    
-                                }
+                                .onDelete(perform: removeReminders)
                                 
                             }
                             
@@ -267,6 +256,14 @@ struct BatteryView: View {
         .navigationTitle("Battery")
         // Make the nav bar be inlined at top of view
         .navigationBarTitleDisplayMode(.inline)
+        
+    }
+    
+    //MARK: Functions
+    // For removing reminders from the list
+    func removeReminders(at offsets: IndexSet) {
+        
+        listOfBatteryLevelReminders.remove(atOffsets: offsets)
         
     }
     
