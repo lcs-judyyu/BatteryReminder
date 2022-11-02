@@ -7,6 +7,7 @@ import Foundation
 import SwiftUI
 
 struct DeviceBatteryStateViewModifier: ViewModifier {
+    
     let action: (UIDevice.BatteryState) -> Void
     
     func body(content: Content) -> some View {

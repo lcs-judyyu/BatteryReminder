@@ -56,7 +56,7 @@ struct CompletionMeterView: View {
 
 struct CompletionMeterView_Previews: PreviewProvider {
     static var previews: some View {
-        CompletionMeterView(fillToValue: 75)
+        CompletionMeterView(fillToValue: 80)
     }
 }
 

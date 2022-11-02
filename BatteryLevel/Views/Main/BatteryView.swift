@@ -193,7 +193,7 @@ struct BatteryView: View {
                                 .resizable()
                                 .frame(width: 35,
                                        height: 35)
-                                .foregroundColor(Color("easternBlue"))
+                                .foregroundColor(Color("seaGreen"))
                                 .padding([.trailing, .bottom], 10)
                             
                         }
