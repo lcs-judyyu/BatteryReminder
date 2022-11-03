@@ -5,7 +5,6 @@
 
 import SwiftUI
 import UIKit
-import Lottie
 
 struct CompletionMeterView: View {
     
