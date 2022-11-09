@@ -3,7 +3,7 @@
 //  BatteryLevel
 //
 
-// Adapted from the Local Notifications Example project by Russell Gordon
+// Adapted from: https://github.com/lcs-rgordon/LocalNotificationsExample
 import Foundation
 import os
 import UserNotifications

@@ -5,6 +5,7 @@
 
 import SwiftUI
 
+// Source: https://www.apple.com/ca/batteries/maximizing-performance/
 struct TipsArticleView: View {
     
     // MARK: Stored properties

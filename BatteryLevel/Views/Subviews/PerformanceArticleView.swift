@@ -5,6 +5,7 @@
 
 import SwiftUI
 
+// Source: https://support.apple.com/en-us/HT208387
 struct PerformanceArticleView: View {
     
     // MARK: Stored properties

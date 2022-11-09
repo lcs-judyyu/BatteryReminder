@@ -3,11 +3,11 @@
 //  BatteryLevel
 //
 
-// Adapted from the Local Notifications Example project by Russell Gordon
 import Foundation
 import os
 import UserNotifications
 
+// Adapted from: https://github.com/lcs-rgordon/LocalNotificationsExample
 // Purpose: These two functions combined allow local notifications to be scheduled by the application
 
 // Invoke this function once prior to the first time a notification needs to be published

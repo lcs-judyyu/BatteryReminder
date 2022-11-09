@@ -122,7 +122,7 @@ struct ReportView: View {
     }
     
     // MARK: Functions
-    // Adapted from the Concept Review project by Russell Gordon
+    // Adapted from: https://github.com/lcs-rgordon/ConceptReview
     func fetchResults() async {
         
         // Set the address of the JSON endpoint
