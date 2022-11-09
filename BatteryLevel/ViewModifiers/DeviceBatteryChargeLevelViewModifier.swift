@@ -6,6 +6,7 @@
 import Foundation
 import SwiftUI
 
+// Adapted from: https://www.hackingwithswift.com/quick-start/swiftui/how-to-detect-device-rotation
 struct DeviceBatteryChargeLevelViewModifier: ViewModifier {
     
     let action: (Float) -> Void

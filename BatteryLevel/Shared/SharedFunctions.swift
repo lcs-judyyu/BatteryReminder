@@ -3,6 +3,7 @@
 //  BatteryLevel
 //
 
+// Adapted from the Local Notifications Example project by Russell Gordon
 import Foundation
 import os
 import UserNotifications

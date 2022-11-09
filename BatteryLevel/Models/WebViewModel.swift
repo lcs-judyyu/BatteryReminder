@@ -3,6 +3,7 @@
 //  BatteryLevel
 //
 
+// Adapted from the Culminating Task Code Snippets Project by Russell Gordon
 import Foundation
 import SwiftUI
 

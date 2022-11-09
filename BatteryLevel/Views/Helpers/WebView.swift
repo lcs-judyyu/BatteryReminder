@@ -3,6 +3,7 @@
 //  BatteryLevel
 //
 
+// Adapted from the Culminating Task Code Snippets Project by Russell Gordon
 import SwiftUI
 
 struct WebView: View {

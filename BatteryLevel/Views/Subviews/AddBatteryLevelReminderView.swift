@@ -89,6 +89,7 @@ struct AddBatteryLevelReminderView: View {
                             // When new reminder is in the list already
                             if listOfBatteryLevelReminders.contains(newBatteryLevelReminder) {
                                 
+                                // Adapted from: https://www.codingem.com/swift-how-to-get-index-of-item-in-array/
                                 // Get the index of the existed reminder
                                 let existedReminderIndex = listOfBatteryLevelReminders.firstIndex(where: {$0 == newBatteryLevelReminder})
                                 print(existedReminderIndex ?? 0)
