@@ -57,7 +57,7 @@ struct InformationView: View {
                             
                             ArticlesCardView(imageName: "Tips",
                                              title: "General Performance Tips",
-                                             description: "Improving your battery performance")
+                                             description: "Improve your battery performance")
                             
                         }
                         .sheet(isPresented: $showTipsArticle) {
