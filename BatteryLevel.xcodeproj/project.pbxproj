@@ -10,7 +10,7 @@
 		22B338762911FCA80046191F /* ReminderVisibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B338752911FCA80046191F /* ReminderVisibility.swift */; };
 		5A59C2122828325200D48815 /* DeviceBatteryChargeLevelViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A59C2112828325200D48815 /* DeviceBatteryChargeLevelViewModifier.swift */; };
 		5A59C21528287FF300D48815 /* BatteryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A59C21428287FF300D48815 /* BatteryView.swift */; };
-		5A59C2172828800600D48815 /* ReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A59C2162828800600D48815 /* ReportView.swift */; };
+		5A59C2172828800600D48815 /* InformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A59C2162828800600D48815 /* InformationView.swift */; };
 		5A59C2192828803200D48815 /* PerformanceArticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A59C2182828803200D48815 /* PerformanceArticleView.swift */; };
 		5A59C21B2828804300D48815 /* TipsArticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A59C21A2828804300D48815 /* TipsArticleView.swift */; };
 		5A59C21D2828865400D48815 /* Structures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A59C21C2828865400D48815 /* Structures.swift */; };
@@ -37,7 +37,7 @@
 		22B338752911FCA80046191F /* ReminderVisibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderVisibility.swift; sourceTree = "<group>"; };
 		5A59C2112828325200D48815 /* DeviceBatteryChargeLevelViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceBatteryChargeLevelViewModifier.swift; sourceTree = "<group>"; };
 		5A59C21428287FF300D48815 /* BatteryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryView.swift; sourceTree = "<group>"; };
-		5A59C2162828800600D48815 /* ReportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportView.swift; sourceTree = "<group>"; };
+		5A59C2162828800600D48815 /* InformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationView.swift; sourceTree = "<group>"; };
 		5A59C2182828803200D48815 /* PerformanceArticleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformanceArticleView.swift; sourceTree = "<group>"; };
 		5A59C21A2828804300D48815 /* TipsArticleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsArticleView.swift; sourceTree = "<group>"; };
 		5A59C21C2828865400D48815 /* Structures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Structures.swift; sourceTree = "<group>"; };
@@ -107,7 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				5A59C21428287FF300D48815 /* BatteryView.swift */,
-				5A59C2162828800600D48815 /* ReportView.swift */,
+				5A59C2162828800600D48815 /* InformationView.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -284,7 +284,7 @@
 				5A59C2202828877700D48815 /* ArticlesCardView.swift in Sources */,
 				5AF24399282D6D2F00FE779B /* WebViewModel.swift in Sources */,
 				81C072DB2827EA8E004235B4 /* DeviceBatteryStateViewModifier.swift in Sources */,
-				5A59C2172828800600D48815 /* ReportView.swift in Sources */,
+				5A59C2172828800600D48815 /* InformationView.swift in Sources */,
 				81C072C82827E42F004235B4 /* BatteryLevelApp.swift in Sources */,
 				5AF24395282AAB9200FE779B /* CompletionMeterView.swift in Sources */,
 			);

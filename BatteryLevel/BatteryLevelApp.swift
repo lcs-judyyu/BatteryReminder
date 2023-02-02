@@ -28,7 +28,7 @@ struct BatteryLevelApp: App {
                 }
                 
                 NavigationView {
-                    ReportView()
+                    InformationView()
                 }
                 .tabItem {
                     Image(systemName: "info.bubble")

@@ -201,7 +201,7 @@ struct BatteryView: View {
                     
                     ZStack (alignment: .top) {
                         
-                        Group {
+                        VStack {
                             
                             List {
                                 
@@ -247,9 +247,6 @@ struct BatteryView: View {
             }
             
         }
-        .navigationTitle("Battery")
-        // Make the nav bar be inlined at top of view
-        .navigationBarTitleDisplayMode(.inline)
         
     }
     

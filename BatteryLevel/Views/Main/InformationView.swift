@@ -1,11 +1,11 @@
 //
-//  ReportView.swift
+//  InformationView.swift
 //  BatteryLevel
 //
 
 import SwiftUI
 
-struct ReportView: View {
+struct InformationView: View {
     
     // MARK: Stored properties
     
@@ -155,7 +155,7 @@ struct ReportView: View {
             
         } catch {
             
-            // Report about what happened
+            // Information about what happened
             print("Could not retrieve / decode JSON from endpoint.")
             print(error)
             
@@ -164,10 +164,10 @@ struct ReportView: View {
     }
 }
 
-struct ReportView_Previews: PreviewProvider {
+struct InformationView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            ReportView(articlesToShow: testArticles)
+            InformationView(articlesToShow: testArticles)
         }
     }
 }
