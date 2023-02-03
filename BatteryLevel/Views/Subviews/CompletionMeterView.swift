@@ -19,15 +19,23 @@ struct CompletionMeterView: View {
     // Set timer so that completion amount changes on a regular basis
     let timer = Timer.publish(every: 0.03, on: .main, in: .common).autoconnect()
     
+    let size: CGFloat = 230.0
+    
     var body: some View {
         
         ZStack {
+            
+            // Background
+            Circle()
+                .stroke(Color("backgroundGray"), lineWidth: 24)
+                .frame(width: size, height: size)
+                .opacity(0.7)
             
             Circle()
             // Trim for the outline of a shape
                 .trim(from: 0, to: completionAmount)
                 .stroke(Color("seaGreen"), lineWidth: 24)
-                .frame(width: 230, height: 230)
+                .frame(width: size, height: size)
                 .rotationEffect(.degrees(-90))
             // When the timer fires, run the code
                 .onReceive(timer) { _ in

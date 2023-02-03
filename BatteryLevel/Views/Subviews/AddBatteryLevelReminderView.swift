@@ -111,14 +111,14 @@ struct AddBatteryLevelReminderView: View {
                             
                             hideView()
                         }
-                        .tint(Color("seaGreen"))
+                        .tint(Color("teal"))
                     }
                     
                     ToolbarItem(placement: .cancellationAction) {
                         Button("Cancel") {
                             hideView()
                         }
-                        .tint(Color("seaGreen"))
+                        .tint(Color("teal"))
                     }
                 }
                 .task {

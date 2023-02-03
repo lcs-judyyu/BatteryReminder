@@ -238,6 +238,7 @@ struct BatteryView: View {
                             
                         }
                         .padding(.horizontal, 20)
+                        .opacity(listOfBatteryLevelReminders.isEmpty ? 0.0 : 1.0)
                         
                     }
                     

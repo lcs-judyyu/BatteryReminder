@@ -79,6 +79,7 @@ struct PerformanceArticleView: View {
                     Button("Done") {
                         hideView()
                     }
+                    .tint(Color("teal"))
                 }
             }
         }

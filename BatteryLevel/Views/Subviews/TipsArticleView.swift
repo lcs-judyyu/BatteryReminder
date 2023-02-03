@@ -115,6 +115,7 @@ struct TipsArticleView: View {
                     Button("Done") {
                         hideView()
                     }
+                    .tint(Color("teal"))
                 }
             }
         }

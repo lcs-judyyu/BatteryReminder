@@ -81,7 +81,7 @@ struct InformationView: View {
                                     
                                     WebListItemView(currentArticle: currentArticle)
                                     
-                                    if currentArticle.id - 1 != articlesToShow.count {
+                                    if currentArticle != articlesToShow.last {
                                         Divider()
                                     }
                                     
