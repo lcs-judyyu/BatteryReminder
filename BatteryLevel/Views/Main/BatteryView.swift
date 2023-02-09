@@ -102,10 +102,7 @@ struct BatteryView: View {
                         }
                         .padding(.vertical, 15)
                         .background(Color.white)
-                        .overlay(
-                            Rectangle()
-                                .stroke(Color(.sRGB, red: 150/255, green: 150/255, blue: 150/255, opacity: 0.1), lineWidth: 1)
-                        )
+                        
                     }
                     
                     VStack (alignment: .leading, spacing: 20) {
@@ -128,6 +125,7 @@ struct BatteryView: View {
                                     HStack {
                                         
                                         Label("Notify by battery level", systemImage: "plus.circle")
+                                            .foregroundColor(Color("teal"))
                                         
                                         Spacer()
                                         
@@ -225,7 +223,6 @@ struct BatteryView: View {
                             
                         }
                         .padding(.horizontal, 20)
-                        .opacity(listOfBatteryLevelReminders.isEmpty ? 0.0 : 1.0)
                         
                     }
                 }
@@ -242,7 +239,6 @@ struct BatteryView: View {
             }
         }
         .navigationTitle("Battery")
-        // Make the nav bar be inlined at top of view
         .navigationBarTitleDisplayMode(.inline)
         
     }

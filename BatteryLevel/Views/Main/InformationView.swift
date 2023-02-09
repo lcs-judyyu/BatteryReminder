@@ -107,7 +107,6 @@ struct InformationView: View {
             }
         }
         .navigationTitle("More Information")
-        // Make the nav bar be inlined at top of view
         .navigationBarTitleDisplayMode(.inline)
         .task {
             
