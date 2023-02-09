@@ -66,11 +66,8 @@ struct WebView: View {
                 if webViewModel.isLoading {
                     ProgressView()
                 }
-                
             }
-            
         }
-        
     }
     
     // MARK: Initializer

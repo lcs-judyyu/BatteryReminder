@@ -88,11 +88,9 @@ func filter(_ listOfReminders: [BatteryLevelReminder], by visibility: ReminderVi
                 filteredReminders.append(currentReminder)
                 
             }
-            
         }
         
         // Return the filtered list of reminders
         return filteredReminders
     }
-    
 }

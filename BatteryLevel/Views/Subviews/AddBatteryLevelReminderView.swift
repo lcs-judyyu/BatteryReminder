@@ -130,11 +130,8 @@ struct AddBatteryLevelReminderView: View {
                     currentBatteryLevel = UIDevice.current.batteryLevel
                     
                 }
-                
             }
-            
         }
-        
     }
     
     // MARK: Functions
@@ -151,7 +148,6 @@ struct AddBatteryLevelReminderView: View {
         listOfBatteryLevelReminders.remove(atOffsets: offsets)
         
     }
-    
 }
 
 struct AddBatteryLevelReminderView_Previews: PreviewProvider {

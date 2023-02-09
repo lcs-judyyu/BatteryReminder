@@ -93,13 +93,9 @@ struct BatteryView: View {
                                                     listOfBatteryLevelReminders.remove(at: indexOfBatteryReminder ?? 0)
                                                     
                                                 }
-                                                
                                             }
-                                            
                                         }
-                                        
                                     }
-                                    
                                 }
                             
                             Spacer()
@@ -132,23 +128,19 @@ struct BatteryView: View {
                                     HStack {
                                         
                                         Label("Notify by battery level", systemImage: "plus.circle")
-                                            .foregroundColor(Color("teal"))
                                         
                                         Spacer()
                                         
                                     }
-                                    
                                 }
                                 .sheet(isPresented: $showAddBatteryLevelReminder) {
                                     AddBatteryLevelReminderView(showThisView: $showAddBatteryLevelReminder,
                                                                 listOfBatteryLevelReminders: $listOfBatteryLevelReminders)
                                 }
-                                
                             }
                             .RoundedRectangelOverlay()
                             
                         }
-                        
                     }
                     .padding(.horizontal, 20)
                     
@@ -204,8 +196,6 @@ struct BatteryView: View {
                             
                             VStack {
                                 
-                                //List {
-                                
                                 ForEach(filter(listOfBatteryLevelReminders, by: selectedReminderVisibility), id: \.self) { batteryLevelReminder in
                                     
                                     SimpleListItemView(title: "\(batteryLevelReminder.number)",
@@ -215,11 +205,8 @@ struct BatteryView: View {
                                     if batteryLevelReminder != listOfBatteryLevelReminders.last {
                                         Divider()
                                     }
-                                    
                                 }
                                 .onDelete(perform: removeReminders)
-                                
-                                //}
                                 
                             }
                             .RoundedRectangelOverlay()
@@ -241,7 +228,6 @@ struct BatteryView: View {
                         .opacity(listOfBatteryLevelReminders.isEmpty ? 0.0 : 1.0)
                         
                     }
-                    
                 }
                 .padding(.vertical, 20)
                 .task {
@@ -253,9 +239,7 @@ struct BatteryView: View {
                     currentBatteryLevel = UIDevice.current.batteryLevel
                     
                 }
-                
             }
-            
         }
         .navigationTitle("Battery")
         // Make the nav bar be inlined at top of view
@@ -270,7 +254,6 @@ struct BatteryView: View {
         listOfBatteryLevelReminders.remove(atOffsets: offsets)
         
     }
-    
 }
 
 struct BatteryView_Previews: PreviewProvider {
@@ -292,7 +275,5 @@ struct BatteryView_Previews: PreviewProvider {
             BatteryView(listOfBatteryLevelReminders: $reminders)
             
         }
-        
     }
-    
 }

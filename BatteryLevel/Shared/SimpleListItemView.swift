@@ -37,7 +37,6 @@ struct SimpleListItemView: View {
             
         }
     }
-    
 }
 
 struct SimpleListItemView_Previews: PreviewProvider {

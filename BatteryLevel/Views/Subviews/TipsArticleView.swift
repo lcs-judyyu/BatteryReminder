@@ -106,8 +106,6 @@ struct TipsArticleView: View {
                     .padding(.bottom, 18)
                     
                 }
-                
-                
             }
             .navigationTitle("Performance Tips")
             .toolbar {
@@ -119,7 +117,6 @@ struct TipsArticleView: View {
                 }
             }
         }
-        
     }
     
     // MARK: Functions

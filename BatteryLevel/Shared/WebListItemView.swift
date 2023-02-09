@@ -32,11 +32,8 @@ struct WebListItemView: View {
                         .foregroundColor(Color.gray)
                         .opacity(0.6)
                 }
-                
             }
-            
         })
-        
     }
 }
 

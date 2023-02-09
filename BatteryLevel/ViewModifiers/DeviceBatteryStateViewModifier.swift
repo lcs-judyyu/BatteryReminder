@@ -26,6 +26,5 @@ extension View {
     func onBatteryStateChanged(perform action: @escaping (UIDevice.BatteryState) -> Void) -> some View {
         self.modifier(DeviceBatteryStateViewModifier(action: action))
     }
-    
 }
 

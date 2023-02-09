@@ -49,7 +49,6 @@ struct CompletionMeterView: View {
                         completionAmount = fillToValue / 100.0
                         
                     }
-                    
                 }
             
             Text("\(Int(fillToValue))%")
@@ -59,7 +58,6 @@ struct CompletionMeterView: View {
         }
         .padding(.vertical)
     }
-    
 }
 
 struct CompletionMeterView_Previews: PreviewProvider {

@@ -83,9 +83,7 @@ struct PerformanceArticleView: View {
                 }
             }
         }
-        
     }
-    
     
     // MARK: Functions
     // Hide this view

@@ -100,15 +100,11 @@ struct InformationView: View {
                             .opacity(articlesToShow.isEmpty ? 1.0 : 0.0)
                             
                         }
-                        
                     }
-                    
                 }
                 .padding(20)
                 
             }
-            
-            
         }
         .navigationTitle("More Information")
         // Make the nav bar be inlined at top of view
@@ -160,7 +156,6 @@ struct InformationView: View {
             print(error)
             
         }
-        
     }
 }
 
